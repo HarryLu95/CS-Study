@@ -1,6 +1,5 @@
 ---
 title: <center>Algorithm Beginner Class</center>
-date: <center>`r Sys.Date()`</center>
 output:
   html_document:
     toc: true
@@ -8,4 +7,36 @@ output:
       collapsed: false
     toc_depth: 2
 ---
-Hello!
+注：此網站只可用作學習。禁止以任何形式使用或傳播此網站的任何內容。
+
+#Lecture列表
+- [Lecture 1](Algorithm_Beginner_Class_1_Lec.html), 5/29
+- [Lecture 2](Algorithm_Beginner_Class_2_Lec.html), 5/31
+- [Lecture 3](Algorithm_Beginner_Class_3_Lec.html), 6/2
+- [Lecture 4](Algorithm_Beginner_Class_4_Lec.html), 6/5
+- [Lecture 5](Algorithm_Beginner_Class_5_Lec.html), 6/7
+- [Lecture 6](Algorithm_Beginner_Class_6_Lec.html), 6/9
+- [Lecture 7](Algorithm_Beginner_Class_7_Lec.html), 6/12
+- [Lecture 8](Algorithm_Beginner_Class_8_Lec.html), 6/14
+- [Lecture 9](Algorithm_Beginner_Class_9_Lec.html), 6/16
+- [Lecture 10](Algorithm_Beginner_Class_10_Lec.html), 6/19
+- [Lecture 11](Algorithm_Beginner_Class_11_Lec.html), 6/21
+- [Lecture 12](Algorithm_Beginner_Class_12_Lec.html), 6/23
+- [Lecture 13](Algorithm_Beginner_Class_13_Lec.html), 6/26
+- [Lecture 14](Algorithm_Beginner_Class_14_Lec.html), 6/28
+
+#Homework列表
+- [Homework 1](Algorithm_Beginner_Class_1_hw.html)
+- [Homework 2](Algorithm_Beginner_Class_2_hw.html)
+- [Homework 3](Algorithm_Beginner_Class_3_hw.html)
+- [Homework 4](Algorithm_Beginner_Class_4_hw.html)
+- [Homework 5](Algorithm_Beginner_Class_5_hw.html)
+- [Homework 6](Algorithm_Beginner_Class_6_hw.html)
+- [Homework 7](Algorithm_Beginner_Class_7_hw.html)
+- [Homework 8](Algorithm_Beginner_Class_8_hw.html)
+- [Homework 9](Algorithm_Beginner_Class_9_hw.html)
+- [Homework 10](Algorithm_Beginner_Class_10_hw.html)
+- [Homework 11](Algorithm_Beginner_Class_11_hw.html)
+- [Homework 12](Algorithm_Beginner_Class_12_hw.html)
+- [Homework 13](Algorithm_Beginner_Class_13_hw.html)
+- [Homework 14](Algorithm_Beginner_Class_14_hw.html)
