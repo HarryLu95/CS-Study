@@ -1,0 +1,105 @@
+name: CS-Study-Website
+output_dir: '.'
+navbar:
+  title: <font face="Algerian">A.B.C.</font>
+  left:
+  - text: Home
+    icon: fa-home
+    href: index.html
+  - text: Lecture Note
+    icon: fa-book
+    menu:
+    - text: Lec 1
+      icon: fa-clone
+      href: Algorithm_Beginner_Class_1_Lec.html
+    - text: Lec 2
+      icon: fa-clone
+      href: Algorithm_Beginner_Class_2_Lec.html
+    - text: Lec 3
+      icon: fa-clone
+      href: Algorithm_Beginner_Class_3_Lec.html
+    - text: Lec 4
+      icon: fa-clone
+      href: Algorithm_Beginner_Class_4_Lec.html
+    - text: Lec 5
+      icon: fa-clone
+      href: Algorithm_Beginner_Class_5_Lec.html
+    - text: Lec 6
+      icon: fa-clone
+      href: Algorithm_Beginner_Class_6_Lec.html
+    - text: Lec 7
+      icon: fa-clone
+      href: Algorithm_Beginner_Class_7_Lec.html
+    - text: Lec 8
+      icon: fa-clone
+      href: Algorithm_Beginner_Class_8_Lec.html
+    - text: Lec 9
+      icon: fa-clone
+      href: Algorithm_Beginner_Class_9_Lec.html
+    - text: Lec 10
+      icon: fa-clone
+      href: Algorithm_Beginner_Class_10_Lec.html
+    - text: Lec 11
+      icon: fa-clone
+      href: Algorithm_Beginner_Class_11_Lec.html
+    - text: Lec 12
+      icon: fa-clone
+      href: Algorithm_Beginner_Class_12_Lec.html
+    - text: Lec 13
+      icon: fa-clone
+      href: Algorithm_Beginner_Class_13_Lec.html
+    - text: Lec 14
+      icon: fa-clone
+      href: Algorithm_Beginner_Class_14_Lec.html
+  - text: Homework
+    icon: fa-folder-open
+    menu:
+    - text: HW 1
+      icon: fa-clone
+      href: Algorithm_Beginner_Class_1_hw.html
+    - text: HW 2
+      icon: fa-clone
+      href: Algorithm_Beginner_Class_2_hw.html
+    - text: HW 3
+      icon: fa-clone
+      href: Algorithm_Beginner_Class_3_hw.html
+    - text: HW 4
+      icon: fa-clone
+      href: Algorithm_Beginner_Class_4_hw.html
+    - text: HW 5
+      icon: fa-clone
+      href: Algorithm_Beginner_Class_5_hw.html
+    - text: HW 6
+      icon: fa-clone
+      href: Algorithm_Beginner_Class_6_hw.html
+    - text: HW 7
+      icon: fa-clone
+      href: Algorithm_Beginner_Class_7_hw.html
+    - text: HW 8
+      icon: fa-clone
+      href: Algorithm_Beginner_Class_8_hw.html
+    - text: HW 9
+      icon: fa-clone
+      href: Algorithm_Beginner_Class_9_hw.html
+    - text: HW 10
+      icon: fa-clone
+      href: Algorithm_Beginner_Class_10_hw.html
+    - text: HW 11
+      icon: fa-clone
+      href: Algorithm_Beginner_Class_11_hw.html
+    - text: HW 12
+      icon: fa-clone
+      href: Algorithm_Beginner_Class_12_hw.html
+    - text: HW 13
+      icon: fa-clone
+      href: Algorithm_Beginner_Class_13_hw.html
+    - text: HW 14
+      icon: fa-clone
+      href: Algorithm_Beginner_Class_14_hw.html
+output:
+  html_document:
+    theme: spacelab
+    highlight: default
+    lib_dir: site_libs
+    self_contained: no
+
