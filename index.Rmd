@@ -40,3 +40,6 @@ output:
 - [Homework 12](Algorithm_Beginner_Class_12_hw.html)
 - [Homework 13](Algorithm_Beginner_Class_13_hw.html)
 - [Homework 14](Algorithm_Beginner_Class_14_hw.html)
+
+#Sorting Algorithm by R
+- [Selection Sort](Sorting.html)
