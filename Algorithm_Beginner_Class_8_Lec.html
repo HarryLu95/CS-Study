@@ -222,10 +222,10 @@ div.tocify {
 
 
 <h1 class="title toc-ignore"><center>
-Algorithm Beginner Class 5 Lecture - Sorting Algorithms 1
+Algorithm Beginner Class 8 Lecture
 </center></h1>
 <h4 class="date"><em><center>
-2018/6/7
+2018/6/14
 </center></em></h4>
 
 </div>
@@ -239,145 +239,6 @@ p {font-size: 16px; color: black;}
 ol {font-size: 16px; color: black;}
 ul {font-size: 16px; color: black;}
 </style>
-<div id="data-structure" class="section level1">
-<h1>Data Structure</h1>
-<p><strong>Data structure</strong> is a particular way of organizing data in a computer so that it can be used efficiently.</p>
-<p>Common data structure</p>
-<ul>
-<li><strong>Array</strong></li>
-<li><strong>Stack</strong></li>
-<li><strong>Queue</strong></li>
-<li><strong>Linked List</strong></li>
-<li><strong>Tree</strong></li>
-<li><strong>Heap</strong></li>
-<li><strong>Graph</strong></li>
-<li>Hash table</li>
-<li>UnionFind</li>
-<li>Trie</li>
-<li>…</li>
-</ul>
-</div>
-<div id="space-complexity-and-time-complexity" class="section level1">
-<h1>Space Complexity and Time Complexity</h1>
-<p>Big O notation: algorithm complexity (time complexity, space complexity)</p>
-<p><strong>time complexity</strong> O(n).</p>
-<ol style="list-style-type: decimal">
-<li>increase with input size</li>
-<li>asymptotic complexity</li>
-</ol>
-<p>We only care about asymptotic complexity. (highest power)</p>
-<p><span class="math inline">\(1&lt;\log{n}&lt;\sqrt{n}&lt;n&lt;n\cdot\log{n}&lt;n^2&lt;n^3&lt;2^n&lt;10^n&lt;n!&lt;n^n\)</span></p>
-<p><strong>auxiliary space complexity</strong>: is the extra space or temporary space used by an algorith. O(1)</p>
-</div>
-<div id="sorting-algorithms" class="section level1">
-<h1>Sorting Algorithms</h1>
-<ol style="list-style-type: lower-alpha">
-<li>Selection sort</li>
-<li>Merge sort</li>
-<li>Quick sort</li>
-<li>Bubble sort</li>
-<li>Bucket sort</li>
-<li>Patient sort</li>
-<li>Smooth sort</li>
-<li>Cocktail sort</li>
-<li>…</li>
-</ol>
-<div id="selection-sort" class="section level2">
-<h2>1. Selection Sort</h2>
-<p><code>{4, 1, 8, 7}</code><br />
-i (minindex)<br />
-j (index)</p>
-<p>iteration 1: find global min 1, {4, 1, 8, 7}, insert 1 to the right place</p>
-<p>iteration 2: find global min in the rest, 1 {4, 8, 7} ==&gt; 1, 4 {8, 7}</p>
-<p>iteration 3: find global min in the rest, 1, 4 {8, 7} ==&gt; 1, 4, 7 {8}</p>
-<p>Time complexity: O(<span class="math inline">\(n^2\)</span>)<br />
-Space complexity: O(1)</p>
-<pre class="java"><code>package laioffer;
-public class Test {
-  public static void main(String[] args) {
-    int[] array = {5, 3, -7, -1};
-    Solution sol = new Solution();
-    sol.selectionSort(array);
-    for (int a : array) {
-      System.out.print(a + &quot; &quot;);
-    }
-  }
-}
-class Solution {
-  public void selectionSort(int[] array) {
-    //corner case check
-    if (array == null || array.length &lt;= 1) {
-      return;
-    }
-    int n = array.length;
-    for (int i = 0; i &lt; n - 1; i = i + 1) {
-      int minIndex = i;
-      for (int j = i + 1; j &lt; n; j = j + 1) {
-        if (array[j] &lt; array[minIndex]) {
-          minIndex = j;
-        }
-      }
-      swap(array, i, minIndex);
-    }
-  }
-  //helper method
-  private void swap(int[] array, int x, int y) {
-    int temp = array[x];
-    array[x] = array[y];
-    array[y] = temp;
-  }
-}</code></pre>
-</div>
-<div id="merge-sort" class="section level2">
-<h2>2. Merge Sort</h2>
-<ol style="list-style-type: decimal">
-<li>分到最基本unit</li>
-<li>在合併兩組時誰小移誰（按升序排列）</li>
-</ol>
-<p>Time complexity: O(<span class="math inline">\(n\cdot\log{n}\)</span>)<br />
-Space complexity: ???</p>
-<pre class="java"><code>class Solution {
-  public void mergeS(int[] array) {
-    if (array == null || array.length &lt;= 1) {
-      return;
-    }
-    mergeSort(array, 0, array.length - 1);
-  }
-  private void mergeSort(int[] array, int left, int right) {
-    if (left &gt;= right) {
-      return;
-    }
-    int mid = left + (right - left) / 2;
-    
-    mergeSort(array, left, mid);
-    mergeSort(array, mid + 1, right);
-    
-    int[] helper = new int[array.length];
-    for (int i = left; i &lt;= right; i = i + 1) {
-      helper[i] = array[i];
-    }
-    int l = left, r = mid + 1;
-    int x = left;
-    while (l &lt;= mid &amp;&amp; r &lt;= right) {
-      if (helper[l] &lt; helper[r]) {
-        arrat[x] = helper[l];
-        l = l + 1;
-      }
-      else {
-        array[x] = helper[r];
-        r = r + 1;
-      }
-      x = x + 1;
-    }
-    while (l &lt;= mid) {
-      array[x] = helper[l];
-      l = l + 1;
-      x = x + 1;
-    }
-  }
-}</code></pre>
-</div>
-</div>
 
 
 
