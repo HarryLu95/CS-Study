@@ -222,7 +222,7 @@ div.tocify {
 
 
 <h1 class="title toc-ignore"><center>
-Algorithm Beginner Class 8 Lecture
+Algorithm Beginner Class 8 Lecture - Queue &amp; Linked List
 </center></h1>
 <h4 class="date"><em><center>
 2018/6/14
@@ -239,6 +239,303 @@ p {font-size: 16px; color: black;}
 ol {font-size: 16px; color: black;}
 ul {font-size: 16px; color: black;}
 </style>
+<div id="queue" class="section level1">
+<h1>Queue</h1>
+<div id="popular-interview-question-1" class="section level2">
+<h2>Popular Interview Question 1</h2>
+<p>How could we implement a queue by using two stacks?</p>
+<p>Operations: <code>offer(3)</code>, <code>offer(2)</code>, <code>poll()</code>, <code>offer(1)</code>, <code>peek()</code>, <code>offer(6)</code>, <code>poll()</code>, <code>poll()</code></p>
+<blockquote>
+<p><code>offer(3)</code><br />
+In-stack: 3<br />
+Out-stack:</p>
+</blockquote>
+<blockquote>
+<p><code>offer(2)</code><br />
+In-stack: 3, 2<br />
+Out-stack:</p>
+</blockquote>
+<blockquote>
+<p><code>reverse</code><br />
+In-stack:<br />
+Out-stack: 2, 3</p>
+</blockquote>
+<blockquote>
+<p><code>poll()=3</code><br />
+In-stack:<br />
+Out-stack: 2</p>
+</blockquote>
+<blockquote>
+<p><code>offer(1)</code><br />
+In-stack: 1<br />
+Out-stack: 2</p>
+</blockquote>
+<blockquote>
+<p><code>peek()=2</code><br />
+In-stack: 1<br />
+Out-stack: 2</p>
+</blockquote>
+<blockquote>
+<p><code>offer(6)</code><br />
+In-stack: 1, 6<br />
+Out-stack: 2</p>
+</blockquote>
+<blockquote>
+<p><code>poll()=2</code><br />
+In-stack: 1, 6<br />
+Out-stack:</p>
+</blockquote>
+<blockquote>
+<p><code>reverse</code><br />
+In-stack:<br />
+Out-stack: 6, 1</p>
+</blockquote>
+<blockquote>
+<p><code>poll()=1</code><br />
+In-stack:<br />
+Out-stack: 6</p>
+</blockquote>
+<pre class="java"><code>package laioffer;
+import java.util.*;
+public class Test {
+  public static void main(String[] args) {
+    //
+  }
+}
+
+//assume Myqueue is used for sotring ints.
+class MyQueue {
+  Deque&lt;Integer&gt; in = new LinkedList&lt;&gt;();
+  Deque&lt;Integer&gt; out = new LinkedList&lt;&gt;();
+  
+  public void offer(int value) {
+    in.push(value);
+  }
+  
+  private void shuffleIf Necessary() {
+    //out-stack裡面沒有數了就要倒騰(reverse)
+    if (out.isEmpty()) {
+      while (!in.isEmpty()) {
+        out.push(in.pop());
+      }
+    }
+  }
+  
+  //Interger is a wrapper of int; it is essentially int + null
+  
+  public Interger poll() {
+    shuffleIfNecessary();
+    //out-stack裡面沒數倒騰后in-stack里也沒有，就要返回null
+    if (out.isEmpty()) {
+      return null;
+    }
+    return out.pop();
+  }
+  
+  public Interger peek() {
+    shuffleIfNecessary();
+    //out-stack裡面沒數倒騰后in-stack里也沒有，就要返回null
+    if (out.isEmpty()) {
+      return null;
+    }
+    return out.peep();
+  }
+  
+  public int size() {
+    return in.size() + out.size();
+  }
+  
+  public boolean isEmpty() {
+    return in.isEmpty() &amp;&amp; out.isEmpty();
+  }
+}</code></pre>
+<p>Time complexity:</p>
+<ul>
+<li><code>offer()</code>: O(1)</li>
+<li><code>size()</code>: O(1)</li>
+<li><code>isEmpty()</code>: O(1)</li>
+</ul>
+<p>Amortized time complexity:</p>
+<ul>
+<li><code>poll()</code>: O(1)</li>
+<li><code>peek()</code>: O(1)</li>
+</ul>
+<p>Space complexity: O(1)</p>
+</div>
+<div id="popular-interview-question-2" class="section level2">
+<h2>Popular Interview Question 2</h2>
+<p>How to implement the <strong>min()</strong> function when <strong>using stack</strong> with time complexity O(1)?</p>
+<p>7, 2, 5, 3, 8, 2<br />
+<code>peek()</code>: O(1)<br />
+<code>pop()</code>: O(1)<br />
+<code>push()</code>: O(1)<br />
+<code>min()</code>: O(1)</p>
+<p>Stack: 7, 2, 5, 3, 8, 2<br />
+Min: 7, 2, 2, 2, 2, 2</p>
+<p><code>push(1)</code><br />
+Stack: 7, 2, 5, 3, 8, 2, 1<br />
+Min: 7, 2, 2, 2, 2, 2, 1</p>
+<pre class="java"><code>package laioffer;
+import java.util.*;
+public class Test {
+  public static void main(String[] args) {
+    //
+  }
+}
+
+class MinStack {
+  Deque&lt;Integer&gt; stack = new LinkedList&lt;&gt;();
+  Deque&lt;Integer&gt; min = new LinkedList&lt;&gt;();
+  
+  public void push(int value) {
+    stack.push(value);
+    if (min.isEmpty() || value &lt;= min.peek()) {
+      min.push(value);
+    }
+  }
+  
+  public Interger pop() {
+    is (stack.isEmpty()) {
+      return null;
+    }
+    int ret = stack.pop();
+    if (ret == min.peak()) {
+      min.pop();
+    }
+    return ret;
+  }
+  
+  public Interger peek() {
+    if (stack.isEmpty()) {
+      return null;
+    }
+    return stack.peek();
+  }
+  
+  public int size() {
+    return stack.size();
+  }
+  
+  public boolean isEmpty() {
+    return stack.isEmpty();
+  }
+  
+  public Interger min() {
+    if (min.isEmpty()) {
+      return null;
+    }
+    return min.peek();
+  }
+}</code></pre>
+</div>
+</div>
+<div id="linked-list" class="section level1">
+<h1>Linked List</h1>
+<p><strong>Memory</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th>0XFFFF0000</th>
+<th>0XFFFF0004</th>
+<th>0XFFFF0008</th>
+<th>0XFFFF000C</th>
+<th>0XFFFF0010</th>
+<th>-</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>a[0]</td>
+<td>a[1]</td>
+<td>a[2]</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Randon Access</strong></p>
+<p><code>int[] a = new int[1000];</code><br />
+<code>int x = a[700]; address_x = address(a) + 700 * 4;</code></p>
+<pre class="java"><code>package laioffer;
+import java.util.*;
+
+public class Test {
+  public static void main(String[] args) {
+    ListNode head = new ListNode(0);
+    ListNode cur = head;
+    for (int i = 1; i &lt; 1000; i = i + 1) {
+      cur.next = new ListNode(i);
+      cur = cur.next;
+    }
+  }
+}
+
+class ListNode {
+  public ListNode(int x) {//Constructor!!
+    value = x;
+  }
+  
+  int value;  //the storage
+  ListNode next;  //it is reference, or, it is an address
+  ListNode prev;  //points to the previous node
+}</code></pre>
+<div class="figure">
+<img src="data:image/png;base64,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" />
+
+</div>
+<p><strong>Key points:</strong></p>
+<ol style="list-style-type: decimal">
+<li>If there is a linked list with 1000 elements, and I want to find the 700th element; When you want to access value/next of a ListNode, make sure it is not null pointer</li>
+<li>Never ever lose the control of the head pointer of the LinkedList</li>
+</ol>
+<div id="popular-interview-question-1-1" class="section level2">
+<h2>Popular Interview Question 1</h2>
+<p>How to reverse a linked list?</p>
+<pre class="java"><code>package laioffer;
+import java.util.*;
+
+public class Test {
+  public static void main(String[] args) {
+    ListNode head = new ListNode(0);
+    ListNode cur = head;
+    for (int i = 1; i &lt; 1000; i = i + 1) {
+      cur.next = new ListNode(i);
+      cur = cur.next;
+    }
+    
+    ListNode newHead = reverse(head);
+  }
+  
+  public static ListNode reverse(ListNode head) {
+    if (head == null || head.next == null) {
+      return head;
+    }
+    ListNode p = pull, c = head, n;
+    while(c != null) {
+      ListNode n = c.next;
+      
+      c.next = p;
+      
+      p = c;
+      c = n;
+    }
+    return p;
+  }
+}
+
+class ListNode {
+  public ListNode(int x) {//Constructor!!
+    value = x;
+  }
+  
+  int value;  //the storage
+  ListNode next;  //it is reference, or, it is an address
+}</code></pre>
+<p>Time complexity: O(n)<br />
+Space complexity: O(1)</p>
+</div>
+</div>
 
 
 
