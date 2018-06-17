@@ -222,7 +222,7 @@ div.tocify {
 
 
 <h1 class="title toc-ignore"><center>
-Algorithm Beginner Class 5 Homework
+Algorithm Beginner Class 9 Homework
 </center></h1>
 <h4 class="author"><em><center>
 Harry Lu
@@ -240,59 +240,123 @@ div.tocify li {font-size: 16px; color: black;}
 body {background-color: white;}
 div.toc-content {background-color: white;}
 </style>
-<div id="selection-sort" class="section level1">
-<h1>1. Selection Sort</h1>
-<p>Given an array of integers, sort the elements in the array in ascending order. The selection sort algorithm should be used to solve this problem.</p>
+<div id="middle-node-of-linked-list" class="section level1">
+<h1>1. Middle Node Of Linked List</h1>
+<p>Find the middle node of a given linked list.</p>
 <p><strong>Examples</strong></p>
 <ul>
-<li>{1} is sorted to {1}</li>
-<li>{1, 2, 3} is sorted to {1, 2, 3}</li>
-<li>{3, 2, 1} is sorted to {1, 2, 3}</li>
-<li>{4, 2, -3, 6, 1} is sorted to {-3, 1, 2, 4, 6}</li>
+<li>L = null, return null</li>
+<li>L = 1 -&gt; null, return 1</li>
+<li>L = 1 -&gt; 2 -&gt; null, return 1</li>
+<li>L = 1 -&gt; 2 -&gt; 3 -&gt; null, return 2</li>
+<li>L = 1 -&gt; 2 -&gt; 3 -&gt; 4 -&gt; null, return 2</li>
 </ul>
-<p><strong>Corner Cases</strong></p>
-<ul>
-<li>What if the given array is null? In this case, we do not need to do anything.</li>
-<li>What if the given array is of length zero? In this case, we do not need to do anything.</li>
-</ul>
-<pre class="java"><code>public class Solution {
-  public int[] solve(int[] array) {
-    if (array == null || array.length &lt;= 1) {
-      return array;
-    }
-    int l = array.length;
-    for (int i = 0; i &lt; l - 1; i = i + 1) {
-      int minIndex = i;
-      for (int j = i + 1; j &lt; l; j = j + 1) {
-        if (array[j] &lt; array[minIndex]) {
-          minIndex = j;
-        }
-      }
-      int temp = array[i];
-      array[i] = array[minIndex];
-      array[minIndex] = temp;
-    }
-    return array;
+<pre class="java"><code>/**
+ * class ListNode {
+ *   public int value;
+ *   public ListNode next;
+ *   public ListNode(int value) {
+ *     this.value = value;
+ *     next = null;
+ *   }
+ * }
+ */
+public class Solution {
+  public ListNode middleNode(ListNode head) {
+    // Write your solution here
   }
 }</code></pre>
 </div>
-<div id="merge-sort" class="section level1">
-<h1>2. Merge Sort</h1>
-<p>Given an array of integers, sort the elements in the array in ascending order. The merge sort algorithm should be used to solve this problem.</p>
+<div id="check-if-linked-list-has-a-cycle" class="section level1">
+<h1>2. Check If Linked List Has A Cycle</h1>
+<p>Check if a given linked list has a cycle. Return true if it does, otherwise return false.</p>
+<pre class="java"><code>/**
+ * class ListNode {
+ *   public int value;
+ *   public ListNode next;
+ *   public ListNode(int value) {
+ *     this.value = value;
+ *     next = null;
+ *   }
+ * }
+ */
+public class Solution {
+  public boolean hasCycle(ListNode head) {
+    // write your solution here
+    return false;
+  }
+}</code></pre>
+</div>
+<div id="insert-in-sorted-linked-list" class="section level1">
+<h1>3. Insert In Sorted Linked List</h1>
+<p>Insert a value in a sorted linked list.</p>
 <p><strong>Examples</strong></p>
 <ul>
-<li>{1} is sorted to {1}</li>
-<li>{1, 2, 3} is sorted to {1, 2, 3}</li>
-<li>{3, 2, 1} is sorted to {1, 2, 3}</li>
-<li>{4, 2, -3, 6, 1} is sorted to {-3, 1, 2, 4, 6}</li>
+<li>L = null, insert 1, return 1 -&gt; null</li>
+<li>L = 1 -&gt; 3 -&gt; 5 -&gt; null, insert 2, return 1 -&gt; 2 -&gt; 3 -&gt; 5 -&gt; null</li>
+<li>L = 1 -&gt; 3 -&gt; 5 -&gt; null, insert 3, return 1 -&gt; 3 -&gt; 3 -&gt; 5 -&gt; null</li>
+<li>L = 2 -&gt; 3 -&gt; null, insert 1, return 1 -&gt; 2 -&gt; 3 -&gt; null</li>
 </ul>
-<p><strong>Corner Cases</strong></p>
+<pre class="java"><code>/**
+ * class ListNode {
+ *   public int value;
+ *   public ListNode next;
+ *   public ListNode(int value) {
+ *     this.value = value;
+ *     next = null;
+ *   }
+ * }
+ */
+public class Solution {
+  public ListNode insert(ListNode head, int value) {
+    // Write your solution here
+  }
+}</code></pre>
+</div>
+<div id="merge-two-sorted-linked-lists" class="section level1">
+<h1>4. Merge Two Sorted Linked Lists</h1>
+<p>Merge two sorted lists into one large sorted list.</p>
+<p><strong>Examples</strong></p>
 <ul>
-<li>What if the given array is null? In this case, we do not need to do anything.</li>
-<li>What if the given array is of length zero? In this case, we do not need to do anything.</li>
+<li>L1 = 1 -&gt; 4 -&gt; 6 -&gt; null, L2 = 2 -&gt; 5 -&gt; null, merge L1 and L2 to 1 -&gt; 2 -&gt; 4 -&gt; 5 -&gt; 6 -&gt; null</li>
+<li>L1 = null, L2 = 1 -&gt; 2 -&gt; null, merge L1 and L2 to 1 -&gt; 2 -&gt; null</li>
+<li>L1 = null, L2 = null, merge L1 and L2 to null</li>
 </ul>
-<pre class="java"><code>public class Solution {
-  public int[] mergeSort(int[] array) {
+<pre class="java"><code>/**
+ * class ListNode {
+ *   public int value;
+ *   public ListNode next;
+ *   public ListNode(int value) {
+ *     this.value = value;
+ *     next = null;
+ *   }
+ * }
+ */
+public class Solution {
+  public ListNode merge(ListNode one, ListNode two) {
+    // Write your solution here
+  }
+}</code></pre>
+</div>
+<div id="partition-linked-list" class="section level1">
+<h1>5. Partition Linked List</h1>
+<p>Given a linked list and a target value T, partition it such that all nodes less than T are listed before the nodes larger than or equal to target value T. The original relative order of the nodes in each of the two partitions should be preserved.</p>
+<p><strong>Examples</strong></p>
+<ul>
+<li>L = 2 -&gt; 4 -&gt; 3 -&gt; 5 -&gt; 1 -&gt; null, T = 3, is partitioned to 2 -&gt; 1 -&gt; 4 -&gt; 3 -&gt; 5 -&gt; null</li>
+</ul>
+<pre class="java"><code>/**
+ * class ListNode {
+ *   public int value;
+ *   public ListNode next;
+ *   public ListNode(int value) {
+ *     this.value = value;
+ *     next = null;
+ *   }
+ * }
+ */
+public class Solution {
+  public ListNode partition(ListNode head, int target) {
     // Write your solution here
   }
 }</code></pre>

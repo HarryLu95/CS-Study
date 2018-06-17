@@ -124,7 +124,7 @@ $(document).ready(function ()  {
 
     // establish options
     var options = {
-      selectors: "h1",
+      selectors: "h1,h2",
       theme: "bootstrap3",
       context: '.toc-content',
       hashGenerator: function (text) {
@@ -222,80 +222,114 @@ div.tocify {
 
 
 <h1 class="title toc-ignore"><center>
-Algorithm Beginner Class 5 Homework
+Algorithm Beginner Class 9 Lecture - LinkedList
 </center></h1>
-<h4 class="author"><em><center>
-Harry Lu
+<h4 class="date"><em><center>
+2018/6/16
 </center></em></h4>
 
 </div>
 
 
 <style>
-h1 {font-size: 24px; color: black;}
-bdi.red {color: red; font-weight: bold;}
+h1 {font-size: 28px; color: black; font-weight: bold; background-color: Orange;}
+h1.title {color: black; background-color: white;}
+h2 {font-size: 20px; color: black; font-weight: bold; background-color: Yellow;}
 p {font-size: 16px; color: black;}
-#div.tocify {color: Green;}
-div.tocify li {font-size: 16px; color: black;}
-body {background-color: white;}
-div.toc-content {background-color: white;}
+ol {font-size: 16px; color: black;}
+ul {font-size: 16px; color: black;}
 </style>
-<div id="selection-sort" class="section level1">
-<h1>1. Selection Sort</h1>
-<p>Given an array of integers, sort the elements in the array in ascending order. The selection sort algorithm should be used to solve this problem.</p>
-<p><strong>Examples</strong></p>
-<ul>
-<li>{1} is sorted to {1}</li>
-<li>{1, 2, 3} is sorted to {1, 2, 3}</li>
-<li>{3, 2, 1} is sorted to {1, 2, 3}</li>
-<li>{4, 2, -3, 6, 1} is sorted to {-3, 1, 2, 4, 6}</li>
-</ul>
-<p><strong>Corner Cases</strong></p>
-<ul>
-<li>What if the given array is null? In this case, we do not need to do anything.</li>
-<li>What if the given array is of length zero? In this case, we do not need to do anything.</li>
-</ul>
+<div id="linked-list" class="section level1">
+<h1>Linked List</h1>
+<div id="popular-interview-question-2" class="section level2">
+<h2>Popular Interview Question 2</h2>
+<p><strong>How to reverse a linked list by recursion?</strong></p>
+<p>1 -&gt; 2 -&gt; 3 -&gt; 4 -&gt; null</p>
+<p>1 -&gt; 2 &lt;- 3 &lt;- 4</p>
 <pre class="java"><code>public class Solution {
-  public int[] solve(int[] array) {
-    if (array == null || array.length &lt;= 1) {
-      return array;
+  public ListNode reverse(ListNode head) {
+    if (head == null || head.next == null) {
+      return head;
     }
-    int l = array.length;
-    for (int i = 0; i &lt; l - 1; i = i + 1) {
-      int minIndex = i;
-      for (int j = i + 1; j &lt; l; j = j + 1) {
-        if (array[j] &lt; array[minIndex]) {
-          minIndex = j;
-        }
-      }
-      int temp = array[i];
-      array[i] = array[minIndex];
-      array[minIndex] = temp;
-    }
-    return array;
+    
+    List Node newHead = reverse(head.next);
+    
+    //head.next.next = head;
+    ListNode n2 = head.next;
+    n2.next = head;
+    head.next = null;
+    return newHead;
   }
 }</code></pre>
 </div>
-<div id="merge-sort" class="section level1">
-<h1>2. Merge Sort</h1>
-<p>Given an array of integers, sort the elements in the array in ascending order. The merge sort algorithm should be used to solve this problem.</p>
-<p><strong>Examples</strong></p>
-<ul>
-<li>{1} is sorted to {1}</li>
-<li>{1, 2, 3} is sorted to {1, 2, 3}</li>
-<li>{3, 2, 1} is sorted to {1, 2, 3}</li>
-<li>{4, 2, -3, 6, 1} is sorted to {-3, 1, 2, 4, 6}</li>
-</ul>
-<p><strong>Corner Cases</strong></p>
-<ul>
-<li>What if the given array is null? In this case, we do not need to do anything.</li>
-<li>What if the given array is of length zero? In this case, we do not need to do anything.</li>
-</ul>
+<div class="section level2">
+<h2>快慢指針</h2>
+<p><strong>Q1. How to find the middle node of a linked list?</strong></p>
 <pre class="java"><code>public class Solution {
-  public int[] mergeSort(int[] array) {
-    // Write your solution here
+  public ListNode middleNode(ListNode head) {
+    if (head == null) {
+      return null;
+    }
+    ListNode slow = head;
+    ListNode fast = head;
+    while (fast.next != null &amp;&amp; fast.next.next != null) {
+      slow = slow.next;
+      fast = fast.next.next;
+    }
+    return slow;
   }
 }</code></pre>
+<p><strong>Q2. 判定一個linkedlist是否有環</strong></p>
+<pre class="java"><code>public class Solution {
+  public boolean hasCycle(ListNode head) {
+    ListNode slow = head;
+    ListNode fast = head;
+    while (fast != null &amp;&amp; fast.next != null) {
+      slow = slow.next;
+      fast = fast.next.next;
+      if (slow == fast) {
+        return true;
+      }
+    }
+    return false;
+  }
+}</code></pre>
+<p><strong>Q3. Insert a node in a sorted linked list (simple)</strong></p>
+<p>1 -&gt; 3 -&gt; 6 -&gt; 9 -&gt; NULL</p>
+<p>target == 7<br />
+1 -&gt; 3 -&gt; 6 -&gt; 7 -&gt; 9 -&gt; NULL</p>
+<p>target == 0<br />
+0 -&gt; 1 -&gt; 3 -&gt; 6 -&gt; 9 -&gt; NULL</p>
+<p>target == 10<br />
+1 -&gt; 3 -&gt; 6 -&gt; 9 -&gt; 10 -&gt; NULL</p>
+<p>Method 1:</p>
+<pre class="java"><code>public ListNode insertNode(ListNode head, int target) {
+  if (head == null || head.value &gt;= target) {
+    ListNode newHead = new ListNode(target);
+    newHead.next = head;
+    return newHead;
+  }
+  ListNode curr = head;
+  while (curr.next != null) {
+    if (target &gt;=)
+  }
+}</code></pre>
+<p>Method 2:</p>
+<pre class="java"><code>public ListNode insert()</code></pre>
+<p><strong>Q4. How to merge two sorted linkedlist into one long sorted linked list</strong></p>
+<p>Method 1:</p>
+<pre class="java"><code></code></pre>
+<p>Method 2 (dummyHead):</p>
+<pre class="java"><code>public ListNode mergeLL(ListNode head1, ListNode head2) {
+  ListNode dummy = new ListNode(0);
+  ListNode curr = dummy;
+  ListNode curr1 = head1;
+  ListNode curr2 = head2;
+  while (curr1 != null &amp;&amp; curr2 != null) {
+    if (curr1.next)
+  }
+}</code></pre>
+</div>
 </div>
 
 

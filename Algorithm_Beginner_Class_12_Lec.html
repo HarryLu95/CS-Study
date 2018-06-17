@@ -124,7 +124,7 @@ $(document).ready(function ()  {
 
     // establish options
     var options = {
-      selectors: "h1",
+      selectors: "h1,h2",
       theme: "bootstrap3",
       context: '.toc-content',
       hashGenerator: function (text) {
@@ -222,80 +222,25 @@ div.tocify {
 
 
 <h1 class="title toc-ignore"><center>
-Algorithm Beginner Class 5 Homework
+Algorithm Beginner Class 12 Lecture
 </center></h1>
-<h4 class="author"><em><center>
-Harry Lu
+<h4 class="date"><em><center>
+2018/6/23
 </center></em></h4>
 
 </div>
 
 
 <style>
-h1 {font-size: 24px; color: black;}
-bdi.red {color: red; font-weight: bold;}
+h1 {font-size: 28px; color: black; font-weight: bold; background-color: Orange;}
+h1.title {color: black; background-color: white;}
+h2 {font-size: 20px; color: black; font-weight: bold; background-color: Yellow;}
 p {font-size: 16px; color: black;}
-#div.tocify {color: Green;}
-div.tocify li {font-size: 16px; color: black;}
-body {background-color: white;}
-div.toc-content {background-color: white;}
+ol {font-size: 16px; color: black;}
+ul {font-size: 16px; color: black;}
 </style>
-<div id="selection-sort" class="section level1">
-<h1>1. Selection Sort</h1>
-<p>Given an array of integers, sort the elements in the array in ascending order. The selection sort algorithm should be used to solve this problem.</p>
-<p><strong>Examples</strong></p>
-<ul>
-<li>{1} is sorted to {1}</li>
-<li>{1, 2, 3} is sorted to {1, 2, 3}</li>
-<li>{3, 2, 1} is sorted to {1, 2, 3}</li>
-<li>{4, 2, -3, 6, 1} is sorted to {-3, 1, 2, 4, 6}</li>
-</ul>
-<p><strong>Corner Cases</strong></p>
-<ul>
-<li>What if the given array is null? In this case, we do not need to do anything.</li>
-<li>What if the given array is of length zero? In this case, we do not need to do anything.</li>
-</ul>
-<pre class="java"><code>public class Solution {
-  public int[] solve(int[] array) {
-    if (array == null || array.length &lt;= 1) {
-      return array;
-    }
-    int l = array.length;
-    for (int i = 0; i &lt; l - 1; i = i + 1) {
-      int minIndex = i;
-      for (int j = i + 1; j &lt; l; j = j + 1) {
-        if (array[j] &lt; array[minIndex]) {
-          minIndex = j;
-        }
-      }
-      int temp = array[i];
-      array[i] = array[minIndex];
-      array[minIndex] = temp;
-    }
-    return array;
-  }
-}</code></pre>
-</div>
-<div id="merge-sort" class="section level1">
-<h1>2. Merge Sort</h1>
-<p>Given an array of integers, sort the elements in the array in ascending order. The merge sort algorithm should be used to solve this problem.</p>
-<p><strong>Examples</strong></p>
-<ul>
-<li>{1} is sorted to {1}</li>
-<li>{1, 2, 3} is sorted to {1, 2, 3}</li>
-<li>{3, 2, 1} is sorted to {1, 2, 3}</li>
-<li>{4, 2, -3, 6, 1} is sorted to {-3, 1, 2, 4, 6}</li>
-</ul>
-<p><strong>Corner Cases</strong></p>
-<ul>
-<li>What if the given array is null? In this case, we do not need to do anything.</li>
-<li>What if the given array is of length zero? In this case, we do not need to do anything.</li>
-</ul>
-<pre class="java"><code>public class Solution {
-  public int[] mergeSort(int[] array) {
-    // Write your solution here
-  }
-}</code></pre>
+<div id="a" class="section level1">
+<h1>a</h1>
 </div>
 
 

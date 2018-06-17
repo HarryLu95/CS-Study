@@ -222,7 +222,7 @@ div.tocify {
 
 
 <h1 class="title toc-ignore"><center>
-Algorithm Beginner Class 5 Homework
+Algorithm Beginner Class 7 Homework
 </center></h1>
 <h4 class="author"><em><center>
 Harry Lu
@@ -240,59 +240,44 @@ div.tocify li {font-size: 16px; color: black;}
 body {background-color: white;}
 div.toc-content {background-color: white;}
 </style>
-<div id="selection-sort" class="section level1">
-<h1>1. Selection Sort</h1>
-<p>Given an array of integers, sort the elements in the array in ascending order. The selection sort algorithm should be used to solve this problem.</p>
+<div id="fibonacci-number" class="section level1">
+<h1>1. Fibonacci Number</h1>
+<p>Get the Kth number in the Fibonacci Sequence. (K is 0-indexed, the 0th Fibonacci number is 0 and the 1st Fibonacci number is 1).</p>
 <p><strong>Examples</strong></p>
 <ul>
-<li>{1} is sorted to {1}</li>
-<li>{1, 2, 3} is sorted to {1, 2, 3}</li>
-<li>{3, 2, 1} is sorted to {1, 2, 3}</li>
-<li>{4, 2, -3, 6, 1} is sorted to {-3, 1, 2, 4, 6}</li>
+<li>0th fibonacci number is 0</li>
+<li>1st fibonacci number is 1</li>
+<li>2nd fibonacci number is 1</li>
+<li>3rd fibonacci number is 2</li>
+<li>6th fibonacci number is 8</li>
 </ul>
 <p><strong>Corner Cases</strong></p>
 <ul>
-<li>What if the given array is null? In this case, we do not need to do anything.</li>
-<li>What if the given array is of length zero? In this case, we do not need to do anything.</li>
+<li>What if K &lt; 0? in this case, we should always return 0.</li>
+<li>Is it possible the result fibonacci number is overflowed? We can assume it will not be overflowed when we solve this problem on this online judge, but we should also know that it is possible to get an overflowed number, and sometimes we will need to use something like BigInteger.</li>
 </ul>
 <pre class="java"><code>public class Solution {
-  public int[] solve(int[] array) {
-    if (array == null || array.length &lt;= 1) {
-      return array;
-    }
-    int l = array.length;
-    for (int i = 0; i &lt; l - 1; i = i + 1) {
-      int minIndex = i;
-      for (int j = i + 1; j &lt; l; j = j + 1) {
-        if (array[j] &lt; array[minIndex]) {
-          minIndex = j;
-        }
-      }
-      int temp = array[i];
-      array[i] = array[minIndex];
-      array[minIndex] = temp;
-    }
-    return array;
+  public long fibonacci(int K) {
+    // Write your solution here
   }
 }</code></pre>
 </div>
-<div id="merge-sort" class="section level1">
-<h1>2. Merge Sort</h1>
-<p>Given an array of integers, sort the elements in the array in ascending order. The merge sort algorithm should be used to solve this problem.</p>
+<div id="a-to-the-power-of-b" class="section level1">
+<h1>2. a to the power of b</h1>
+<p>Evaluate a to the power of b, assuming both a and b are integers and b is non-negative.</p>
 <p><strong>Examples</strong></p>
 <ul>
-<li>{1} is sorted to {1}</li>
-<li>{1, 2, 3} is sorted to {1, 2, 3}</li>
-<li>{3, 2, 1} is sorted to {1, 2, 3}</li>
-<li>{4, 2, -3, 6, 1} is sorted to {-3, 1, 2, 4, 6}</li>
+<li>power(2, 0) = 1</li>
+<li>power(2, 3) = 8</li>
+<li>power(0, 10) = 0</li>
+<li>power(-2, 5) = -32</li>
 </ul>
 <p><strong>Corner Cases</strong></p>
 <ul>
-<li>What if the given array is null? In this case, we do not need to do anything.</li>
-<li>What if the given array is of length zero? In this case, we do not need to do anything.</li>
+<li>What if the result is overflowed? We can assume the result will not be overflowed when we solve this problem on this online judge.</li>
 </ul>
 <pre class="java"><code>public class Solution {
-  public int[] mergeSort(int[] array) {
+  public long power(int a, int b) {
     // Write your solution here
   }
 }</code></pre>
