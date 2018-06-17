@@ -244,15 +244,18 @@ ul {font-size: 16px; color: black;}
 <div id="popular-interview-question-2" class="section level2">
 <h2>Popular Interview Question 2</h2>
 <p><strong>How to reverse a linked list by recursion?</strong></p>
-<p>1 -&gt; 2 -&gt; 3 -&gt; 4 -&gt; null</p>
-<p>1 -&gt; 2 &lt;- 3 &lt;- 4</p>
+<p>Node 1 -&gt; Node 2 -&gt; Node 3 -&gt; Node 4 -&gt; null</p>
+<p>1 -&gt; 2 &lt;- 3 &lt;- 4<br />
+……|<br />
+…..null</p>
 <pre class="java"><code>public class Solution {
   public ListNode reverse(ListNode head) {
+    //base case
     if (head == null || head.next == null) {
       return head;
     }
     
-    List Node newHead = reverse(head.next);
+    ListNode newHead = reverse(head.next);
     
     //head.next.next = head;
     ListNode n2 = head.next;
@@ -311,23 +314,108 @@ ul {font-size: 16px; color: black;}
   }
   ListNode curr = head;
   while (curr.next != null) {
-    if (target &gt;=)
+    if (target &gt;= curr.value &amp;&amp; target &lt; curr.next.value) {
+      ListNode newNode = new ListNode(target);
+      ListNode temp = curr.next;
+      curr.next = newNode;
+      newNode.next = temp;  //curr.next.next = temp;
+      return head;
+    }
+    curr = curr.next;
   }
+  curr.next = new ListNode(target);
+  return head;
 }</code></pre>
 <p>Method 2:</p>
-<pre class="java"><code>public ListNode insert()</code></pre>
+<pre class="java"><code>public ListNode insert(ListNode head, int target) {
+  if(head == null || target &lt;= head.value) {
+    ListNode newHead = new ListNode(target);
+    newHead.next = head;
+    return newHead;
+  }
+  ListNode prev = null;
+  ListNode curr = head;
+  while (curr != null) {
+    if (curr.value &lt; target) {
+      prev = curr;
+      curr = curr.next;
+    }
+    else {
+      prev.next = new ListNode(target);
+      prev.next.next = curr;
+      return head;
+    }
+  }
+  prev.next = new ListNode(target);
+  return head;
+}</code></pre>
 <p><strong>Q4. How to merge two sorted linkedlist into one long sorted linked list</strong></p>
 <p>Method 1:</p>
-<pre class="java"><code></code></pre>
+<pre class="java"><code>public ListNode mergeLL(ListNode head1, ListNode head2) {
+  ListNode head;
+  if (head1 == null) {
+    return head2;
+  }
+  if (head2 == null) {
+    return head1;
+  }
+  if (head1.value &lt; head2.value) {
+    head = head1;
+    head1 = head1.next;
+  }
+  else {
+    head = head2;
+    head2 = head2.next;
+  }
+  
+  ListNode curr = head;
+  ListNode curr1 = head1;
+  ListNode curr2 = head2;
+  while (curr1 != null &amp;&amp; curr2 != null) {
+    if (curr1.value &lt;= curr2.value) {
+      curr.next = curr1;
+      curr = curr.next;
+      curr1 = curr1.next;
+    }
+    else {
+      curr.next = curr2;
+      curr = curr.next;
+      curr2 = curr2.next;
+    }
+  }
+  if (curr1 == null) {
+    curr.next = curr2;
+  }
+  if (curr2 == null) {
+    curr.next = curr1;
+  }
+  return head;
+}</code></pre>
 <p>Method 2 (dummyHead):</p>
 <pre class="java"><code>public ListNode mergeLL(ListNode head1, ListNode head2) {
-  ListNode dummy = new ListNode(0);
+  ListNode dummy = new ListNode(0);  //dummy head
   ListNode curr = dummy;
   ListNode curr1 = head1;
   ListNode curr2 = head2;
   while (curr1 != null &amp;&amp; curr2 != null) {
-    if (curr1.next)
+    if (curr1.next &lt;= curr2.value) {
+      curr.next = curr1;
+      curr = curr.next;
+      curr1 = curr1.next;
+    }
+    else {
+      curr.next = curr2;
+      curr = curr.next;
+      curr2 = curr2.next;
+    }
   }
+  if (curr1 == null) {
+    curr.next = curr2;
+  }
+  if (curr2 == null) {
+    curr.next = curr1;
+  }
+  return dummy.next;  //careful when we introduce dummy node
 }</code></pre>
 </div>
 </div>
