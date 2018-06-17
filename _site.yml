@@ -1,12 +1,12 @@
 name: CS-Study-Website
 output_dir: '.'
 navbar:
-  title: <font face="Algerian">A.B.C.</font>
+  title: <font face="Algerian">S.D.E.</font>
   left:
   - text: Home
     icon: fa-home
     href: index.html
-  - text: Lecture Note
+  - text: A.B.C. Lecture Note
     icon: fa-book
     menu:
     - text: Lec 1
@@ -51,7 +51,7 @@ navbar:
     - text: Lec 14
       icon: fa-clone
       href: Algorithm_Beginner_Class_14_Lec.html
-  - text: Homework
+  - text: A.B.C. Homework
     icon: fa-folder-open
     menu:
     - text: HW 1
