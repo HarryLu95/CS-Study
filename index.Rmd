@@ -1,5 +1,5 @@
 ---
-title: <center>Algorithm Beginner Class</center>
+title: <center>Software Development Essentials</center>
 output:
   html_document:
     toc: true
@@ -25,7 +25,7 @@ output:
 - [Selection Sort](Sorting.html)
 
 #Calendar{.tabset}
-##May
+##Algorithm Beginner Class
 
 <div class="two-column">
 
@@ -34,12 +34,6 @@ output:
 
 - [Lecture 2](Algorithm_Beginner_Class_2_Lec.html), 5/31
 - [Homework 2*](Algorithm_Beginner_Class_2_hw.html)
-
-</div>
-
-##June
-
-<div class="two-column">
 
 - [Lecture 3](Algorithm_Beginner_Class_3_Lec.html), 6/2
 - [Homework 3*](Algorithm_Beginner_Class_3_hw.html)
