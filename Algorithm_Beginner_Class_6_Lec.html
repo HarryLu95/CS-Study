@@ -307,7 +307,7 @@ class Solution {
     if (left &gt;= right) {
       return;
     }
-    int pivorPos = partition(array, left, right);
+    int pivotPos = partition(array, left, right);
     quickSort(array, left, pivotPos - 1);
     quickSort(array, pivotPos + 1, right);
   }
@@ -365,7 +365,7 @@ Space complexity: O(<span class="math inline">\(\log{n}\)</span>) to O(<span cla
         i = i + 1;
         j = j + 1;
       }
-      else if (array[j] == 0;) {
+      else if (array[j] == 0) {
         j = j + 1;
       }
       else {
