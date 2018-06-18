@@ -303,7 +303,7 @@ public class Test {
   }
 }
 
-//assume Myqueue is used for sotring ints.
+//assume Myqueue is used for storing ints.
 class MyQueue {
   Deque&lt;Integer&gt; in = new LinkedList&lt;&gt;();
   Deque&lt;Integer&gt; out = new LinkedList&lt;&gt;();
@@ -345,6 +345,45 @@ class MyQueue {
     return in.size() + out.size();
   }
   
+  public boolean isEmpty() {
+    return in.isEmpty() &amp;&amp; out.isEmpty();
+  }
+}</code></pre>
+<pre class="java"><code>import java.util.*;
+public class Solution {
+  Deque&lt;Integer&gt; in;
+  Deque&lt;Integer&gt; out;
+  public Solution {
+    in = new LinkedList&lt;Integer&gt;();
+    out = new LinkedList&lt;&gt;();
+  }
+  private void shuffleIfNecessary() {
+    if (out.isEmpty()) {
+      while (!in.isEmpty()) {
+        out.push(in.pop());
+      }
+    }
+  }
+  public Interger poll() {
+    shuffleIfNecessary();
+    if (out.isEmpty()) {
+      return null;
+    }
+    return out.pop();
+  }
+  public void offer(int element) {
+    in.push(element);
+  }
+  public Interger peek() {
+    shuffleIfNecessary();
+    if (out.isEmpty()) {
+      return null;
+    }
+    return out.peep();
+  }
+  public int size() {
+    return in.size() + out.size();
+  }
   public boolean isEmpty() {
     return in.isEmpty() &amp;&amp; out.isEmpty();
   }
@@ -425,6 +464,43 @@ class MinStack {
       return null;
     }
     return min.peek();
+  }
+}</code></pre>
+<pre class="java"><code>public class Solution {
+  Deque&lt;Integer&gt; stack;
+  Deque&lt;Integer&gt; minStack;
+  
+  public Solution {
+    stack = new LinkedList&lt;&gt;();
+    minStack = new LinkedList&lt;&gt;();
+  }
+  public Interger pop() {
+    is (stack.isEmpty()) {
+      return null;
+    }
+    int t = stack.pop();
+    if (t == minStack.peak()) {
+      minStack.pop();
+    }
+    return t;
+  }
+  public void push(int element) {
+    stack.push(element);
+    if (minStack.isEmpty() || element &lt;= minStack.peek()) {
+      minStack.push(element);
+    }
+  }
+  public Interger peek() {
+    if (stack.isEmpty()) {
+      return null;
+    }
+    return stack.peek();
+  }
+  public Interger min() {
+    if (minStack.isEmpty()) {
+      return null;
+    }
+    return minStack.peek();
   }
 }</code></pre>
 </div>
