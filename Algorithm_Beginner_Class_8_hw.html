@@ -241,7 +241,7 @@ body {background-color: white;}
 div.toc-content {background-color: white;}
 </style>
 <div id="queue-by-two-stacks" class="section level1">
-<h1>1. Queue By Two Stacks</h1>
+<h1>1. Queue By Two Stacks***</h1>
 <p>Java: Implement a queue by using two stacks. The queue should provide size(), isEmpty(), offer(), poll() and peek() operations. When the queue is empty, poll() and peek() should return null.</p>
 <p>C++: Implement a queue by using two stacks. The queue should provide size(), isEmpty(), push(), front() and pop() operations. When the queue is empty, front() should return -1.</p>
 <p><strong>Assumptions</strong></p>
@@ -251,28 +251,41 @@ div.toc-content {background-color: white;}
 <li>isEmpty() should return true if there is no element buffered in the queue, false otherwise.</li>
 </ul>
 <pre class="java"><code>public class Solution {
+  Deque&lt;Integer&gt; in;
+  Deque&lt;Integer&gt; out;
   public Solution() {
-    // Write your solution here.
+    in = new LinkedList&lt;&gt;();
+    out = new LinkedList&lt;&gt;();
   }
-  
+  private void shuffleIfNecessary() {
+    if (out.isEmpty()) {
+      while (!in.isEmpty()) {
+        out.push(in.pop());
+      }
+    }
+  }
   public Integer poll() {
-    return null;
+    shuffleIfNecessary();
+    if (out.isEmpty()) {
+      return null;
+    }
+    return out.pop();
   }
-  
   public void offer(int element) {
-    
+    in.push(element);
   }
-  
   public Integer peek() {
-    return null;
+    shuffleIfNecessary();
+    if (out.isEmpty()) {
+      return null;
+    }
+    return out.peek();
   }
-  
   public int size() {
-    return 0;
+    return in.size() + out.size();
   }
-  
   public boolean isEmpty() {
-    return false;
+    return in.isEmpty() &amp;&amp; out.isEmpty();
   }
 }</code></pre>
 </div>
@@ -286,26 +299,42 @@ div.toc-content {background-color: white;}
 <li>min() - return the current min value in the stack.</li>
 </ul>
 <pre class="java"><code>public class Solution {
+  Deque&lt;Integer&gt; stack;
+  Deque&lt;Integer&gt; minStack;
   public Solution() {
-    // write your solution here
+    stack = new LinkedList&lt;&gt;();
+    minStack = new LinkedList&lt;&gt;();
   }
-  
-  public int pop() {
-    return -1;
+  public Integer pop() {
+    if (stack.isEmpty()) {
+      return -1;
+    }
+    int t = stack.pop();
+    if (t == minStack.top()) {
+      minStack.pop();
+    }
+    return t;
   }
-  
   public void push(int element) {
-    
+    stack.push(element);
+    if (minStack.isEmpty() || element &lt;= minStack.top()) {
+      minStack.push(element);
+    }
   }
-  
-  public int top() {
-    return -1;
+  public Integer top() {
+    if (stack.isEmpty()) {
+      return -1;
+    }
+    return stack.top();
   }
-  
-  public int min() {
-    return -1;
+  public Integer min() {
+    if (minStack.isEmpty()) {
+      return -1;
+    }
+    return minStack.top();
   }
-}</code></pre>
+}
+</code></pre>
 </div>
 <div id="reverse-linked-list" class="section level1">
 <h1>3. Reverse Linked List</h1>

@@ -338,7 +338,7 @@ class MyQueue {
     if (out.isEmpty()) {
       return null;
     }
-    return out.peep();
+    return out.peek();
   }
   
   public int size() {
@@ -379,7 +379,7 @@ public class Solution {
     if (out.isEmpty()) {
       return null;
     }
-    return out.peep();
+    return out.peek();
   }
   public int size() {
     return in.size() + out.size();
@@ -434,7 +434,7 @@ class MinStack {
   }
   
   public Interger pop() {
-    is (stack.isEmpty()) {
+    if (stack.isEmpty()) {
       return null;
     }
     int ret = stack.pop();
@@ -475,7 +475,7 @@ class MinStack {
     minStack = new LinkedList&lt;&gt;();
   }
   public Interger pop() {
-    is (stack.isEmpty()) {
+    if (stack.isEmpty()) {
       return null;
     }
     int t = stack.pop();
