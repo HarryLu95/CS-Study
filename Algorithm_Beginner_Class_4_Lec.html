@@ -429,6 +429,28 @@ bar(x);</code></pre>
 <li>objects: <strong>copy</strong> of the object reference</li>
 </ul></li>
 </ul>
+<pre class="java"><code>public class Test {
+  public static void main(String[] args) {
+    
+  }
+}
+class Parent {
+  private int a;
+  public void f1() {
+    System.out.println(this.a);
+  }
+}
+class Child extends Parent {
+  void f() {
+    System.out.println(this.a);
+  }
+}
+class Third {
+  public void f() {
+    parent x = new Parent();
+    System.out.println(x.a);
+  }
+}</code></pre>
 <p><em>[more codes and pictures need to be added]</em></p>
 </div>
 <div id="variables-and-their-scopes" class="section level1">

@@ -222,7 +222,7 @@ div.tocify {
 
 
 <h1 class="title toc-ignore"><center>
-Algorithm Beginner Class 12 Lecture
+Algorithm Beginner Class 12 Lecture - Binary Tree and Binary Search Tree
 </center></h1>
 <h4 class="date"><em><center>
 2018/6/23
@@ -238,9 +238,265 @@ h2 {font-size: 20px; color: black; font-weight: bold; background-color: Yellow;}
 p {font-size: 16px; color: black;}
 ol {font-size: 16px; color: black;}
 ul {font-size: 16px; color: black;}
+img {display: block; margin-bottom: 10px; margin-left: auto; margin-right: auto;}
 </style>
-<div id="a" class="section level1">
-<h1>a</h1>
+<div id="problem-2.-is-symmetric" class="section level2">
+<h2>Problem 2. Is Symmetric?</h2>
+<div class="figure">
+<img src="data:image/png;base64,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" />
+
+</div>
+<p>isSymmetric(root)</p>
+<p>Method 1:<br />
+if (root == null) return true;<br />
+return isSymmetric(root.left, root.right)</p>
+<p>Method 2:<br />
+return isSymmetric(root, root)</p>
+<p>recursion analysis:</p>
+<div class="figure">
+<img src="data:image/png;base64,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" />
+
+</div>
+<ol style="list-style-type: decimal">
+<li>subproblem: f(A.left, B.right), f(A.right, B.left)</li>
+<li>induction rule: f(AL, BR) &amp;&amp; f(AR, BL) &amp;&amp; Ao.value == Bo.value</li>
+<li>base case: A == null &amp;&amp; B == null Yes; A == null &amp;&amp; B != null || A != null &amp; B == null: No</li>
+</ol>
+<pre class="java"><code>package laioffer;
+import java.util.*;
+
+public class Test {
+  public static void main(String[] args){
+    
+  }
+}
+
+class TreeNode {
+  int value;
+  TreeNode left;
+  TreeNode right;
+}
+
+class Solution {
+  public boolean isSymmetric(TreeNode root) {
+    return isSymmetric(root, root);
+  }
+  
+  //Time: O(n)
+  //Space: O(h), worst case O(n)
+  private boolean isSymmetric(TreeNode A, TreeNode B) {
+    if (A == null &amp;&amp; B == null) {
+      return true;
+    }
+    if (A == null || B == Null) {
+      return false;
+    }
+    if (A.value != B.value) {
+      return false;
+    }
+    boolean firstSymmetric = isSymmetric(A.left, B.right);
+    boolean secondSymmetric = isSymmetric(A.right, B.left);
+    retur firstSymmetric &amp;&amp; secondSymmetric;
+  }
+}</code></pre>
+<p>Time: O(<span class="math inline">\(n\)</span>)<br />
+Space: O(height). O(<span class="math inline">\(\log{n}\)</span>) on average, O(<span class="math inline">\(n\)</span>) worst case</p>
+</div>
+<div id="problem-3-twisted-identical" class="section level2">
+<h2>Problem 3: Twisted Identical</h2>
+<div class="figure">
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGUAAADBCAIAAABZk+lgAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAXFSURBVHhe7ZnteaswDEY7VwfKPJ2my3SYXkk24ctOEUjmVa7Ov0CfIA6vhJ1+/Mbj5+vzo8vju/6VD+/m6/Prp/6VDxF9fT+8rfRJXzrSl46Avmh8pS8F5Mv5JfiCwL42r8kxDgP6+n58PL7I1bIp6dgYZzF9tcwUZd7GAvqiTvxpjfsizPlVENJXhxEJez9fvgEL56u8FZtSMl97pkVEw0o9lb6WvJAy5AUZb36xlkY7vuhTSyLOe1GzylFNnbutmL6E0n0zzn04EdbXTaQvHelLR/rSkb50pC8dAXzRymHQYuEA8L5oKTpgGXoYdF8Xw8WrWtNwYvvifc612+VvsMwntC+LXjQWhuzLZtCzMLuexPVlEa6C5RCD9WW5ijAUBuqLm8hMl+UQw/Rl14sVM2GQvix7scLCLL4U0Jd5uAo2QwzPl0O4CibC0Hw5hUuwGGJgvigDbrpMhGH5cuvFyvWpj+TLsxcnrg4xIF/e4SpcFAbja0S4hGtDDMXXmHAJl4Rh+OJbGKWrXO3s5SB8DevFifNDDMHXwF6cOC3sfl/DwyWcHWK3+7ohXMJJYRjz/g7OTf3/19c50peO9KUjfelIXzrSl470pcPZF+87FtyyMtWyqXm9qvXzJZddCqp1IDsrJa4rXB/z8rWzJZRr37BdPARX16xNyi5nnHzJZiOWMCm5U9l8zjVfe1/FI66vXcEVuR0+6Tzvt3Q0IlAeZac0rts1X21EF2S6mPIwG8oW0RvnC7gVn5QaN2U+s8X4+3rWAO5qoqZsZlX2wH6s4iCH10ztvaW1ZcWD531xhqqsuqqfiLk3pqODfU1xRzS2s1WpUSttOdwXrDCuqzNha8y45rt8wc1+Kav7FOUs1+zkqzyRphTQfL2IFyH34+drmpPdaYDXjk8jTZ7pc8pX14qc6D/HO3k62bFw6Ta/GsZq6vCy9aT1mEvV0zHfeV+uPwOsauZl0b6+3o/0pSN96UhfOtKXjvSlw8wXvYVDrBYuYuSLFnWYi3ZrbHxdDBevEIOE08IX7xiu3S5/Q4x8Gviy6MUwwq77shn0LCxCT171ZRGuQowhdtGX5SoihLBLvriJDO8wwhC74suuFysBhF3wZdmLFRaG3ZOnfZmHq4A+xM76cghXAVzYOV9O4RKwh9gpX5QBxzuCFnbGl1svVpCnvt6XZy9O4A4xtS/vcBVghSl9jQiXgDrEdL7GhEsAFabxxbcwrkn4ang9qfA1rBcnEIfYcV8De3ECUNhRX8PDJeANsYO+bgiXACdMM+/vAG3qo/tCI33pSF860peO9KUjfel4D1+8ERizTFv7+vl6QK2mj8G2bvAll8XafRyh2BrmSxbQM9F8yUZt4JOOnS962LxXSl+HIFul3PR1gKet9HWAha309ScrW+nrL74f6zLT1yuozs0PiOmrz95W+urTspW+ukiJf+F6CyHn/ZbMl470pSN96bjFl1yUAPrn6DFosS+FDxG2/f1rBj9p0xNe41v3oh+TA6QvHelLR/rSkb50pC8dAXzRsgFnTQjva/PT892g+4IKF4HtizcfWPszaF9gvcgg+0LrRQbXF2C4CFhfiOEiQH3hDfoKpi/MXmQgfYH2IgPoCzdcBJ4v4HARaL6gw0WA+aJwQesC84XdiwySL/ReZIB84YeLgPEVIVwEiq8Q4SIwfFG4YujC8BWkFxkEX1F6kbnfV6BwEbf7ihQuAmPexyF96UhfOtKXjvSlI33pSF860pcOX1+8j14SaWXaxs8XLdy3iuRQoM1PAy9fxdY+T3I8cMx8fJU+bCZJTsXNmIuvF7qiN6WLr14zCi9lwjPeV+yAOfrqKKlrjKAz32fevwhYOZW+1vQSRsc/PzNfDWqOFsq4EeljzvsuU+8VqqJe9GLg6qtF7HiN91XiFXR6jfclusKmy3ve78TI0bDhIrx8lbbbqAlvyztfi4AFn/MTnvOr7nwmYgdL+P39B9Nsne+yEONaAAAAAElFTkSuQmCC" />
+
+</div>
+<p>f(A, B)</p>
+<ol style="list-style-type: decimal">
+<li>subproblem: f(AL, BL), f(AL, BR), f(AR, BL), f(AR, BR) 2, induction rule: Ao == Bo &amp;&amp; (f(AL, BL) &amp;&amp; f(AR, BR) || f(AL, BR) &amp;&amp; f(AR, BL))</li>
+<li>base case: A == null &amp;&amp; B == null: true; A == null &amp;&amp; B != null || A != null &amp;&amp; B == null: false</li>
+</ol>
+<div class="figure">
+<img src="data:image/png;base64,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" />
+
+</div>
+<p>if f(AL, BR) &amp;&amp; f(AR, BL)</p>
+<p>Step 1: AL-&gt;BR, AR-&gt;BL</p>
+<div class="figure">
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFkAAABNCAIAAABCLl91AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAMGSURBVHhe7ZjRdcMgDEUzVwbyPJnGy3SYFBAOBQO24IHUlvsJFKQbIXP6eA/j6/V8VNh2v04NA10QZCRJfN/Ix/P15Uc0IOPC4KtGU3WIuVAoY7kISLvQ1DHEXFD7LFSFr5mDSbUj4qJaEidJ0wpokouUUmZudWbSCRpdHkJ3xD8wkuGSCUN+GyxyvbNwGaoVM1aGoAs/9Un+IlunrmQKgqSLRMaFi4tpAApcHJN3XPyXuri4BeM/JaIu0u5Z++nHq5B0QSbiqVLGE0yIuaDRXBHQTDTuRBTvDo6BLo58C9SS8yVzMLogPMPr4hexXASWi8ByEVguAstFAO/CfA8nfQPRoF2YR8WEV9EYwC5mFoV9kEEPg7qwL82J98MehyxCpIvp9wMsA+hCoGlaGbhDYS6mFwWBbBooF2JfUqAMjAtbqzIqkE0D4kLofnhgMhAuxO6Hx8pARNDvQrYoCEzT6HYhXRQEREanCw1F4UA0jT4X5ufQoQIio8uFjvvh6e+gHS7U3I+D3qbR7kJVURCdMlpdqCsKR1/TaHShsCgcXTKaXNgTVaqg0Fpja3Gh834ctDeNBhda78dBswy2C91F4WhtGlwX2ovC0SijqXeqp62D/k0XbSwXgeUisFwElovAchFYLgIP9ykuk36kq8tnPUiZMdtH+U9KYfq6oN2TTY49Tn9LE/HqT3zsJ04rvJizq2NqLgw+w9yBGbsUyNzquBtzv4v8xiUXc2XwYp7uglb/bRdJdhd1UT0QBy/mfhf55EoupqpgxtzngsaKP3/We3b5IHgx51YnRC5SSomR+RPVg/DwYua6SFf6nE8bxHVx45Qh8GLudWGhveOZ2IWUDF7MCBd+Kiq9xEVmYAa8mCEuMhufU5eQwYsZ6eLnZCbzG0eh4cV8I0BQXdw6Cwwv5ov49m3bb7hwmUdz2RtxPn4wvJjrLvbNBH7pgnaNp7IuisOj4MV8Zc7MVF3Q6Dk/Ouu8b2l8DLyYSy78ejtx9X+t/JYfkmn/gxiGCmHGHKIqYv7k/f4G0d4h27gjFpsAAAAASUVORK5CYII=" />
+
+</div>
+<p>Step 2:</p>
+<div class="figure">
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABNCAIAAADWyPaHAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAANDSURBVHhe7ZjRdcMgDEUzVwbKPJkmy3SY1CBIDJYQ2BKSW9+vHoONuHnIPr291fh53m8NHq80zzeKggDQVNl4PUDS/fmTrrjFRtBCypf7HJkJOouhSxCDtSD3XchMEPRpIj8pXRnLlJkIaoZnY842apME1VDbjbORwWjNJEhGRyx9CFWXKT0L+GMmYNekibPUzJaBIUNBaehjhFEQfVL69LAUVBliBDHDWjgQlAd7BP3rBDGHyOhFZiqobtOtkBj5sRQEesohSoOVHjNBcBWLC4wU16Md8ugpoygoSyBo7TiFK2MSnYR6gs7OJYjhEsRwCWK4BDFcghjkBS2vaMvXsjTSgpaPH6tPOh2EBc2MT/ia1F9MVFD4dp54vMJy6nGVFDT9eM0wJCjIoDsHQ8qLigmaHh9AvRFJCTJ7uWsbkhEUom7jR70RiQgyOl4JXUMSgsyOVyIYUqvguCDb+ACKjeiwIOv4AHqGDgryEJ+IWiM6Jmj54Xz40TN0SJCP45VQatUHBLk5XhmVRrRfkKv4ABqG9gpyF5+IQiPaKchhfCLyhnYJCmW49AOlida2R5DP45URbkQ7BHk9XhlZQ8OCfMcnItqIRgV5j09E0tCuJu0ewVb9NwUJcgliuAQxqAsKL90F72++gnXN2oLSWgvnUVTUrH/E8nJnytCq5ik9SPCtO41c8y3+QVNv6xs/oCsX4SZJP4M1N6dTG8g1pwTBM6onk4cDnU0RJ0vqyYzVDAPl7I+5urxVzS1BC+kR1QA1e4t0dtaM1RwFIXEBceuBsmZGEL5avyBNxmqmBCGGCi5BMPugoOp2cvZUxmpmEkRuhhGE3+1bEF4zJYjx0xKE/hARv4LomjFBMBud/qEQVEPd6UlQDVUzJGUDu4nmEUsP3TzEk6DemssE9e+Aa9JpwXLEs6AAVnMpqH8LrKA0VCTXuyCs5koQcgGHF4Ss5l4QUvPWR5+hbkHrwbMIWg8iOrq2oZGg14NZVIaxmrG8MPuIdAiKjy7G2g9+PdjcijBWM3qgth43sIJgqXKIKw0fkWasZlQQeflLUxBcpcRvS0vz5/gZrBmkbUujrme4/yji6zRp/R4yDNZcTa+GvztCLL3fv6UMGcaRGxXfAAAAAElFTkSuQmCC" />
+
+</div>
+<p>Step 3:</p>
+<div class="figure">
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFoAAABNCAIAAACpGeR2AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAMMSURBVHhe7ZjReesgDEYzVwfyPJ3Gy3SY1iCRG4EEAWSk3nIeEcHi9Af76+P7Nr4+Px4VjhPneeJGHQBIyfZ+HqDk4/MLR5xgo+MCs+MsI2Y6fPrYOgjWOpzdHmY64DYVsoHJSaxLkImOajAKTytjtEhHjrS5OJspRkcLQmJ0WPDDIxuWZFzwy6hjd5UKp6Kam9t9GOrA0nP/jQ1He5IsLSx1ZD4aOhplHRzoSMV3dPyhdDSOw5KXi6mO/DKtBWCJDUsdIIOWpE2vkWGmA0a5KECFjEcX4iFS5UYdacsCtf1hcBILYoHcno7fxdZB2DoIWwdh6yBsHQR9HddLct2LURttHdfHxpoPpntQ1rEyGuFbTfthqjrCd+jCgxIepxxFTR3LD4q+D0UdBndo8KH6UDUdy6MBKF8gWjrMXq+6PnR0hNDa2FC+QFR0GB0URNOHhg6zg4IEH0odzOuwjQagdoFM67COBqDlY1KHh2hElC6QOR3XH8WHDS0fUzp8HBRE5UKd0OHmoCQULpBxHa6iAcz7GNXhLhqR6QtkUIfDaERmfQzpCA91aQNam+htRIfPg5KYukAGdHg9KIkZH906fEcjMnGB9OrwHo3IuI+hq9Q9wxfq/6ljmK2DsHUQtg7C1kHYOghbB+ERX9Ey+cs7fAG/YvKF2tlzdTrdAKYDfpGtk7ZebJmdvZy+nqFAZz89PYdrOi7wB1nBsY4Lvueog8kyaEqFhg5+bd86+J4lHdTH1gGzu3Rky4izl9LXcyMduExDB5n7xLcOvmdJB51d0cFKjvjVIffM6YDZr6NERw63bMCTjhypZ0hBQbaJ6mHBJYp9e9Lxbs80HdIOWlcpLk8rnnUEuJ6pDunHTR1YIhn0roPrOdPBDATaOpi13etgei53z/l4W8dr8bfoeC0ym2cWuCMd5yGWNOnrmctCucIbOuJCpFbXcR7ZU2+ir2dOR2mtqQMWpqVWI3xFm76eWR3FcFUHjEpSy0Zw/hobnT2DorI1Ot76bxi/apXyT6BNZ8/Z9Kz8b0fH+f0D2K8IA/N+AgcAAAAASUVORK5CYII=" />
+
+</div>
+<p>node1, node2</p>
+<ol style="list-style-type: decimal">
+<li>node1.value == node2.value</li>
+<li>(node1.left, node2.left) &amp;&amp; (node1.right, node2.right) || (node1.left, node2.right) &amp;&amp; (node1.right, node2.left)</li>
+</ol>
+<pre class="java"><code>public boolean isTwisted(TreeNode A, TreeNode B) {
+  if (A == null &amp;&amp; B == null) {
+    return true;
+  }
+  if (A == null || B == null) {
+    return false;
+  }
+  //Ao == Bo &amp;&amp; (f(AL, BL) &amp;&amp; f(AR, BR) || f(AL, BR) &amp;&amp; f(AR, BL))
+  return A.value == B.value &amp;&amp; (isTwisted(A.left, B.left) &amp;&amp; isTwisted(A.right, B.right) || isTristed(A.left, B.right) &amp;&amp; isTristed(A.right, B.left));
+}</code></pre>
+<p>Time: O(<span class="math inline">\(n^2\)</span>) on average<br />
+Space: O(height)</p>
+</div>
+<div id="binary-search-tree" class="section level1">
+<h1>Binary Search Tree</h1>
+<div id="1-how-to-determine-a-binary-tree-is-bst" class="section level2">
+<h2>經典例題1: How to determine a binary tree is BST?</h2>
+<p>Determine if a given binary tree is binary search tree.</p>
+<p>Assumptions</p>
+<ul>
+<li><strong>There are no duplicate keys</strong> in binary search tree</li>
+<li>You can assume the keys stored in the binary search tree can not be Integer.MIN_VALUE or Integer.MAX_VALUE</li>
+</ul>
+<div class="figure">
+<img src="data:image/png;base64,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" />
+
+</div>
+<p>isBst(root)</p>
+<ol style="list-style-type: decimal">
+<li>Subproblem: isBst(root.left), isBst(root.right)</li>
+<li>Induction rule: isBst(root.left) &amp;&amp; isBst(root.right) &amp;&amp; Lsubtree &lt; root &lt; Rsubtree</li>
+<li>Base case: null -&gt; true</li>
+</ol>
+<p>inorder traversal -&gt; increasing result<br />
+2 5 7 10 11 15 20</p>
+<div class="figure">
+<img src="data:image/png;base64,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" />
+
+</div>
+<pre class="java"><code>class Solution {
+  
+  //Time: O(n)
+  //Space: O(h)
+  public boolean isBst(TreeNode root) {
+    //corner case
+    if (root == null) {
+      return true;
+    }
+    return isBst(root, Integer.MIN_VALUE, Integer.MAX_VALUE);
+  }
+  private boolean isBst(TreeNode root, int min, int max) {
+    if (root == null) {
+      return true;
+    }
+    //because no duplicate
+    if (root.value &lt;= min || root.value &gt;= max) {
+      return false;
+    }
+    return isBst(root.left, min, root.value) &amp;&amp; isBst(root.right, root.value, max);
+  }
+}
+
+package laioffer;
+import java.util.*;
+
+public class Test {
+  public static void main(String[] args) {
+    TreeNode A = null;
+    TreeNode B = null;
+    Solution sol = new Solution();
+    boolean aIsBST = sol.isBST(A);
+    boolean bIsBST = sol.isBST(B);
+  }
+}
+
+class TreeNode {
+  public int value;
+  public TreeNode left;
+  public TreeNode right;
+}</code></pre>
+<p>Time: O(<span class="math inline">\(n\)</span>)<br />
+Space: O(<span class="math inline">\(n\)</span>) worst case; average O(<span class="math inline">\(\log{n}\)</span>), or O(height)</p>
+<p>Method below not recommended, because it uses globle variable.</p>
+<pre class="java"><code>class Solution {
+  private int lastSeen = Integer.MIN_VALUE;
+  
+  public boolean isBst(TreeNode root) {
+    if (root == null) {
+      return true;
+    }
+    if (!isBst(root.left)) {
+      return false;
+    }
+    if (root.value &lt;= lastSeen) {
+      return false;
+    }
+    lastSeen = root.value;
+    
+    return isBst(root.right);
+  }
+}</code></pre>
+</div>
+<div id="2-print-bst-keys-in-the-given-range" class="section level2">
+<h2>經典例題2: Print BST keys in the given range</h2>
+<p>Given two values k1 and k2 (where k1 &lt; k2) and a root pointer to a Binary Search Tree. Print all the keys of tree in range k1 to k2. i.e., print all x such that k1 &lt;= x &lt;= k2 and x is a key of given BST. <strong>Print all the keys in an increasing order.</strong></p>
+<p>k1: lower<br />
+k2: upper</p>
+<div class="figure">
+<img src="data:image/png;base64,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" />
+
+</div>
+<p>if (root &lt; lower), don’t go left; root &gt;= lower, go left<br />
+if (root &gt; upper), don’t go right; root &lt;= upper, go right</p>
+<p>Range: [6, 13]<br />
+Inorder of BST: [2, 5, <strong>7</strong>, <strong>9</strong>, <strong>10</strong>, <strong>12</strong>, 15, 20] is sorted.</p>
+<p>Step 1: determine whether we need to go left<br />
+if (root.value &lt;= lower_bound) then do not need to go left</p>
+<p>Step 2: determine whether we need to go right<br />
+if (root.value &gt;= upper_bound) then do not need to go right</p>
+<pre class="java"><code>//worst case is still O(n), when all the nodes are within the range [lower, upper], but, in normal cases, we'll do branch pruning, so the complexity is smaller than O(n)
+public void printRange(TreeNode root, int lower, int upper) {
+  if (root == null) {
+    return;
+  }
+  if (root.value &gt;= lower) {
+    printRange(root.left, lower, upper);
+  }
+  if (lower &lt;= root.value &amp;&amp; root.value &lt;= upper) {
+    System.out.println(root.value);
+  }
+  if (root.value &lt;= upper) {
+    printRange(root.right, lower, upper);
+  }
+}</code></pre>
+<pre class="java"><code>public class Solution {
+  public List&lt;Integer&gt; getRange(TreeNode root, int min, int max) {
+    List&lt;Integer&gt; List = new ArrayList&lt;Integer&gt;();
+    helper(root, min, max, list);
+    return list;
+  }
+  private void helper(TreeNode root, int min, int max, List&lt;Integer&gt; list) {
+    if (root == null) {
+      return;
+    }
+    
+    if (root.key &gt; min) {
+      helper(root.left, min, max, list);
+    }
+    if (min &lt;= root.key &amp;&amp; root.key &lt;= max) {
+      list.add(root.key);
+    }
+    if (root.key &lt; max) {
+      helper(root.right, min, max, list);
+    }
+  }
+}</code></pre>
+<p>Time: worst case O(<span class="math inline">\(n\)</span>)<br />
+Space: O(height)</p>
+</div>
 </div>
 
 

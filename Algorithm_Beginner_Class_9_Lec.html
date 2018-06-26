@@ -427,6 +427,50 @@ ul {font-size: 16px; color: black;}
   return dummy.next;  //careful when we introduce dummy node
 }</code></pre>
 </div>
+<div id="popular-interview-question-7-partition-list" class="section level2">
+<h2>Popular Interview Question 7 (Partition List)</h2>
+<p>Given a linked list and a target value x, partition it such that all nodes less than x are listed before the nodes larger than or equal to target value x. (keep the original relative order of the nodes in each of the two partitions)</p>
+<p>For example:</p>
+<p>Input: 1 -&gt; 6 -&gt; 3 -&gt; 2 -&gt; 5 -&gt; 2 and target x = 4<br />
+Result: 1 -&gt; 3 -&gt; 2 -&gt; 2 -&gt; 6 -&gt; 5</p>
+<p>smallDummy -&gt; 1 -&gt; 3 -&gt; 2 -&gt; 2<br />
+largeDummy -&gt; 6 -&gt; 5</p>
+<pre class="java"><code>class Solution {
+  public ListNode partition(ListNode head, int target) {
+    if (head == null || head.next == null) {
+      return head;
+    }
+    ListNode smallDummy = new ListNode(999);
+    ListNode largeDummy = new ListNode(999);
+    ListNode small = smallDummy;
+    ListNode large = largeDummy;
+    List cur = head;
+    
+    while (cur != null) {
+      if (cur.value &lt; target) {
+        small.next = cur;
+        small = small.next;
+      }
+      else {
+        large.next = cur;
+        large = large.next;
+      }
+      cur = cur.next;
+    }
+    
+    small.next = largeDummy.next;
+    large.next = null;
+    return smallDummy.next;
+  }
+}
+class ListNode {
+  public int value;
+  public ListNode next;
+  public ListNode(int v) {
+    value = v;
+  }
+}</code></pre>
+</div>
 </div>
 
 
