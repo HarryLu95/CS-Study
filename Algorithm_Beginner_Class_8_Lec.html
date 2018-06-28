@@ -423,7 +423,7 @@ public class Test {
   }
 }
 
-class MinStack {
+class MinStack() {
   Deque&lt;Integer&gt; stack = new LinkedList&lt;&gt;();
   Deque&lt;Integer&gt; min = new LinkedList&lt;&gt;();
   
@@ -471,7 +471,7 @@ class MinStack {
   Deque&lt;Integer&gt; stack;
   Deque&lt;Integer&gt; minStack;
   
-  public Solution {
+  public Solution() {
     stack = new LinkedList&lt;&gt;();
     minStack = new LinkedList&lt;&gt;();
   }
@@ -608,6 +608,20 @@ class ListNode {
   
   int value;  //the storage
   ListNode next;  //it is reference, or, it is an address
+}</code></pre>
+<pre class="java"><code>public class Solution {
+  public ListNode reverse(ListNode head) {
+    ListNode prev = null;
+    ListNode cur = head;
+    ListNode next = null;
+    while (cur != null) {
+      next = cur.next;
+      cur.next = prev;
+      prev = cur;
+      cur = next;
+    }
+    return prev;
+  }
 }</code></pre>
 <p>Time complexity: O(n)<br />
 Space complexity: O(1)</p>

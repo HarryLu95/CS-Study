@@ -240,8 +240,203 @@ div.tocify li {font-size: 16px; color: black;}
 body {background-color: white;}
 div.toc-content {background-color: white;}
 </style>
-<div id="section" class="section level1">
-<h1>1.</h1>
+<div id="in-order-traversal-of-binary-tree" class="section level1">
+<h1>1. In-order Traversal Of Binary Tree</h1>
+<p>Implement an iterative, in-order traversal of a given binary tree, return the list of keys of each node in the tree as it is in-order traversed.</p>
+<p><strong>Examples</strong></p>
+<pre><code>        5
+
+      /    \
+
+    3        8
+
+  /   \        \
+
+1      4        11</code></pre>
+<p>In-order traversal is [1, 3, 4, 5, 8, 11]</p>
+<p><strong>Corner Cases</strong></p>
+<ul>
+<li>What if the given binary tree is null? Return an empty list in this case.</li>
+</ul>
+<p><strong>How is the binary tree represented?</strong></p>
+<p>We use the level order traversal sequence with a special symbol “#” denoting the null node.</p>
+<p><strong>For Example:</strong></p>
+<p>The sequence [1, 2, 3, #, #, 4] represents the following binary tree:</p>
+<pre><code>    1
+
+  /   \
+
+ 2     3
+
+      /
+
+    4</code></pre>
+<pre class="java"><code>/**
+ * public class TreeNode {
+ *   public int key;
+ *   public TreeNode left;
+ *   public TreeNode right;
+ *   public TreeNode(int key) {
+ *     this.key = key;
+ *   }
+ * }
+ */
+public class Solution {
+  public List&lt;Integer&gt; inOrder(TreeNode root) {
+    // Write your solution here
+  }
+}</code></pre>
+</div>
+<div id="pre-order-traversal-of-binary-tree" class="section level1">
+<h1>2. Pre-order Traversal Of Binary Tree</h1>
+<p>Implement an iterative, pre-order traversal of a given binary tree, return the list of keys of each node in the tree as it is pre-order traversed.</p>
+<p><strong>Examples</strong></p>
+<pre><code>        5
+
+      /    \
+
+    3        8
+
+  /   \        \
+
+1      4        11</code></pre>
+<p>Pre-order traversal is [5, 3, 1, 4, 8, 11]</p>
+<p><strong>Corner Cases</strong></p>
+<ul>
+<li>What if the given binary tree is null? Return an empty list in this case.</li>
+</ul>
+<p><strong>How is the binary tree represented?</strong></p>
+<p>We use the level order traversal sequence with a special symbol “#” denoting the null node.</p>
+<p><strong>For Example:</strong></p>
+<p>The sequence [1, 2, 3, #, #, 4] represents the following binary tree:</p>
+<pre><code>    1
+
+  /   \
+
+ 2     3
+
+      /
+
+    4</code></pre>
+<pre class="java"><code>/**
+ * public class TreeNode {
+ *   public int key;
+ *   public TreeNode left;
+ *   public TreeNode right;
+ *   public TreeNode(int key) {
+ *     this.key = key;
+ *   }
+ * }
+ */
+public class Solution {
+  public List&lt;Integer&gt; preOrder(TreeNode root) {
+    // Write your solution here
+  }
+}</code></pre>
+</div>
+<div id="post-order-traversal-of-binary-tree" class="section level1">
+<h1>3. Post-order Traversal Of Binary Tree</h1>
+<p>Implement an iterative, post-order traversal of a given binary tree, return the list of keys of each node in the tree as it is post-order traversed.</p>
+<p><strong>Examples</strong></p>
+<pre><code>        5
+
+      /    \
+
+    3        8
+
+  /   \        \
+
+1      4        11</code></pre>
+<p>Post-order traversal is [1, 4, 3, 11, 8, 5]</p>
+<p><strong>Corner Cases</strong></p>
+<ul>
+<li>What if the given binary tree is null? Return an empty list in this case.</li>
+</ul>
+<p><strong>How is the binary tree represented?</strong></p>
+<p>We use the level order traversal sequence with a special symbol “#” denoting the null node.</p>
+<p><strong>For Example:</strong></p>
+<p>The sequence [1, 2, 3, #, #, 4] represents the following binary tree:</p>
+<pre><code>    1
+
+  /   \
+
+ 2     3
+
+      /
+
+    4</code></pre>
+<pre class="java"><code>/**
+ * public class TreeNode {
+ *   public int key;
+ *   public TreeNode left;
+ *   public TreeNode right;
+ *   public TreeNode(int key) {
+ *     this.key = key;
+ *   }
+ * }
+ */
+public class Solution {
+  public List&lt;Integer&gt; postOrder(TreeNode root) {
+    // Write your solution here
+  }
+}</code></pre>
+</div>
+<div id="check-if-binary-tree-is-balanced" class="section level1">
+<h1>4. Check If Binary Tree Is Balanced</h1>
+<p>Check if a given binary tree is balanced. A balanced binary tree is one in which the depths of every node’s left and right subtree differ by at most 1.</p>
+<p><strong>Examples</strong></p>
+<pre><code>        5
+
+      /    \
+
+    3        8
+
+  /   \        \
+
+1      4        11</code></pre>
+<p>is balanced binary tree,</p>
+<pre><code>        5
+
+      /
+
+    3
+
+  /   \
+
+1      4</code></pre>
+<p>is not balanced binary tree.</p>
+<p><strong>Corner Cases</strong></p>
+<ul>
+<li>What if the binary tree is null? Return true in this case.</li>
+</ul>
+<p><strong>How is the binary tree represented?</strong></p>
+<p>We use the level order traversal sequence with a special symbol “#” denoting the null node.</p>
+<p><strong>For Example:</strong></p>
+<p>The sequence [1, 2, 3, #, #, 4] represents the following binary tree:</p>
+<pre><code>    1
+
+  /   \
+
+ 2     3
+
+      /
+
+    4</code></pre>
+<pre class="java"><code>/**
+ * public class TreeNode {
+ *   public int key;
+ *   public TreeNode left;
+ *   public TreeNode right;
+ *   public TreeNode(int key) {
+ *     this.key = key;
+ *   }
+ * }
+ */
+public class Solution {
+  public boolean isBalanced(TreeNode root) {
+    // Write your solution here
+  }
+}</code></pre>
 </div>
 
 

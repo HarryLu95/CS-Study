@@ -337,7 +337,7 @@ div.toc-content {background-color: white;}
 </code></pre>
 </div>
 <div id="reverse-linked-list" class="section level1">
-<h1>3. Reverse Linked List</h1>
+<h1>3. Reverse Linked List***</h1>
 <p>Reverse a singly-linked list.</p>
 <p><strong>Examples</strong></p>
 <ul>
@@ -357,7 +357,19 @@ div.toc-content {background-color: white;}
  */
 public class Solution {
   public ListNode reverse(ListNode head) {
-    // Write your solution here
+    if (head == null || head.next == null) {
+      return head;
+    }
+    ListNode prev = null;
+    ListNode cur = head;
+    ListNode next = null;
+    while (cur != null) {
+      next = cur.next;
+      cur.next = prev;
+      prev = cur;
+      cur = next;
+    }
+    return prev;
   }
 }</code></pre>
 </div>

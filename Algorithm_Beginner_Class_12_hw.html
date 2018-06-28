@@ -240,8 +240,151 @@ div.tocify li {font-size: 16px; color: black;}
 body {background-color: white;}
 div.toc-content {background-color: white;}
 </style>
-<div id="section" class="section level1">
-<h1>1.</h1>
+<div id="symmetric-binary-tree" class="section level1">
+<h1>1. Symmetric Binary Tree</h1>
+<p>Check if a given binary tree is symmetric.</p>
+<p><strong>Examples</strong></p>
+<pre><code>        5
+
+      /    \
+
+    3        3
+
+  /   \    /   \
+
+1      4  4      1</code></pre>
+<p>is symmetric.</p>
+<pre><code>        5
+
+      /    \
+
+    3        3
+
+  /   \    /   \
+
+1      4  1      4</code></pre>
+<p>is not symmetric.</p>
+<p><strong>Corner Cases</strong></p>
+<ul>
+<li>What if the binary tree is null? Return true in this case.</li>
+</ul>
+<pre class="java"><code>/**
+ * public class TreeNode {
+ *   public int key;
+ *   public TreeNode left;
+ *   public TreeNode right;
+ *   public TreeNode(int key) {
+ *     this.key = key;
+ *   }
+ * }
+ */
+public class Solution {
+  public boolean isSymmetric(TreeNode root) {
+    // Write your solution here
+  }
+}</code></pre>
+</div>
+<div id="tweaked-identical-binary-trees" class="section level1">
+<h1>2. Tweaked Identical Binary Trees</h1>
+<p>Determine whether two given binary trees are identical assuming any number of ‘tweak’s are allowed. A tweak is defined as a swap of the children of one node in the tree.</p>
+<p><strong>Examples</strong></p>
+<pre><code>        5
+
+      /    \
+
+    3        8
+
+  /   \
+
+1      4</code></pre>
+<p>and</p>
+<pre><code>        5
+
+      /    \
+
+    8        3
+
+           /   \
+
+          1     4</code></pre>
+<p>the two binary trees are tweaked identical.</p>
+<pre class="java"><code>/**
+ * public class TreeNode {
+ *   public int key;
+ *   public TreeNode left;
+ *   public TreeNode right;
+ *   public TreeNode(int key) {
+ *     this.key = key;
+ *   }
+ * }
+ */
+public class Solution {
+  public boolean isSymmetric(TreeNode root) {
+    // Write your solution here
+  }
+}</code></pre>
+</div>
+<div id="is-binary-search-tree-or-not" class="section level1">
+<h1>3. Is Binary Search Tree Or Not</h1>
+<p>Determine if a given binary tree is binary search tree.</p>
+<p><strong>Assumptions</strong></p>
+<ul>
+<li>There should no be duplicate keys in binary search tree.</li>
+<li>You can assume the keys stored in the binary search tree can not be Integer.MIN_VALUE or Integer.MAX_VALUE.</li>
+</ul>
+<p><strong>Corner Cases</strong></p>
+<ul>
+<li>What if the binary tree is null? Return true in this case.</li>
+</ul>
+<pre class="java"><code>/**
+ * public class TreeNode {
+ *   public int key;
+ *   public TreeNode left;
+ *   public TreeNode right;
+ *   public TreeNode(int key) {
+ *     this.key = key;
+ *   }
+ * }
+ */
+public class Solution {
+  public boolean isBST(TreeNode root) {
+    // Write your solution here
+  }
+}</code></pre>
+</div>
+<div id="get-keys-in-binary-search-tree-in-given-range" class="section level1">
+<h1>4. Get Keys In Binary Search Tree In Given Range</h1>
+<p>Get the list of keys in a given binary search tree in a given range[min, max] in ascending order, both min and max are inclusive.</p>
+<p><strong>Examples</strong></p>
+<pre><code>        5
+
+      /    \
+
+    3        8
+
+  /   \        \
+
+ 1     4        11</code></pre>
+<p>get the keys in [2, 5] in ascending order, result is [3, 4, 5]</p>
+<p><strong>Corner Cases</strong></p>
+<ul>
+<li>What if there are no keys in the given range? Return an empty list in this case.</li>
+</ul>
+<pre class="java"><code>/**
+ * public class TreeNode {
+ *   public int key;
+ *   public TreeNode left;
+ *   public TreeNode right;
+ *   public TreeNode(int key) {
+ *     this.key = key;
+ *   }
+ * }
+ */
+public class Solution {
+  public List&lt;Integer&gt; getRange(TreeNode root, int min, int max) {
+    // Write your solution here
+  }
+}</code></pre>
 </div>
 
 
