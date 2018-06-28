@@ -222,7 +222,7 @@ div.tocify {
 
 
 <h1 class="title toc-ignore"><center>
-Algorithm Beginner Class 13 Lecture
+Algorithm Beginner Class 13 Lecture - Heap
 </center></h1>
 <h4 class="date"><em><center>
 2018/6/26
@@ -240,8 +240,326 @@ ol {font-size: 16px; color: black;}
 ul {font-size: 16px; color: black;}
 img {display: block; margin-bottom: 10px; margin-left: auto; margin-right: auto;}
 </style>
-<div id="section" class="section level1">
-<h1>1</h1>
+<div id="heap" class="section level1">
+<h1>Heap</h1>
+<p>Heap(堆),亦被稱為priority queue(優先隊列).</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">-</th>
+<th align="left">Data Structure</th>
+<th align="left">Operating System</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Stack</td>
+<td align="left">LIFO</td>
+<td align="left">Call stack</td>
+</tr>
+<tr class="even">
+<td align="left">Heap</td>
+<td align="left">Priority</td>
+<td align="left">Dynamic memory allocation</td>
+</tr>
+</tbody>
+</table>
+<div id="api-in-java" class="section level2">
+<h2>API (in Java)</h2>
+<p>Queue vs. PriorityQueue</p>
+<p>Queue: FIFO,先進先出<br />
+PriorityQueus: 無特殊說明時，誰小誰先出</p>
+<pre class="java"><code>package laioffer;
+import java.util.*;
+
+public class Test {
+  public static void main(String[] args) {
+    Queue&lt;Integer&gt; pq = new PriorityQueue&lt;&gt;();
+    //1) offer
+    //2) poll
+    //3) peak
+    //4) size
+    //5) isEmpty
+    //6) remove
+    pq.offer(7);
+    pq.offer(3);
+    pq.offer(5);
+    
+    System.out.println(pq.poll());  //3
+    pq.offer(2);
+    pq.offer(9);
+    System.out.println(pq.peak());  //2
+    System.out.println(pq.size());  //4
+    pq.remove(9);
+    System.out.println(pq.size());  //3
+  }
+}</code></pre>
+<pre class="java"><code>package laioffer;
+import java.util.*;
+
+public class Test {
+  public static void main(String[] args) {
+    Queue&lt;String&gt; pq = new PriorityQueue&lt;&gt;();
+    //1) offer
+    //2) poll
+    //3) peak
+    //4) size
+    //5) isEmpty
+    //6) remove
+    pq.offer(&quot;da&quot;);
+    pq.offer(&quot;ji&quot;);
+    pq.offer(&quot;ch&quot;);
+    
+    System.out.println(pq.poll());  //&quot;ch&quot;
+  }
+}</code></pre>
+<pre class="java"><code>package laioffer;
+import java.util.*;
+
+public class Test {
+  public static void main(String[] args) {
+    NodeComparator myComp = new NodeComparator();
+    Queue&lt;Node&gt; pq = new PriorityQueue&lt;&gt;(myComp);
+    //1) offer
+    //2) poll
+    //3) peak
+    //4) size
+    //5) isEmpty
+    //6) remove
+    pq.offer(new Node(3));
+    pq.offer(new Node(7));
+    pq.offer(new Node(5));
+    
+    System.out.println(pq.poll());  //&quot;ch&quot;
+  }
+}
+
+class Node {
+  int value;
+  public Node(int v) {
+    value = v;
+  }
+}
+
+class NodeComparator implements Comparator&lt;Node&gt; {
+  @Override  //Java anotation?這個例子里可寫可不寫
+  public int compare(Node o1, Node o2) {
+    //if you want o1 to be before o2, return a negative number
+    //if you want o1 to be after o2, return a positive number
+    //if order of o1 and o2 are equal, return 0
+    if (o1.value &lt; o2.value) {
+      return -1;
+    }
+    else if (o1.value &gt; o2.value) {
+      return 1;
+    }
+    else {
+      return 0;
+    }
+  }
+}</code></pre>
+<p>Reverse order:</p>
+<pre class="java"><code>package laioffer;
+import java.util.*;
+
+public class Test {
+  public static void main(String[] args) {
+    Queue&lt;Integer&gt; pq = new PriorityQueue&lt;&gt;(Collections.reverseOrder());
+    //1) offer
+    //2) poll
+    //3) peak
+    //4) size
+    //5) isEmpty
+    //6) remove
+    pq.offer(7);
+    pq.offer(3);
+    pq.offer(5);
+    
+    System.out.println(pq.poll());  //7
+  }
+}</code></pre>
+</div>
+<div id="internal" class="section level2">
+<h2>Internal</h2>
+<p>Binary Heap is a common type of Heap</p>
+<div class="figure">
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIUAAACHCAIAAAC3cA1gAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAATrSURBVHhe7ZlRcusgDEWzri4o68lqspkspkUIp7aDnQQu+Mro/LxOOlPgHksyeZffAXncrrdH+pmM8Xzcr5fL5cd9HMvj9hM0PHEfNHh9cOE+uHAfXLgPLtwHF+6DC/fBhfvgwn1w4T64cB9cuA8u3AcX7oOKqCNwvacPuBjFx+r/P/4hq5Tx+hU37oML98GF++DCfXDhPrgw4yPcG0ivDFCM+AjXB9orNRQbPmiLQ2770J1Z8CF3a9ZeJXtDVq4BH9y9CiyE3wf7IBchuB2y++AuDgU5RMh92HjLBQqh9iGtwIAO5BBh9mGhVyVgQoh92OhVCRGC2C6tD0PFoWCGCKsPU8WhQIRw+jBXHBHEEKH0EZ40gzogQhh9GOxVifqpzufDZq+aqB0idD7sFodSKYTMh+3iiNQNES4f1osjUiWEyYccxL4OPUfpQYh8nKBXTZQPER4fp+hVE8VCWHycqDgipUOExMepiiNSKIRpnp+LsqnuPrhwH1y4Dy7cBxfugwv3wYX74KKLD/n2YMbJbn5fE28mM+Z5tPYRVcwXTG4GdRJVLK7tqzza+nixEdEtnOrrqs+Qg2eOPc+jqY9UmC4k8lobE7M8OtTHqw/1NJqPjTACszy6zPM12zs7M3rq3GN4sI+4sdGqI6BCXg8+bxe9fYzZqnZZRNLLhy4quIsly27RvV8lMaMNjw1iGvMn9JB5rk5ciZTGKoVDfEyjbWgjIYJM6z7Ix+BCpEHk5+ixPoac7SJj80Fs6kPnRDb0UetjW8b9Kp+39KE6sqmPqWOvMkIirX1spx5/MVqzCofeOnJ8cuMvG8+PjJFUNSPWxj4xkR7zXKX8M5qKyFsfWjs9fDif4z64cB9cuA8u3AcX7oMLsI/wajvk22yegjSgPsI79miX7h2K0kD6qCwOuTaeqLjK0sD5kAtoXZzyF85SX6VpwHwgetV5hBSngfKBGeQi5Aw9qzwNjA9EcShnGCI1aUB8YIpDsS+kKg2AD2kywATlzxkeIpVp1PvA9aqEaSG1aVT7QPaqhAgx2rOq06j0AS8OxegQAaRR56NBcSgmhSDSqPHRqDgi0rNsDRFMGhU+wuPQMDFrQkBplPto1qsSIsROz0KlUeqjZa+aCGc0IgSXRqGP1sWhWBECTKPIR4/iiJgYItA0Snz0KY6IASHYNL73IRH1ayKyGnPPQqfxtQ9odX4C9RCBp/Gtj469aoJYCD6N73x0L46I9ATGIdIija98HFAcEU4hTdL4fp4fgQhh7VlYbPgYB/fBhfvgwn1w4T64cB9cuI9PkK8I+lyA1Ed8v9+C8r1/d8fg8MQGjw++i7GgGW2BfISmlXr6uF85U98kPkD5PWPPEr8UiUrcxw4xpvTzAuxJgnZZxn28IeX0wtbnZYS/prH09vFc2DjQx2oWygE+kBPwIDZ7WAmLR/QoH+HfsPATU45k77ANL2z09yFP1i2c52UPdpyE7eICW/e9A3zkklclFoxIccDyCsdenbm3j3CgR24xFdJnIzUgdbzaOMLHBiqEvULiLjGbzNmg80FeIMC09LxvaBpH8KFvVdlVdH/c9dFhj0Dj77gkHdkTpV9R++ixxyN85A5kpzxO5EOXy6y208d42KluHJ19pFMtjpTOSW6ji49piS5ZzN6vUuU/4e5TE7rrJlmtA1Faavn9/QPAIw9CrAIhjQAAAABJRU5ErkJggg==" />
+
+</div>
+<p>PQ滿足: Node個數相同時,滿二叉樹(complete binary tree)高度最小.</p>
+<p>放到一維數組: 1 3 2 5 7 4</p>
+<p>PQ滿足: 堆序性: parent &lt;= children</p>
+<p>peek: return root: O(1)</p>
+<p>offer: offer 0: O(logn)</p>
+<div class="figure">
+<img src="data:image/png;base64,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" />
+
+</div>
+<div class="figure">
+<img src="data:image/png;base64,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" />
+
+</div>
+<div class="figure">
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKMAAACHCAIAAAD1M373AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAVsSURBVHhe7ZlreuMwCEW7ri4o68lqspksphUgp34pbWKsXnQ5v2bs+WLgCCR7Pr6YuF0+frjc6lUOeEyb5Yfe+/WTyzaJafP6eb3XvyvqfnVtXDhMN5xS9TWD6d2GVtp3xoPA9DOdRF1NYHp1FFvy9OZQjG/a2jZNs5hu7cVmmmGnZjf9/O5IZE9nT49C7tPG+KafyuQZ3gymn9m0ewwtzWD6iWoi0RSm6wDfqmYSTWJ6v63VP4lnGtOF1cGM59Bd4TEtmN4KkWWByzQzaZqFNM1CmmYhTbOQplkIY7q8IJG9FjkTxPT9+knxH04nEsM0bEPLp5ggoyaCaflojVpOiS3GtAlgGntyh1GNbxr9KCaqI0xwdNPYDW3E2KzBTcd4twqhGtq0DMYAomNs1simI0zuSgDVwKZjTO6KqMYOF9Z0oIY20DdrVNOhGtoAV41pOlxDK9ibNaTp0h0BRYOrRjQdcHJXkM9leKZjTu4J3M0aznTchjZgVYOZjt3QCupmjWU6ekMroKqRTEuJ4ou2PPASATI9wOSeQNyscUwPMbknAFWjmB6ooRW8zRrE9FANrcCpRjqRjQXauSxNs5CmWUjTLKRpFtI0C2mahTTNQhfT8m1wxmDfSN7mfr10/LRytmmVPFdbrdPb1jr0/Ih2rumNZ8VkD/WZ+6/oh7MfhjFd80rVO4zY01vTtgLS9ECmGzQWABUUprsnicjwpnNwV4Y1/XPoTMvK+NO7dR5ng2KfrrbzRDa+6ZontWsW06mazHTPTMEYy/STV6rs6ZFMT29WOz7pRQ/W002f3dPEYyzTu67zhVqwwvQsQ48T2ZTVBLHkaUPbcH539zCdIJCmWUjTLKRpFtI0C2maBWfT5YWK/EV5DlQ1XE2Xt0XuD18LwKrhafrgEpYPLAMNBLRq+JmWzz/HQpNfGGUm4FXDzbTHrBpHNWA1vEz7HD4kOd+Z9T8gVsPHtMcSNkbYrDGr4WLaZwkb8VWDVsPBtAwZRzfyc4E3a9hqHDftN6sqoVXjVuOwac9ZVZHk3H+0D8DVOGjafQkbQTdr6GocM33CEjZCqsauxhHTJy1hRWbWaT9+CujVOGC6rLQTXURTDV+N902fNqsqklycCY5fjXdNlyef3nEu21MXIlTjTdNnL2EjiuoQ1XjLdI8lrMjM6vOkAwSpxjum+yxhJYDqKNV43bQ8rt9Ilad1fNzLxKnGy6bLw/o2GfRmHagar5ruOKsmgFVHqsZrprsvYUVmFuJmHasaL5n+hyWsYKoOVo3XT2T/gSSHOsH78141YphOjpOmWUjTLKRpFtI0C2mahTT9F+TDFOK3m1cw0/qG1gLyPfZpxM5axHMM0+uqzNX9bhozQ6t+C8/FOT0J3LQqXMRYA59qYaZvlwgrdsY2rwe+uZRyXW5aM+gKSYQ7AZpsuxHUtAqof17gm0lZUPIYdNPtdT9THdN0NbChdf09yq9ZWdBNm8+9zHUNzEw/UgqO64KdFSWG6b0Id0w7tsJ/UfL1y2Kx+NFNV9XbCGeil6btxoNQ9iV2t4AXngOYbjAXbaalG67l6ia7OLZLuH4q1rtAUNPLsCfTe05NdgTXsnjdTJS0VzlHNK39PI9ZTZfr9700TDV+ip6it54jmpaIV2lU0w1MNXpXa5Q+Qe55Dme6hLsT7F9Mg+fo6MHy/QXocrTHWzG9OKEtscyxe7pDjI5r6VTEZLMQH1X0bq3qLWjTPWIMYbqt+XaR6w/Te/8oTkuzm25r1ujNtCWyk4ctAfClXNcpt+kSXys6rY/etBOZ/n1RrFpBcM9dTE+PQK3FFF8bLc7s7K0rd8apbeKGRX2KhXVBDDjhv5qWiL++vgGpaSSoYaHYcAAAAABJRU5ErkJggg==" />
+
+</div>
+<p>poll: O(logn)</p>
+<p>永遠跟最小的swap</p>
+<p>Java PriorityQueue支持的基本操作</p>
+<ol style="list-style-type: decimal">
+<li>offer(): 向堆中插入一個新元素,時間複雜度O(<span class="math inline">\(\log{n}\)</span>)</li>
+<li>peek(): 獲取當前堆頂元素的值,時間複雜度O(1)</li>
+<li>poll(): 刪除堆頂元素,時間複雜度O(<span class="math inline">\(\log{n}\)</span>)</li>
+<li>Update a value,略</li>
+<li>heapify: 使得一個unsorted array變成一個堆,時間複雜度O(<span class="math inline">\(n\)</span>).比一個一個放(時間複雜度O(<span class="math inline">\(n\log{n}\)</span>))快</li>
+</ol>
+</div>
+<div id="q1.-find-smallest-k-elements-from-an-unsorted-array-of-size-n." class="section level2">
+<h2>Q1. Find <strong>smallest</strong> k elements from an <strong>unsorted</strong> array of size n.</h2>
+<p>Solution(): Sort -&gt; O(<span class="math inline">\(n\log{n}\)</span>)</p>
+<p>[7, 4, 1, 9, 8, 15, 2, 3], k = 4</p>
+<p><strong>Solution 1</strong>: Max Heap: (每次拿最大出來)</p>
+<p>初始<br />
+leaf 7 4 1 9 root</p>
+<p>&gt;8, pool, offer<br />
+leaf 7 4 1 8 root</p>
+<p>&gt;15 leaf 7 4 1 8 root</p>
+<p>&gt;2, pool, offer<br />
+leaf 4 1 2 7 root</p>
+<p>&gt;3, pool, offer<br />
+leaf 4 1 2 3 root</p>
+<pre class="java"><code>class Solution {
+  public void smallestK(int[] array, int k) {
+    Queue&lt;Integer&gt; maxHeap = new PriorityQueue&lt;&gt;(Collections.reverseOrder());
+    
+    //Pretend we are using heapify
+    //Time: O(k)
+    for (int i = 0; i &lt; k; i = i + 1) {
+      maxHeap.offer(array[i]);
+    }
+    
+    //Time: O(k+(n-k)logk)
+    //if k &lt;&lt; n, O(nlogk)
+    //if k ~= n/2, O(nlogn)
+    //if k ~= n, O(n)
+    for (int i = k; i &lt; array.length; i = i + 1) {
+      if (array[i] &lt; maxHeap.peak()) {
+        maxHeap.poll();  //O(logk)
+        maxHeap.offer(array[i]);  //O(logk)
+      }
+    }
+    
+    //remaining values in the maxHeap is the smallest k elements
+  }
+}</code></pre>
+<p><strong>Solution 2</strong>: Min Heap</p>
+<pre class="java"><code>class Solution {
+  public void smallestK2(int[] array, int K) {
+    List{Integer} list = new ArrayList&lt;&gt;();
+    for (int x : array) {
+      list.add(x);
+    }
+    //O(n)
+    Queue&lt;Integer&gt; pq = new PriorityQueue&lt;&gt;(list);
+    
+    //O(klogn)
+    for (int i = 0; i &lt; K; i = i + 1) {
+      System.out.println(pq.poll());
+    }
+  }
+}</code></pre>
+<p>Time: O(n+klogn)<br />
+if k &lt;&lt; n: O(n)<br />
+if k ~= n/2: O(nlogn)<br />
+if k ~= n: O(nlogn)</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">-</th>
+<th align="left">Sort</th>
+<th align="left">Max Heap</th>
+<th align="left">Min Heap</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Time</td>
+<td align="left">O(nlogn)</td>
+<td align="left">O(k+(n-k)logk)</td>
+<td align="left">O(n+klogn)</td>
+</tr>
+<tr class="even">
+<td align="left">(K &lt;&lt; n)</td>
+<td align="left">O(nlogn)</td>
+<td align="left">O(nlogk)</td>
+<td align="left">O(n)</td>
+</tr>
+<tr class="odd">
+<td align="left">(k ~= n/2)</td>
+<td align="left">O(nlogn)</td>
+<td align="left">O(nlogn)</td>
+<td align="left">O(nlogn)</td>
+</tr>
+<tr class="even">
+<td align="left">(k ~= n)</td>
+<td align="left">O(nlogn)</td>
+<td align="left">O(n)</td>
+<td align="left">O(nlogn)</td>
+</tr>
+<tr class="odd">
+<td align="left">Space</td>
+<td align="left">O(n) if mergesort</td>
+<td align="left">O(k)</td>
+<td align="left">O(n)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Solution 3</strong>: QuickSelect O(n)</p>
+<pre class="java"><code>class Solution {
+  public List&lt;Integer&gt; quickSelect(int[] array, int k) {
+    helper(array, k - 1, 0, array.length - 1);
+    List&lt;Integer&gt; list = new ArrayList&lt;&gt;();
+    for (int i = 0; i &lt; k; i = i + 1) {
+      list.add(array[i]);
+    }
+    return list;
+  }
+  private void helper(int[] array, int k, int left, int right) {
+    if (left &gt;= right) {
+      return;
+    }
+    Random random = new Random();
+    int pivotIndex = left + random.nextInt(right - left + 1);
+    swap(array, pivotIndex, right);
+    int l = left;
+    int r = right - 1;
+    while (l &lt;= r) {
+      if (array[l] &lt; array[right]) {
+        l = l + 1;
+      }
+      else {
+        swap(array, l, r);
+        r = r - 1;
+      }
+    }
+    swap(array, l, right);
+    if (k == l) {
+      return;
+    }
+    else if (k &lt; l) {
+      helper(array, k, left, l - 1);
+    }
+    else {
+      helper(array, k, l + 1, right);
+    }
+  }
+  private void swap(int[] array, int a, int b) {
+    int temp = array[a];
+    array[a] = array[b];
+    array[b] = temp;
+  }
+}</code></pre>
+</div>
 </div>
 
 
