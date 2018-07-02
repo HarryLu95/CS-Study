@@ -2,7 +2,7 @@
 title: <center>Software Development Essentials</center>
 output:
   html_document:
-    toc: true
+    toc: false
     toc_float: 
       collapsed: false
     toc_depth: 2
@@ -25,20 +25,37 @@ output:
 - [Selection Sort](Sorting.html)
 
 #Calendar{.tabset}
+##Algorithm Class
+
+<div class="two-column">
+
+- [Practice 1](Algorithm_Class_1_Practice.html), 6/30, Classes, objects, and references (I)
+- [Practice 2](Algorithm_Class_2_Practice.html), 7/1, Classes, objects, and references (II)
+- [Practice 3](Algorithm_Class_3_Practice.html), 7/2
+- [Homework 1](Algorithm_Class_1_hw.html)
+
+- [Class 2](Algorithm_Class_2_Lec.html), 7/4
+- [Practice 4](Algorithm_Class_4_Practice.html), 7/6
+
+- [Class 3](Algorithm_Class_3_Lec.html), 7/7
+- [Practice 5](Algorithm_Class_5_Practice.html), 7/8
+
+</div>
+
 ##Algorithm Beginner Class
 
 <div class="two-column">
 
-- [Lecture 1](Algorithm_Beginner_Class_1_Lec.html), 5/29
+- [Lecture 1](Algorithm_Beginner_Class_1_Lec.html), 5/29, Java Basics I
 - [Homework 1*](Algorithm_Beginner_Class_1_hw.html)
 
-- [Lecture 2](Algorithm_Beginner_Class_2_Lec.html), 5/31
+- [Lecture 2](Algorithm_Beginner_Class_2_Lec.html), 5/31, Java Basics II
 - [Homework 2*](Algorithm_Beginner_Class_2_hw.html)
 
-- [Lecture 3](Algorithm_Beginner_Class_3_Lec.html), 6/2
+- [Lecture 3](Algorithm_Beginner_Class_3_Lec.html), 6/2, Java Basics III
 - [Homework 3*](Algorithm_Beginner_Class_3_hw.html)
 
-- [Lecture 4](Algorithm_Beginner_Class_4_Lec.html), 6/5
+- [Lecture 4](Algorithm_Beginner_Class_4_Lec.html), 6/5, Java Basics IV
 - [Homework 4*](Algorithm_Beginner_Class_4_hw.html)
 
 - [Lecture 5](Algorithm_Beginner_Class_5_Lec.html), 6/7, Sorting Algorithms 1
@@ -53,22 +70,22 @@ output:
 - [Lecture 8](Algorithm_Beginner_Class_8_Lec.html), 6/14, Queue & Linked List
 - [Homework 8](Algorithm_Beginner_Class_8_hw.html)
 
-- [Lecture 9](Algorithm_Beginner_Class_9_Lec.html), 6/16
+- [Lecture 9](Algorithm_Beginner_Class_9_Lec.html), 6/16, LinkedList
 - [Homework 9](Algorithm_Beginner_Class_9_hw.html)
 
-- [Lecture 10](Algorithm_Beginner_Class_10_Lec.html), 6/19
+- [Lecture 10](Algorithm_Beginner_Class_10_Lec.html), 6/19, Binart Search
 - [Homework 10](Algorithm_Beginner_Class_10_hw.html)
 
-- [Lecture 11](Algorithm_Beginner_Class_11_Lec.html), 6/21
+- [Lecture 11](Algorithm_Beginner_Class_11_Lec.html), 6/21, Binary Tree
 - [Homework 11](Algorithm_Beginner_Class_11_hw.html)
 
-- [Lecture 12](Algorithm_Beginner_Class_12_Lec.html), 6/23
+- [Lecture 12](Algorithm_Beginner_Class_12_Lec.html), 6/23, Binary Tree and Binary Search Tree
 - [Homework 12](Algorithm_Beginner_Class_12_hw.html)
 
-- [Lecture 13](Algorithm_Beginner_Class_13_Lec.html), 6/26
+- [Lecture 13](Algorithm_Beginner_Class_13_Lec.html), 6/26, Heap
 - [Homework 13](Algorithm_Beginner_Class_13_hw.html)
 
-- [Lecture 14](Algorithm_Beginner_Class_14_Lec.html), 6/28
+- [Lecture 14](Algorithm_Beginner_Class_14_Lec.html), 6/28, Graph
 - [Homework 14](Algorithm_Beginner_Class_14_hw.html)
 
 </div>

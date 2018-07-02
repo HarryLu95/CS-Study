@@ -19,9 +19,6 @@
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
-<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
-<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
-<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
@@ -165,107 +162,6 @@ $(document).ready(function () {
 <!-- code folding -->
 
 
-
-
-<script>
-$(document).ready(function ()  {
-
-    // move toc-ignore selectors from section div to header
-    $('div.section.toc-ignore')
-        .removeClass('toc-ignore')
-        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
-
-    // establish options
-    var options = {
-      selectors: "h1,h2",
-      theme: "bootstrap3",
-      context: '.toc-content',
-      hashGenerator: function (text) {
-        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
-      },
-      ignoreSelector: ".toc-ignore",
-      scrollTo: 0
-    };
-    options.showAndHide = false;
-    options.smoothScroll = true;
-
-    // tocify
-    var toc = $("#TOC").tocify(options).data("toc-tocify");
-});
-</script>
-
-<style type="text/css">
-
-#TOC {
-  margin: 25px 0px 20px 0px;
-}
-@media (max-width: 768px) {
-#TOC {
-  position: relative;
-  width: 100%;
-}
-}
-
-
-.toc-content {
-  padding-left: 30px;
-  padding-right: 40px;
-}
-
-div.main-container {
-  max-width: 1200px;
-}
-
-div.tocify {
-  width: 20%;
-  max-width: 260px;
-  max-height: 85%;
-}
-
-@media (min-width: 768px) and (max-width: 991px) {
-  div.tocify {
-    width: 25%;
-  }
-}
-
-@media (max-width: 767px) {
-  div.tocify {
-    width: 100%;
-    max-width: none;
-  }
-}
-
-.tocify ul, .tocify li {
-  line-height: 20px;
-}
-
-.tocify-subheader .tocify-item {
-  font-size: 0.90em;
-  padding-left: 25px;
-  text-indent: 0;
-}
-
-.tocify .list-group-item {
-  border-radius: 0px;
-}
-
-.tocify-subheader {
-  display: inline;
-}
-.tocify-subheader .tocify-item {
-  font-size: 0.95em;
-}
-
-</style>
-
-<!-- setup 3col/9col grid for toc_float and main content  -->
-<div class="row-fluid">
-<div class="col-xs-12 col-sm-4 col-md-3">
-<div id="TOC" class="tocify">
-</div>
-</div>
-
-<div class="toc-content col-xs-12 col-sm-8 col-md-9">
 
 
 
@@ -546,17 +442,32 @@ Software Development Essentials
 </div>
 <div id="calendar" class="section level1 tabset">
 <h1>Calendar</h1>
+<div id="algorithm-class" class="section level2">
+<h2>Algorithm Class</h2>
+<div class="two-column">
+<ul>
+<li><a href="Algorithm_Class_1_Practice.html">Practice 1</a>, 6/30, Classes, objects, and references (I)</li>
+<li><a href="Algorithm_Class_2_Practice.html">Practice 2</a>, 7/1, Classes, objects, and references (II)</li>
+<li><a href="Algorithm_Class_3_Practice.html">Practice 3</a>, 7/2</li>
+<li><p><a href="Algorithm_Class_1_hw.html">Homework 1</a></p></li>
+<li><a href="Algorithm_Class_2_Lec.html">Class 2</a>, 7/4</li>
+<li><p><a href="Algorithm_Class_4_Practice.html">Practice 4</a>, 7/6</p></li>
+<li><a href="Algorithm_Class_3_Lec.html">Class 3</a>, 7/7</li>
+<li><p><a href="Algorithm_Class_5_Practice.html">Practice 5</a>, 7/8</p></li>
+</ul>
+</div>
+</div>
 <div id="algorithm-beginner-class" class="section level2">
 <h2>Algorithm Beginner Class</h2>
 <div class="two-column">
 <ul>
-<li><a href="Algorithm_Beginner_Class_1_Lec.html">Lecture 1</a>, 5/29</li>
+<li><a href="Algorithm_Beginner_Class_1_Lec.html">Lecture 1</a>, 5/29, Java Basics I</li>
 <li><p><a href="Algorithm_Beginner_Class_1_hw.html">Homework 1*</a></p></li>
-<li><a href="Algorithm_Beginner_Class_2_Lec.html">Lecture 2</a>, 5/31</li>
+<li><a href="Algorithm_Beginner_Class_2_Lec.html">Lecture 2</a>, 5/31, Java Basics II</li>
 <li><p><a href="Algorithm_Beginner_Class_2_hw.html">Homework 2*</a></p></li>
-<li><a href="Algorithm_Beginner_Class_3_Lec.html">Lecture 3</a>, 6/2</li>
+<li><a href="Algorithm_Beginner_Class_3_Lec.html">Lecture 3</a>, 6/2, Java Basics III</li>
 <li><p><a href="Algorithm_Beginner_Class_3_hw.html">Homework 3*</a></p></li>
-<li><a href="Algorithm_Beginner_Class_4_Lec.html">Lecture 4</a>, 6/5</li>
+<li><a href="Algorithm_Beginner_Class_4_Lec.html">Lecture 4</a>, 6/5, Java Basics IV</li>
 <li><p><a href="Algorithm_Beginner_Class_4_hw.html">Homework 4*</a></p></li>
 <li><a href="Algorithm_Beginner_Class_5_Lec.html">Lecture 5</a>, 6/7, Sorting Algorithms 1</li>
 <li><p><a href="Algorithm_Beginner_Class_5_hw.html">Homework 5</a></p></li>
@@ -566,17 +477,17 @@ Software Development Essentials
 <li><p><a href="Algorithm_Beginner_Class_7_hw.html">Homework 7</a></p></li>
 <li><a href="Algorithm_Beginner_Class_8_Lec.html">Lecture 8</a>, 6/14, Queue &amp; Linked List</li>
 <li><p><a href="Algorithm_Beginner_Class_8_hw.html">Homework 8</a></p></li>
-<li><a href="Algorithm_Beginner_Class_9_Lec.html">Lecture 9</a>, 6/16</li>
+<li><a href="Algorithm_Beginner_Class_9_Lec.html">Lecture 9</a>, 6/16, LinkedList</li>
 <li><p><a href="Algorithm_Beginner_Class_9_hw.html">Homework 9</a></p></li>
-<li><a href="Algorithm_Beginner_Class_10_Lec.html">Lecture 10</a>, 6/19</li>
+<li><a href="Algorithm_Beginner_Class_10_Lec.html">Lecture 10</a>, 6/19, Binart Search</li>
 <li><p><a href="Algorithm_Beginner_Class_10_hw.html">Homework 10</a></p></li>
-<li><a href="Algorithm_Beginner_Class_11_Lec.html">Lecture 11</a>, 6/21</li>
+<li><a href="Algorithm_Beginner_Class_11_Lec.html">Lecture 11</a>, 6/21, Binary Tree</li>
 <li><p><a href="Algorithm_Beginner_Class_11_hw.html">Homework 11</a></p></li>
-<li><a href="Algorithm_Beginner_Class_12_Lec.html">Lecture 12</a>, 6/23</li>
+<li><a href="Algorithm_Beginner_Class_12_Lec.html">Lecture 12</a>, 6/23, Binary Tree and Binary Search Tree</li>
 <li><p><a href="Algorithm_Beginner_Class_12_hw.html">Homework 12</a></p></li>
-<li><a href="Algorithm_Beginner_Class_13_Lec.html">Lecture 13</a>, 6/26</li>
+<li><a href="Algorithm_Beginner_Class_13_Lec.html">Lecture 13</a>, 6/26, Heap</li>
 <li><p><a href="Algorithm_Beginner_Class_13_hw.html">Homework 13</a></p></li>
-<li><a href="Algorithm_Beginner_Class_14_Lec.html">Lecture 14</a>, 6/28</li>
+<li><a href="Algorithm_Beginner_Class_14_Lec.html">Lecture 14</a>, 6/28, Graph</li>
 <li><p><a href="Algorithm_Beginner_Class_14_hw.html">Homework 14</a></p></li>
 </ul>
 </div>
@@ -585,8 +496,6 @@ Software Development Essentials
 
 
 
-</div>
-</div>
 
 </div>
 
