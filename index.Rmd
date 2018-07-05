@@ -34,11 +34,13 @@ output:
 - [Practice 3](Algorithm_Class_3_Practice.html), 7/2
 - [Homework 1](Algorithm_Class_1_hw.html)
 
-- [Class 2](Algorithm_Class_2_Lec.html), 7/4
+- [Class 2](Algorithm_Class_2_Lecture.html), 7/4
 - [Practice 4](Algorithm_Class_4_Practice.html), 7/6
+- [Homework 2](Algorithm_Class_2_hw.html)
 
-- [Class 3](Algorithm_Class_3_Lec.html), 7/7
+- [Class 3](Algorithm_Class_3_Lecture.html), 7/7
 - [Practice 5](Algorithm_Class_5_Practice.html), 7/8
+- [Homework 3](Algorithm_Class_3_hw.html)
 
 </div>
 
@@ -73,7 +75,7 @@ output:
 - [Lecture 9](Algorithm_Beginner_Class_9_Lec.html), 6/16, LinkedList
 - [Homework 9](Algorithm_Beginner_Class_9_hw.html)
 
-- [Lecture 10](Algorithm_Beginner_Class_10_Lec.html), 6/19, Binart Search
+- [Lecture 10](Algorithm_Beginner_Class_10_Lec.html), 6/19, Binary Search
 - [Homework 10](Algorithm_Beginner_Class_10_hw.html)
 
 - [Lecture 11](Algorithm_Beginner_Class_11_Lec.html), 6/21, Binary Tree
