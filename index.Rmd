@@ -31,15 +31,23 @@ output:
 
 - [Practice 1](Algorithm_Class_1_Practice.html), 6/30, Classes, objects, and references (I)
 - [Practice 2](Algorithm_Class_2_Practice.html), 7/1, Classes, objects, and references (II)
-- [Practice 3](Algorithm_Class_3_Practice.html), 7/2
+- [Practice 3](Algorithm_Class_3_Practice.html), 7/2, Practice Problems
+
+- [Class 2](Algorithm_Class_2_Lecture.html), 7/4, Recursion I & Binary Search
+- [Practice 4](Algorithm_Class_4_Practice.html), 7/6, Linked List and Java List
+
+- [Class 3](Algorithm_Class_3_Lecture.html), 7/7, Queue & Stack
+- [Practice 5](Algorithm_Class_5_Practice.html), 7/8, Practice Problems
+
+- [Class 4](Algorithm_Class_4_Lecture.html), 7/9
+- [Practice 6](Algorithm_Class_6_Practice.html), 7/11
+
+- [Class 5](Algorithm_Class_5_Lecture.html), 7/13
+- [Practice 7](Algorithm_Class_7_Practice.html), 7/14
+- [Practice 8](Algorithm_Class_8_Practice.html), 7/15
+
 - [Homework 1](Algorithm_Class_1_hw.html)
-
-- [Class 2](Algorithm_Class_2_Lecture.html), 7/4
-- [Practice 4](Algorithm_Class_4_Practice.html), 7/6
 - [Homework 2](Algorithm_Class_2_hw.html)
-
-- [Class 3](Algorithm_Class_3_Lecture.html), 7/7
-- [Practice 5](Algorithm_Class_5_Practice.html), 7/8
 - [Homework 3](Algorithm_Class_3_hw.html)
 
 </div>

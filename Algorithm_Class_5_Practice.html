@@ -124,7 +124,7 @@ $(document).ready(function ()  {
 
     // establish options
     var options = {
-      selectors: "h1",
+      selectors: "h1,h2",
       theme: "bootstrap3",
       context: '.toc-content',
       hashGenerator: function (text) {
@@ -222,389 +222,252 @@ div.tocify {
 
 
 <h1 class="title toc-ignore"><center>
-Algorithm Class 2 Homework
+Algorithm Class - Practice 5 - Practice Problems
 </center></h1>
-<h4 class="author"><em><center>
-Harry Lu
+<h4 class="date"><em><center>
+2018/7/8
 </center></em></h4>
 
 </div>
 
 
 <style>
-h1 {font-size: 24px;}
-bdi.red {color: red; font-weight: bold;}
-p {font-size: 16px;}
+h1 {font-size: 28px; color: black; font-weight: bold; background-color: Orange;}
+h1.title {color: black; background-color: white;}
+h2 {font-size: 20px; color: black; font-weight: bold; background-color: Yellow;}
+p {font-size: 16px; color: black;}
+ol {font-size: 16px; color: black;}
+ul {font-size: 16px; color: black;}
+img {display: block; margin-bottom: 10px; margin-left: auto; margin-right: auto;}
 </style>
-<div id="fibonacci-number" class="section level1">
-<h1>1. Fibonacci Number</h1>
-<p>Get the Kth number in the Fibonacci Sequence. (K is 0-indexed, the 0th Fibonacci number is 0 and the 1st Fibonacci number is 1).</p>
-<p><strong>Examples</strong></p>
+<div id="arraylist" class="section level1">
+<h1>ArrayList</h1>
+<p>ArrayList is regarded as a <strong>resizable</strong> array.</p>
 <ul>
-<li>0th fibonacci number is 0</li>
-<li>1st fibonacci number is 1</li>
-<li>2nd fibonacci number is 1</li>
-<li>3rd fibonacci number is 2</li>
-<li>6th fibonacci number is 8</li>
-</ul>
-<p><strong>Corner Cases</strong></p>
+<li>maintain anarray with potential unused cells</li>
+<li>will expand the array if there is no usused cells available
 <ul>
-<li>What if K &lt; 0? in this case, we should always return 0.</li>
-<li>Is it possible the result fibonacci number is overflowed? We can assume it will not be overflowed when we solve this problem on this online judge, but we should also know that it is possible to get an overflowed number, and sometimes we will need to use something like BigInteger.</li>
+<li>by replacing the maintained array with a new larger array (1.5 times larger by default)</li>
+</ul></li>
 </ul>
-<pre class="java"><code>public class Solution {
-  public long fibonacci(int K) {
-    if (K &lt;= 0) {
-      return 0;
-    }
-    if (K == 1) {
-      return 1;
-    }
-    long a = 0;
-    long b = 1;
-    for (long i = 2; i &lt;= K; i = i + 1) {
-      long temp = a + b;
-      a = b;
-      b = temp;
-    }
-    return b;
+<pre class="java"><code>class ArrayList&lt;E&gt; {
+  private E[] array;  //the maintained array, the current maximum capacity is array.length;
+  private int size;  //the number of actually used cells in the maintained array
+  //But, you do not have direct access to these internal implementation details.
+  public void add(int index, E e) {
+    //...
   }
 }</code></pre>
+<p>e.g.<br />
+[1, 2, 3, 4, 5, x, x, x, x, x]</p>
+<ul>
+<li>array.length = 10 (capacity)</li>
+<li>size = 5</li>
+</ul>
+<p>Because it is “resizable array”, all the occupied positions should be consecutive starting from left.</p>
+<div id="common-methods-apis" class="section level2">
+<h2>Common Methods (APIs)</h2>
+<ul>
+<li>get(int index): array[index]</li>
+<li>set(int index, E e): array[index] = e
+<ul>
+<li>E是generic type</li>
+</ul></li>
+<li>size(): size
+<ul>
+<li>size means the number of used cells, not the capacity.</li>
+<li>when call add(), remove(), size is modified as well.</li>
+</ul></li>
+<li>add(E e): add a new element at the tail</li>
+<li>add(int index, E e): insert a new element at the index</li>
+<li>remove(int index): remove the element at the index</li>
+</ul>
 </div>
-<div id="a-to-the-power-of-b" class="section level1">
-<h1>2. a to the power of b</h1>
-<p>Evaluate a to the power of b, assuming both a and b are integers and b is non-negative.</p>
-<p><strong>Examples</strong></p>
+<div id="example-1" class="section level2">
+<h2>Example 1</h2>
+<p>array = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}<br />
+size = 10<br />
+capacity = 10 (array.length)</p>
+<p>call add(11):</p>
+<ol style="list-style-type: decimal">
+<li>check if it is full (size == capacity)</li>
+<li>if it is full, create a new array1, array1’s size = 1.5 * array’s length, copy all the element in array to array1, and change the maintained array to array1.
 <ul>
-<li>power(2, 0) = 1</li>
-<li>power(2, 3) = 8</li>
-<li>power(0, 10) = 0</li>
-<li>power(-2, 5) = -32</li>
-</ul>
-<p><strong>Corner Cases</strong></p>
+<li>array1 = new Interger[size * 1.5], 1.5為經驗值，只要大於1就可以</li>
+<li>array1 = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, x, x, x, x, x}</li>
+<li>size = 10, capacity = 15</li>
+<li>array = array1</li>
+</ul></li>
+<li>set the 11th element’s value to 11, size = size + 1.
 <ul>
-<li>What if the result is overflowed? We can assume the result will not be overflowed when we solve this problem on this online judge.</li>
-</ul>
-<pre class="java"><code>public class Solution {
-  public long power(int a, int b) {
-    if (b == 0) {
-      return 1;
-    }
-    long temp = power(a, b / 2);
-    if (b % 2 == 0) {
-      return temp * temp;
-    }
-    else {
-      return temp * temp * a;
-    }
-  }
-}</code></pre>
+<li>array = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, x, x, x, x}</li>
+<li>size = 11, capacity = 15</li>
+</ul></li>
+</ol>
+<p>What if you call add(int index, E e)?</p>
+<ol style="list-style-type: decimal">
+<li>expand if necessary</li>
+<li>then right move all the elements after index by 1</li>
+<li>set the element at index</li>
+</ol>
 </div>
-<div id="classical-binary-search" class="section level1">
-<h1>3. Classical Binary Search</h1>
-<p>Given a target integer T and an integer array A sorted in ascending order, find the index i such that A[i] == T or return -1 if there is no such index.</p>
-<p><strong>Assumptions</strong></p>
+<div id="example-2" class="section level2">
+<h2>Example 2</h2>
+<p>array = {1, 3, 4, 5, 6, x, x, x, x, x}<br />
+size = 5<br />
+capacity = 10</p>
+<p>call add(1,2) - add Integer 2 at index 1</p>
+<ol style="list-style-type: decimal">
+<li>do not need to expand since size &lt; capacity</li>
+<li>move all the elements of {3, 4, 5, 6} right by 1 position, size = size + 1
 <ul>
-<li>There can be duplicate elements in the array, and you can return any of the indices i such that A[i] == T.</li>
-</ul>
-<p><strong>Examples</strong></p>
+<li>array = {1, x, 3, 4, 5, 6, x, x, x, x}</li>
+<li>size = 6</li>
+<li>capacity = 10</li>
+</ul></li>
+<li>set index 1 as Integer 2
 <ul>
-<li>A = {1, 2, 3, 4, 5}, T = 3, return 2</li>
-<li>A = {1, 2, 3, 4, 5}, T = 6, return -1</li>
-<li>A = {1, 2, 2, 2, 3, 4}, T = 2, return 1 or 2 or 3</li>
-</ul>
-<p><strong>Corner Cases</strong></p>
+<li>array = {1, 2, 3, 4, 5, 6, x, x, x, x}</li>
+</ul></li>
+</ol>
+<p>call remove(1) - remove the element at index 1</p>
+<ol style="list-style-type: decimal">
+<li>check if index outofbound first
 <ul>
-<li>What if A is null or A is of zero length? We should return -1 in this case.</li>
-</ul>
-<pre class="java"><code>#思路:
-#index from 0 to (n-1)
-#擋板left_index和right_index
-#[0 ... left_index), [left_index ... right_index], (right_index ... (n-1)]
-public class Solution {
-  public int binarySearch(int[] array, int target) {
-    if (array == null || array.length == 0) {
-      return -1;
-    }
-    int left_index = 0;
-    int right_index = array.length - 1;
-    while (left_index &lt;= right_index) {
-      int middle_index = left_index + (right_index - left_index) / 2;
-      if (array[middle_index] == target) {
-        return middle_index;
-      }
-      else if (array[middle_index] &gt; target) {
-        right_index = middle_index - 1;
-      }
-      else {
-        left_index = middle_index + 1;
-      }
-    }
-    return -1;
-  }
-}</code></pre>
-</div>
-<div id="first-occurrence" class="section level1">
-<h1>4. First Occurrence</h1>
-<p>Given a target integer T and an integer array A sorted in ascending order, find the index of the first occurrence of T in A or return -1 if there is no such index.</p>
-<p><strong>Assumptions</strong></p>
+<li>array = {1, x, 3, 4, 5, 6, x, x, x, x}</li>
+<li>index =&gt; 0, 1, 2, 3, 4, 5</li>
+</ul></li>
+<li>move all the elements of {3, 4, 5, 6} left by 1 position, size = size - 1
 <ul>
-<li>There can be duplicate elements in the array.</li>
-</ul>
-<p><strong>Examples</strong></p>
-<ul>
-<li>A = {1, 2, 3}, T = 2, return 1</li>
-<li>A = {1, 2, 3}, T = 4, return -1</li>
-<li>A = {1, 2, 2, 2, 3}, T = 2, return 1</li>
-</ul>
-<p><strong>Corner Cases</strong></p>
-<ul>
-<li>What if A is null or A of zero length? We should return -1 in this case.</li>
-</ul>
-<pre class="java"><code>public class Solution {
-  public int firstOccur(int[] array, int target) {
-    if (array == null || array.length == 0) {
-      return -1;
-    }
-    int left_index = 0;
-    int right_index = array.length - 1;
-    if (array[0] == target) {
-      return 0;
-    }
-    int x = array.length - 1;
-    if (array[x] == target) {
-      while (array[x - 1] == array[x]) {
-        x = x - 1;
-      }
-      return x;
-    }
-    while (left_index &lt;= right_index) {
-      int middle_index = left_index + (right_index - left_index) / 2;
-      if (array[middle_index] == target) {
-        while (array[middle_index - 1] == array[middle_index]) {
-          middle_index = middle_index - 1;
-        }
-        return middle_index;
-      }
-      else if (array[middle_index] &gt; target) {
-        right_index = middle_index - 1;
-      }
-      else {
-        left_index = middle_index + 1;
-      }
-    }
-    return -1;
-  }
-}</code></pre>
-</div>
-<div id="last-occurrence" class="section level1">
-<h1>5. Last Occurrence</h1>
-<p>Given a target integer T and an integer array A sorted in ascending order, find the index of the last occurrence of T in A or return -1 if there is no such index.</p>
-<p><strong>Assumptions</strong></p>
-<ul>
-<li>There can be duplicate elements in the array.</li>
-</ul>
-<p><strong>Examples</strong></p>
-<ul>
-<li>A = {1, 2, 3}, T = 2, return 1</li>
-<li>A = {1, 2, 3}, T = 4, return -1</li>
-<li>A = {1, 2, 2, 2, 3}, T = 2, return 3</li>
-</ul>
-<p><strong>Corner Cases</strong></p>
-<ul>
-<li>What if A is null or A is array of zero length? We should return -1 in this case.</li>
-</ul>
-<pre class="java"><code>public class Solution {
-  public int lastOccur(int[] array, int target) {
-    if (array == null || array.length == 0) {
-      return -1;
-    }
-    int left_index = 0;
-    int right_index = array.length - 1;
-    if (array[array.length - 1] == target) {
-      return array.length - 1;
-    }
-    int x = 0;
-    if (array[x] == target) {
-      while (array[x + 1] == array[x]) {
-        x = x + 1;
-      }
-      return x;
-    }
-    while (left_index &lt;= right_index) {
-      int middle_index = left_index + (right_index - left_index) / 2;
-      if (array[middle_index] == target) {
-        while (array[middle_index + 1] == array[middle_index]) {
-          middle_index = middle_index + 1;
-        }
-        return middle_index;
-      }
-      else if (array[middle_index] &gt; target) {
-        right_index = middle_index - 1;
-      }
-      else {
-        left_index = middle_index + 1;
-      }
-    }
-    return -1;
-  }
-}</code></pre>
-</div>
-<div id="closest-in-sorted-array" class="section level1">
-<h1>6. Closest In Sorted Array</h1>
-<p>Given a target integer T and an integer array A sorted in ascending order, find the index i in A such that A[i] is closest to T.</p>
-<p><strong>Assumptions</strong></p>
-<ul>
-<li>There can be duplicate elements in the array, and we can return any of the indices with same value.</li>
-</ul>
-<p><strong>Examples</strong></p>
-<ul>
-<li>A = {1, 2, 3}, T = 2, return 1</li>
-<li>A = {1, 4, 6}, T = 3, return 1</li>
-<li>A = {1, 4, 6}, T = 5, return 1 or 2</li>
-<li>A = {1, 3, 3, 4}, T = 2, return 0 or 1 or 2</li>
-</ul>
-<p><strong>Corner Cases</strong></p>
-<ul>
-<li>What if A is null or A is of zero length? We should return -1 in this case.</li>
-</ul>
-<pre class="java"><code>public class Solution {
-  public int closest(int[] array, int target) {
-    if (array == null || array.length == 0) {
-      return -1;
-    }
-    int left_index = 0;
-    int right_index = array.length - 1;
-    if (target &gt;= array[array.length - 1]) {
-      return array.length - 1;
-    }
-    if (target &lt;= array[0]) {
-      return 0;
-    }
-    while (left_index &lt;= right_index) {
-      int middle_index = left_index + (right_index - left_index) / 2;
-      if (array[middle_index] == target) {
-        return middle_index;
-      }
-      else if (array[middle_index] &gt; target) {
-        right_index = middle_index - 1;
-      }
-      else {
-        left_index = middle_index + 1;
-      }
-    }
-    if (array[left_index] - target &gt;= target - array[right_index]) {
-      return right_index;
-    }
-    return left_index;
-  }
-}</code></pre>
-</div>
-<div id="k-closest-in-sorted-array" class="section level1">
-<h1>7. K Closest In Sorted Array</h1>
-<p>Given a target integer T, a non-negative integer K and an integer array A sorted in ascending order, find the K closest numbers to T in A.</p>
-<p><strong>Assumptions</strong></p>
-<ul>
-<li>A is not null</li>
-<li>K is guranteed to be &gt;= 0 and K is guranteed to be &lt;= A.length</li>
-</ul>
-<p><strong>Return</strong></p>
-<ul>
-<li>A size K integer array containing the K closest numbers(not indices) in A, sorted in ascending order by the difference between the number and T.</li>
-</ul>
-<p><strong>Examples</strong></p>
-<ul>
-<li>A = {1, 2, 3}, T = 2, K = 3, return {2, 1, 3} or {2, 3, 1}</li>
-<li>A = {1, 4, 6, 8}, T = 3, K = 3, return {4, 1, 6}</li>
-</ul>
-<pre class="java"><code>public class Solution {
-  public int[] kClosest(int[] array, int target, int k) {
-    int left_index = 0;
-    int right_index = array.length - 1;
-    int[] result = new int[k];
-    int center = null;
-    int center_left = null;
-    int center_right = null;
-    while (left_index &lt; right_index - 1) {
-      int middle_index = left_index + (right_index - left_index) / 2;
-      if (array[middle_index] == target) {
-        center = middle_index;
-      }
-      else if (array[middle_index] &gt; target) {
-        right_index = middle_index - 1;
-      }
-      else {
-        left_index = middle_index + 1;
-      }
-    }
-    if (array[left_index] - target &gt;= target - array[right_index]) {
-      center = right_index;
-    }
-    else {
-      center = left_index;
-    }
-    //以下在思考
-    result[0] = array[center];
-    int count = 1;
-    while (count &lt;= k) {
-      if (center - 1 != 0) {
-        center_left = center - 1;
-      }
-      if (center + 1 != 0) {
-        center_right = center + 1;
-      }
-      count = count + 1;
-    }
-  }
-}</code></pre>
-</div>
-<div id="search-in-unknown-sized-sorted-array" class="section level1">
-<h1>8. Search In Unknown Sized Sorted Array</h1>
-<p>Given a integer dictionary A of unknown size, where the numbers in the dictionary are sorted in ascending order, determine if a given target integer T is in the dictionary. Return the index of T in A, return -1 if T is not in A.</p>
-<p><strong>Assumptions</strong></p>
-<ul>
-<li>dictionary A is not null</li>
-<li>dictionary.get(i) will return null(Java)/INT_MIN(C++)/None(Python) if index i is out of bounds</li>
-</ul>
-<p><strong>Examples</strong></p>
-<ul>
-<li>A = {1, 2, 5, 9, ……}, T = 5, return 2</li>
-<li>A = {1, 2, 5, 9, 12, ……}, T = 7, return -1</li>
-</ul>
-<pre class="java"><code>/*
-*  interface Dictionary {
-*    public Integer get(int index);
-*  }
-*/
+<li>array = {1, 3, 4, 5, 6, x, x, x, x, x}</li>
+</ul></li>
+</ol>
+<pre class="java"><code>List&lt;Integer&gt; list = new ArrayList&lt;Integer&gt;();
+System.out.println(list.size());  //0
 
-// You do not need to implement the Dictionary interface.
-// You can use it directly, the implementation is provided when testing your solution.
-public class Solution {
-  public int search(Dictionary dict, int target) {
-    // Write your solution here
-    return 0;
-  }
-}</code></pre>
+list.add(1);  //add at end, {1}
+System.out.println(list.size());  //1
+
+list.add(0, 2);  //add at head, {2, 1}
+System.out.println(list.size());  //2
+
+list.add(1, 3);  //add at middle, {2, 3, 1}
+System.out.println(list.get(1));  //3
+list.remove(1);  //{2, 1}
+list.set(0, 4);  //{4, 1}
+System.our.println(list);  //{4, 1}
+
+List&lt;Integer&gt; list = new ArrayList&lt;Integer&gt;();
+for (int i = 10; i &lt;= 20; i = i + 1) {
+  list.add(i);
+}
+System.out.println(list);  //{10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+
+for (int i = 0, i &lt; 5; i = i + 1) {
+  list.remove(list.size() - 1);
+}
+System.our.println(list);  //{10, 11, 12, 13, 14, 15}</code></pre>
 </div>
-<div id="search-in-sorted-matrix-i" class="section level1">
-<h1>9. Search In Sorted Matrix I</h1>
-<p>Given a 2D matrix that contains integers only, which each row is sorted in an ascending order. The first element of next row is larger than (or equal to) the last element of previous row.</p>
-<p>Given a target number, returning the position that the target locates within the matrix. If the target number does not exist in the matrix, return {-1, -1}.</p>
-<p><strong>Assumptions</strong></p>
+<div id="time-complexity-analysis" class="section level2">
+<h2>Time Complexity Analysis</h2>
+<table style="width:100%;">
+<colgroup>
+<col width="23%"></col>
+<col width="53%"></col>
+<col width="23%"></col>
+</colgroup>
+<thead>
+<tr class="header">
+<th align="right">Operation</th>
+<th align="right">ArrayList</th>
+<th align="right">LinkedList</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">get(int index) at head/tail</td>
+<td align="right">O(1)</td>
+<td align="right">O(1)</td>
+</tr>
+<tr class="even">
+<td align="right">get(int index) in middle</td>
+<td align="right">O(1)</td>
+<td align="right">O(n/2)=O(n)</td>
+</tr>
+<tr class="odd">
+<td align="right">set(int index) at head/tail</td>
+<td align="right">O(1)</td>
+<td align="right">O(1)</td>
+</tr>
+<tr class="even">
+<td align="right">set(int index) in middle</td>
+<td align="right">O(1)</td>
+<td align="right">O(n)</td>
+</tr>
+<tr class="odd">
+<td align="right">add(int index, E e) in middle</td>
+<td align="right">O(n)</td>
+<td align="right">O(n)</td>
+</tr>
+<tr class="even">
+<td align="right">add(0, E e) at head</td>
+<td align="right">O(n)</td>
+<td align="right">O(1)</td>
+</tr>
+<tr class="odd">
+<td align="right">add(E e) at tail</td>
+<td align="right">worst case: need expansion - O(n) / no need expansion - O(1) / amortized O(1) / (n+0.5n*1)/0.5n=O(3)=O(1)</td>
+<td align="right">O(1)</td>
+</tr>
+<tr class="even">
+<td align="right">remove(int index) at head</td>
+<td align="right">O(n)</td>
+<td align="right">O(1)</td>
+</tr>
+<tr class="odd">
+<td align="right">remove(int index) at tail</td>
+<td align="right">O(1)</td>
+<td align="right">O(1)</td>
+</tr>
+<tr class="even">
+<td align="right">remove(int index) in middle</td>
+<td align="right">O(n)</td>
+<td align="right">O(n)</td>
+</tr>
+<tr class="odd">
+<td align="right">size()</td>
+<td align="right">O(1)</td>
+<td align="right">O(1)</td>
+</tr>
+<tr class="even">
+<td align="right">isEmpty()</td>
+<td align="right">O(1)</td>
+<td align="right">O(1)</td>
+</tr>
+</tbody>
+</table>
+<p>Note: LinkedList (doubly linked list, maintaining both head and tail)</p>
+<p><strong>When to choose what? ArrayList or LinkedList?</strong></p>
+<ol style="list-style-type: decimal">
+<li>If you have a lot of <strong>random access</strong> operations, use ArrayList.</li>
+<li>If you always <strong>add/remove at the end</strong>, use ArrayList.
 <ul>
-<li>The given matrix is not null, and has size of N * M, where N &gt;= 0 and M &gt;= 0.</li>
-</ul>
-<p><strong>Examples</strong></p>
+<li>When the time complexity is similar for using ArrayList and LinkedList, use ArrayList. (ArrayList uses memory more efficiently - For each element LinkedList need to create different ListNode in memory, there is extra cost of storing the “next”, “prev” reference, and the allocation is not contiguous.)</li>
+</ul></li>
+<li><em>Stack</em> and <em>Vector</em> class are not recommended, whenever you need a Vector, use ArrayList, whenever you need a Stack, use LinkedList.
 <ul>
-<li>matrix = { {1, 2, 3}, {4, 5, 7}, {8, 9, 10} }</li>
-<li>target = 7, return {1, 2}</li>
-<li>target = 6, return {-1, -1} to represent the target number does not exist in the matrix.</li>
-</ul>
-<pre class="java"><code>public class Solution {
-  public int[] search(int[][] matrix, int target) {
-    // Write your solution here
-  }
-}</code></pre>
+<li>e.g. reason: <a href="https://stackoverflow.com/questions/25922201/linkedlist-vs-stack">link</a></li>
+</ul></li>
+</ol>
+</div>
+</div>
+<div id="merge-sort" class="section level1">
+<h1>Merge Sort</h1>
+<p>Given an array of integers, sort the elements in the array in ascending order. The merge sort algorithm should be used to solve this problem.</p>
+<div id="merge-sort-with-returning-new-arraylist-each-level" class="section level2">
+<h2>Merge Sort with returning new ArrayList each level</h2>
+<pre class="java"><code></code></pre>
+</div>
 </div>
 
 

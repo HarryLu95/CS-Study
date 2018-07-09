@@ -6,96 +6,142 @@ navbar:
   - text: Home
     icon: fa-home
     href: index.html
-  - text: A.B.C. Lecture Note
+  - text: Algorithm Beginner Class
     icon: fa-book
     menu:
-    - text: Lec 1
+    - text: Lecture 1
       icon: fa-clone
       href: Algorithm_Beginner_Class_1_Lec.html
-    - text: Lec 2
+    - text: Lecture 2
       icon: fa-clone
       href: Algorithm_Beginner_Class_2_Lec.html
-    - text: Lec 3
+    - text: Lecture 3
       icon: fa-clone
       href: Algorithm_Beginner_Class_3_Lec.html
-    - text: Lec 4
+    - text: Lecture 4
       icon: fa-clone
       href: Algorithm_Beginner_Class_4_Lec.html
-    - text: Lec 5
+    - text: Lecture 5
       icon: fa-clone
       href: Algorithm_Beginner_Class_5_Lec.html
-    - text: Lec 6
+    - text: Lecture 6
       icon: fa-clone
       href: Algorithm_Beginner_Class_6_Lec.html
-    - text: Lec 7
+    - text: Lecture 7
       icon: fa-clone
       href: Algorithm_Beginner_Class_7_Lec.html
-    - text: Lec 8
+    - text: Lecture 8
       icon: fa-clone
       href: Algorithm_Beginner_Class_8_Lec.html
-    - text: Lec 9
+    - text: Lecture 9
       icon: fa-clone
       href: Algorithm_Beginner_Class_9_Lec.html
-    - text: Lec 10
+    - text: Lecture 10
       icon: fa-clone
       href: Algorithm_Beginner_Class_10_Lec.html
-    - text: Lec 11
+    - text: Lecture 11
       icon: fa-clone
       href: Algorithm_Beginner_Class_11_Lec.html
-    - text: Lec 12
+    - text: Lecture 12
       icon: fa-clone
       href: Algorithm_Beginner_Class_12_Lec.html
-    - text: Lec 13
+    - text: Lecture 13
       icon: fa-clone
       href: Algorithm_Beginner_Class_13_Lec.html
-    - text: Lec 14
+    - text: Lecture 14
       icon: fa-clone
       href: Algorithm_Beginner_Class_14_Lec.html
-  - text: A.B.C. Homework
-    icon: fa-folder-open
-    menu:
-    - text: HW 1
+    - text: Homework 1
       icon: fa-clone
       href: Algorithm_Beginner_Class_1_hw.html
-    - text: HW 2
+    - text: Homework 2
       icon: fa-clone
       href: Algorithm_Beginner_Class_2_hw.html
-    - text: HW 3
+    - text: Homework 3
       icon: fa-clone
       href: Algorithm_Beginner_Class_3_hw.html
-    - text: HW 4
+    - text: Homework 4
       icon: fa-clone
       href: Algorithm_Beginner_Class_4_hw.html
-    - text: HW 5
+    - text: Homework 5
       icon: fa-clone
       href: Algorithm_Beginner_Class_5_hw.html
-    - text: HW 6
+    - text: Homework 6
       icon: fa-clone
       href: Algorithm_Beginner_Class_6_hw.html
-    - text: HW 7
+    - text: Homework 7
       icon: fa-clone
       href: Algorithm_Beginner_Class_7_hw.html
-    - text: HW 8
+    - text: Homework 8
       icon: fa-clone
       href: Algorithm_Beginner_Class_8_hw.html
-    - text: HW 9
+    - text: Homework 9
       icon: fa-clone
       href: Algorithm_Beginner_Class_9_hw.html
-    - text: HW 10
+    - text: Homework 10
       icon: fa-clone
       href: Algorithm_Beginner_Class_10_hw.html
-    - text: HW 11
+    - text: Homework 11
       icon: fa-clone
       href: Algorithm_Beginner_Class_11_hw.html
-    - text: HW 12
+    - text: Homework 12
       icon: fa-clone
       href: Algorithm_Beginner_Class_12_hw.html
-    - text: HW 13
+    - text: Homework 13
       icon: fa-clone
       href: Algorithm_Beginner_Class_13_hw.html
-    - text: HW 14
+    - text: Homework 14
       icon: fa-clone
       href: Algorithm_Beginner_Class_14_hw.html
+  - text: Algorithm Class
+    icon: fa-book
+    menu:
+    - text: Class 2
+      icon: fa-clone
+      href: Algorithm_Class_2_Lecture.html
+    - text: Class 3
+      icon: fa-clone
+      href: Algorithm_Class_3_Lecture.html
+    - text: Class 4
+      icon: fa-clone
+      href: Algorithm_Class_4_Lecture.html
+    - text: Class 5
+      icon: fa-clone
+      href: Algorithm_Class_5_Lecture.html
+    - text: Practice 1
+      icon: fa-clone
+      href: Algorithm_Class_1_Practice.html
+    - text: Practice 2
+      icon: fa-clone
+      href: Algorithm_Class_2_Practice.html
+    - text: Practice 3
+      icon: fa-clone
+      href: Algorithm_Class_3_Practice.html
+    - text: Practice 4
+      icon: fa-clone
+      href: Algorithm_Class_4_Practice.html
+    - text: Practice 5
+      icon: fa-clone
+      href: Algorithm_Class_5_Practice.html
+    - text: Practice 6
+      icon: fa-clone
+      href: Algorithm_Class_6_Practice.html
+    - text: Practice 7
+      icon: fa-clone
+      href: Algorithm_Class_7_Practice.html
+    - text: Practice 8
+      icon: fa-clone
+      href: Algorithm_Class_8_Practice.html
+    - text: Homework 1
+      icon: fa-clone
+      href: Algorithm_Class_1_hw.html
+    - text: Homework 2
+      icon: fa-clone
+      href: Algorithm_Class_2_hw.html
+    - text: Homework 3
+      icon: fa-clone
+      href: Algorithm_Class_3_hw.html
+
 output:
   html_document:
     theme: spacelab

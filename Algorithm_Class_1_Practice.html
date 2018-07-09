@@ -323,8 +323,185 @@ public class Test {
     return t * t;
   }
 }</code></pre>
-<p>constructor沒有返回值,名字跟類名一樣</p>
+<p>constructor沒有返回值,名字跟類名一樣.</p>
+<p>Return time. In a simple way, local variables and return values are stored on stack.</p>
+<pre class="java"><code>public static void main(String[] args) {
+  double a = 3.0;
+  double b = 4.0;
+  double c = hypo(a, b);
+  System.out.println(c);
+}
+private static double hypo(double x, double y) {
+  return square(x) + square(y);
+}
+private static double square(double t) {
+  return t * t;
+}</code></pre>
+<p>// Stack: [ a=3.0, b=4.0 -&gt; top<br />
+// Stack: [ a=3.0, b=4.0 | x=3.0, y=4.0 -&gt; top<br />
+// Stack: [ a=3.0, b=4.0 | x=3.0, y=4.0 | t=3.0 -&gt; top<br />
+// Stack: [ a=3.0, b=4.0 | x=3.0, y=4.0 -&gt; top<br />
+// Stack: [ a=3.0, b=4.0 | x=3.0, y=4.0 | t=4.0 -&gt; top<br />
+// Stack: [ a=3.0, b=4.0 | x=3.0, y=4.0 -&gt; top<br />
+// Stack: [ a=3.0, b=4.0 -&gt; top<br />
+// Stack: [ a=3.0, b=4.0, c=25.0 -&gt; top</p>
 </div>
+<div id="heap" class="section level2">
+<h2>Heap</h2>
+<pre class="java"><code>package laioffer;
+public class Test {
+  public static void main(String[] args) {
+    Node n = new Node(3);
+    System.out.println(n.val);
+  }
+}
+class Node {
+  int val;
+  public Node(int v) {
+    val = v;
+  }
+}</code></pre>
+<p>[Debug Mode]</p>
+<p>The reference n is stored on stack;</p>
+<p>But the value val=3 is stored on heap.</p>
+</div>
+</div>
+<div id="example-java-hello-world" class="section level1">
+<h1>Example: Java “Hello World”</h1>
+<pre class="java"><code>public class HelloWorld {
+  public static void main(String[] args) {
+    System.out.println(&quot;Hello World!&quot;);
+  }
+}</code></pre>
+<ul>
+<li>Class name == File name
+<ul>
+<li>There can only be one public class per .java file, as public classes must have the same name as the source file.</li>
+</ul></li>
+<li>Code formatting + style
+<ul>
+<li><a href="https://google.github.io/styleguide/javaguide.html">link</a></li>
+</ul></li>
+<li>How you do “print”
+<ul>
+<li><code>System.out.println(String str);</code></li>
+</ul></li>
+</ul>
+</div>
+<div id="java-hello-world-2-the-more-you-should-know" class="section level1">
+<h1>Java “Hello World” 2: The more you should know</h1>
+<p>Student.java</p>
+<pre class="java"><code>public class Student {
+  public int age;  //(member) field
+  private final String name;  //(constant) field
+  private static String school;  //(static) field
+  private static final String GREETINGS = &quot;Hello&quot;;  //(static constant) field
+  
+  public Student(String name) {  //Constructor
+    this.name = name;  //name = n;
+  }
+  
+  //Unlike C++, Java has no destructor (relying on GC)
+  
+  public int getAge() {  //(member) method, getter, accessor
+    return age;
+  }
+  
+  public void setAge(int age) {  (member) method, setter
+    this.age = age;
+  }
+  
+  public String getName() {  //(member) method, getter, accessor
+    return name;
+  }
+  
+  public void sayHello() {  //(member) method
+    System.out.println(GREETINGS + &quot;! I am &quot; + name + &quot;. I am &quot; + age);
+  }
+}</code></pre>
+<p>HelloWorld.java</p>
+<pre class="java"><code>public class HelloWorld {
+  public static void main(String[] args) {
+    Student firstStudent = new Student(&quot;Tom&quot;);
+    Student secondStudent = new Student(&quot;Jerry&quot;);
+    Student thirdStudent = null;
+    firstStudent.setAge(18);
+    secondStudent.setAge(10);
+    firstStudent.sayHello();
+    secondStudent.sayHello();
+    Student fourthStudent = null;
+    try {
+      thirdStudent.sayHello();
+    } catch (NullPointerException e) {
+      System.out.println(&quot;Expected error occured! - &quot; + e.toString());
+    }
+  }
+}</code></pre>
+<div id="primitive-types-vs.class-types" class="section level2">
+<h2>Primitive types vs. class types</h2>
+<p>Where are our familiar types, like int, char, etc?</p>
+<p>Class types (objects): stored in heap, operated by references</p>
+<p>Primitive data types: basic data types, no reference, data directly stored in memory.</p>
+<ul>
+<li>boolean</li>
+<li>byte</li>
+<li>char</li>
+<li>short</li>
+<li>int</li>
+<li>long</li>
+<li>float</li>
+<li>double</li>
+</ul>
+<p>How are they “integrated” in our Java programs?</p>
+<ul>
+<li>Serves as object states (fields) - heap</li>
+<li>Serves as temporary variables in our methods (local variables) - stack</li>
+</ul>
+</div>
+<div id="constructor-this-and-null-pointers" class="section level2">
+<h2>Constructor, this, and Null pointers</h2>
+<p>Constructor: a special method to initialize objects, must have the same name as the class. By using constructors we can create objects with different parameters</p>
+<p>this: The current (self) instance. <strong>Mandatory</strong> if argument name is the same as field name.</p>
+<pre class="java"><code>public class Student {
+  String name;  //n1
+  void setName(String name) {
+    this.name = name;  //n2
+    //left: this.name -&gt; n1
+    //right: name -&gt; n2
+  }
+}</code></pre>
+<p>null: An empty reference. Will cover in later classes.</p>
+</div>
+<div id="access-modifier" class="section level2">
+<h2>Access modifier</h2>
+<ul>
+<li>public - veryone can access</li>
+<li>protected - only my children and same package can access</li>
+<li>default - only the same package can access</li>
+<li>private - only myself can access (but only at class level, other objects of the same class can access as well)</li>
+</ul>
+<p><strong><em>Use the possibly strictest access modifier!</em></strong></p>
+</div>
+</div>
+<div id="exercise" class="section level1">
+<h1>Exercise</h1>
+<p>If we’re design a class for cars, how should we design it?</p>
+<p>A car may have:</p>
+<ul>
+<li>Brand</li>
+<li>Model</li>
+<li>Year</li>
+<li>Mileage</li>
+<li>Plate number</li>
+<li>Color</li>
+<li>Owner’s name</li>
+</ul>
+<p>A car may:</p>
+<ul>
+<li>Drive</li>
+<li>Change owner</li>
+<li>…</li>
+</ul>
 </div>
 
 

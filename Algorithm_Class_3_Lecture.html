@@ -124,7 +124,7 @@ $(document).ready(function ()  {
 
     // establish options
     var options = {
-      selectors: "h1",
+      selectors: "h1,h2",
       theme: "bootstrap3",
       context: '.toc-content',
       hashGenerator: function (text) {
@@ -222,389 +222,140 @@ div.tocify {
 
 
 <h1 class="title toc-ignore"><center>
-Algorithm Class 2 Homework
+Algorithm Class - Lecture 3 - Queue &amp; Stack
 </center></h1>
-<h4 class="author"><em><center>
-Harry Lu
+<h4 class="date"><em><center>
+2018/7/7
 </center></em></h4>
 
 </div>
 
 
 <style>
-h1 {font-size: 24px;}
-bdi.red {color: red; font-weight: bold;}
-p {font-size: 16px;}
+h1 {font-size: 28px; color: black; font-weight: bold; background-color: Orange;}
+h1.title {color: black; background-color: white;}
+h2 {font-size: 20px; color: black; font-weight: bold; background-color: Yellow;}
+p {font-size: 16px; color: black;}
+ol {font-size: 16px; color: black;}
+ul {font-size: 16px; color: black;}
+img {display: block; margin-bottom: 10px; margin-left: auto; margin-right: auto;}
 </style>
-<div id="fibonacci-number" class="section level1">
-<h1>1. Fibonacci Number</h1>
-<p>Get the Kth number in the Fibonacci Sequence. (K is 0-indexed, the 0th Fibonacci number is 0 and the 1st Fibonacci number is 1).</p>
-<p><strong>Examples</strong></p>
+<div id="queue" class="section level1">
+<h1>1. Queue</h1>
+<div id="example" class="section level2">
+<h2>1.1 Example</h2>
+<p>Wait in a line, FIFO == <strong>First in first out</strong></p>
+</div>
+<div id="usages" class="section level2">
+<h2>1.2 Usages</h2>
+<p>Breadth-First Search related problems</p>
+</div>
+<div id="c-reference" class="section level2">
+<h2>1.3 C++ reference</h2>
+<p>link</p>
+</div>
+<div class="section level2">
+<h2>1.4 典型問題</h2>
+</div>
+</div>
+<div id="stack" class="section level1">
+<h1>2. Stack</h1>
+<p>LIFO == Last in first out: like a box</p>
+<p>e.g., insertion order 1, 2, 3, 4, then in the stack, it looks like</p>
 <ul>
-<li>0th fibonacci number is 0</li>
-<li>1st fibonacci number is 1</li>
-<li>2nd fibonacci number is 1</li>
-<li>3rd fibonacci number is 2</li>
-<li>6th fibonacci number is 8</li>
+<li>4 &lt;- top of the stack. All operation can only be done to this element</li>
+<li>3</li>
+<li>2</li>
+<li>1 &lt;- bottom of the stack</li>
 </ul>
-<p><strong>Corner Cases</strong></p>
-<ul>
-<li>What if K &lt; 0? in this case, we should always return 0.</li>
-<li>Is it possible the result fibonacci number is overflowed? We can assume it will not be overflowed when we solve this problem on this online judge, but we should also know that it is possible to get an overflowed number, and sometimes we will need to use something like BigInteger.</li>
-</ul>
-<pre class="java"><code>public class Solution {
-  public long fibonacci(int K) {
-    if (K &lt;= 0) {
-      return 0;
-    }
-    if (K == 1) {
-      return 1;
-    }
-    long a = 0;
-    long b = 1;
-    for (long i = 2; i &lt;= K; i = i + 1) {
-      long temp = a + b;
-      a = b;
-      b = temp;
-    }
-    return b;
-  }
+<p>All operations available: push(), pop(), top()</p>
+<p>Implementation: popular data structure: array or vector</p>
+<p>Stack的移動操作有什麼常見特性?</p>
+<ol style="list-style-type: lower-alpha">
+<li>將Stack1所有元素全部move到Stack2,</li>
+<li></li>
+</ol>
+</div>
+<div id="popular-interview-questions" class="section level1">
+<h1>Popular interview questions</h1>
+<div id="question-1" class="section level2">
+<h2>Question 1</h2>
+<p>How to sort numbers with three (or two) stacks (taught in Class 1)</p>
+<p>Three stacks</p>
+<p>Stack 1|| 3 1 2 4 (original input)<br />
+Stack 2|| (buffer)<br />
+Stack 3|| (result)</p>
+<p>Two stacks</p>
+<p>Stack 1|| 3 1 2 4<br />
+Stack 2||<br />
+global min = 4</p>
+<p>Stack 1|| 3 1 2<br />
+Stack 2|| 4<br />
+global min = 2</p>
+<p>Stack 1|| 3 1<br />
+Stack 2|| 4 2<br />
+global min = 1</p>
+<p>Stack 1|| 3<br />
+Stack 2|| 4 2 1<br />
+global min = 1</p>
+<p>Stack 1||<br />
+Stack 2|| 4 2 1 3<br />
+global min = 1</p>
+<p>Stack 1|| 3 2 4 (把大於global min的都放回Stack 1)<br />
+Stack 2|| 1 (全部放回去后把global min複製到Stack 2)<br />
+global min = 1</p>
+<p>Solution 1: we can use a counter to count the size of Stack 2 before each iteration, so that we o not have to remove all elements from stack 2 during each iteration.</p>
+<p>Solution 2: we do not need a counter, instead we use</p>
+<pre class="java"><code>while (stack2.size() &gt; 0 &amp;&amp; stack2.peek() &gt;= global_min) {
+  //move stack2.top back to stack1;
 }</code></pre>
 </div>
-<div id="a-to-the-power-of-b" class="section level1">
-<h1>2. a to the power of b</h1>
-<p>Evaluate a to the power of b, assuming both a and b are integers and b is non-negative.</p>
-<p><strong>Examples</strong></p>
+<div id="question-2" class="section level2">
+<h2>Question 2</h2>
+<p>How could we implement a queue by using two stacks?</p>
+<p>Queue &lt;- 1 2 3 4</p>
+<p>Stack 1|| 1 2 3 4<br />
+Stack 2||</p>
+<p>Stack 1: is used to store new elements come in<br />
+Stack 2: is used to pop out of old elements.</p>
+<p>API:</p>
 <ul>
-<li>power(2, 0) = 1</li>
-<li>power(2, 3) = 8</li>
-<li>power(0, 10) = 0</li>
-<li>power(-2, 5) = -32</li>
-</ul>
-<p><strong>Corner Cases</strong></p>
+<li>queue.pop():
 <ul>
-<li>What if the result is overflowed? We can assume the result will not be overflowed when we solve this problem on this online judge.</li>
+<li>Case 1: if stack 2 is empty, then we pop every single element from stack 1 and push it into stack 2 one by one.
+<ul>
+<li>Time: O(n)</li>
+<li>O(n) get out + O(n) get in stack 1 + O(1) = O(2n+1)</li>
+</ul></li>
+<li>Case 2: if stack 2 is NOT empty, just call <code>stack2.pop()</code>
+<ul>
+<li>Time: O(1)</li>
+<li>Amortized time complexity = ((2n+1)+1*(n-1))/n=3, O(1)</li>
+</ul></li>
+</ul></li>
 </ul>
-<pre class="java"><code>public class Solution {
-  public long power(int a, int b) {
-    if (b == 0) {
-      return 1;
-    }
-    long temp = power(a, b / 2);
-    if (b % 2 == 0) {
-      return temp * temp;
-    }
-    else {
-      return temp * temp * a;
-    }
-  }
-}</code></pre>
+<p>queue.push() ===== stack1.push()</p>
+<p>Stack的移動操作有什麼常見特性?</p>
+<ol start="3" style="list-style-type: lower-alpha">
+<li>將Stack 1所有元素全部move到Stack 2, 元素在Stack 2的順序完全reverse</li>
+<li>將Stack 1所有元素move到Stack 2, 然後元素全部(或者部分)move回</li>
+</ol>
 </div>
-<div id="classical-binary-search" class="section level1">
-<h1>3. Classical Binary Search</h1>
-<p>Given a target integer T and an integer array A sorted in ascending order, find the index i such that A[i] == T or return -1 if there is no such index.</p>
-<p><strong>Assumptions</strong></p>
-<ul>
-<li>There can be duplicate elements in the array, and you can return any of the indices i such that A[i] == T.</li>
-</ul>
-<p><strong>Examples</strong></p>
-<ul>
-<li>A = {1, 2, 3, 4, 5}, T = 3, return 2</li>
-<li>A = {1, 2, 3, 4, 5}, T = 6, return -1</li>
-<li>A = {1, 2, 2, 2, 3, 4}, T = 2, return 1 or 2 or 3</li>
-</ul>
-<p><strong>Corner Cases</strong></p>
-<ul>
-<li>What if A is null or A is of zero length? We should return -1 in this case.</li>
-</ul>
-<pre class="java"><code>#思路:
-#index from 0 to (n-1)
-#擋板left_index和right_index
-#[0 ... left_index), [left_index ... right_index], (right_index ... (n-1)]
-public class Solution {
-  public int binarySearch(int[] array, int target) {
-    if (array == null || array.length == 0) {
-      return -1;
-    }
-    int left_index = 0;
-    int right_index = array.length - 1;
-    while (left_index &lt;= right_index) {
-      int middle_index = left_index + (right_index - left_index) / 2;
-      if (array[middle_index] == target) {
-        return middle_index;
-      }
-      else if (array[middle_index] &gt; target) {
-        right_index = middle_index - 1;
-      }
-      else {
-        left_index = middle_index + 1;
-      }
-    }
-    return -1;
-  }
-}</code></pre>
+<div id="question-3" class="section level2">
+<h2>Question 3</h2>
+<p>How to implement the min() function when using stack with time complexity O(1)?</p>
 </div>
-<div id="first-occurrence" class="section level1">
-<h1>4. First Occurrence</h1>
-<p>Given a target integer T and an integer array A sorted in ascending order, find the index of the first occurrence of T in A or return -1 if there is no such index.</p>
-<p><strong>Assumptions</strong></p>
+<div id="question-4" class="section level2">
+<h2>Question 4</h2>
+<p>How to use multiple Stacks to implement a deque?</p>
+<p>4 API:</p>
 <ul>
-<li>There can be duplicate elements in the array.</li>
+<li>Left.add()</li>
+<li>Left.remove()</li>
+<li>Right.add()</li>
+<li>Right.remove()</li>
 </ul>
-<p><strong>Examples</strong></p>
-<ul>
-<li>A = {1, 2, 3}, T = 2, return 1</li>
-<li>A = {1, 2, 3}, T = 4, return -1</li>
-<li>A = {1, 2, 2, 2, 3}, T = 2, return 1</li>
-</ul>
-<p><strong>Corner Cases</strong></p>
-<ul>
-<li>What if A is null or A of zero length? We should return -1 in this case.</li>
-</ul>
-<pre class="java"><code>public class Solution {
-  public int firstOccur(int[] array, int target) {
-    if (array == null || array.length == 0) {
-      return -1;
-    }
-    int left_index = 0;
-    int right_index = array.length - 1;
-    if (array[0] == target) {
-      return 0;
-    }
-    int x = array.length - 1;
-    if (array[x] == target) {
-      while (array[x - 1] == array[x]) {
-        x = x - 1;
-      }
-      return x;
-    }
-    while (left_index &lt;= right_index) {
-      int middle_index = left_index + (right_index - left_index) / 2;
-      if (array[middle_index] == target) {
-        while (array[middle_index - 1] == array[middle_index]) {
-          middle_index = middle_index - 1;
-        }
-        return middle_index;
-      }
-      else if (array[middle_index] &gt; target) {
-        right_index = middle_index - 1;
-      }
-      else {
-        left_index = middle_index + 1;
-      }
-    }
-    return -1;
-  }
-}</code></pre>
 </div>
-<div id="last-occurrence" class="section level1">
-<h1>5. Last Occurrence</h1>
-<p>Given a target integer T and an integer array A sorted in ascending order, find the index of the last occurrence of T in A or return -1 if there is no such index.</p>
-<p><strong>Assumptions</strong></p>
-<ul>
-<li>There can be duplicate elements in the array.</li>
-</ul>
-<p><strong>Examples</strong></p>
-<ul>
-<li>A = {1, 2, 3}, T = 2, return 1</li>
-<li>A = {1, 2, 3}, T = 4, return -1</li>
-<li>A = {1, 2, 2, 2, 3}, T = 2, return 3</li>
-</ul>
-<p><strong>Corner Cases</strong></p>
-<ul>
-<li>What if A is null or A is array of zero length? We should return -1 in this case.</li>
-</ul>
-<pre class="java"><code>public class Solution {
-  public int lastOccur(int[] array, int target) {
-    if (array == null || array.length == 0) {
-      return -1;
-    }
-    int left_index = 0;
-    int right_index = array.length - 1;
-    if (array[array.length - 1] == target) {
-      return array.length - 1;
-    }
-    int x = 0;
-    if (array[x] == target) {
-      while (array[x + 1] == array[x]) {
-        x = x + 1;
-      }
-      return x;
-    }
-    while (left_index &lt;= right_index) {
-      int middle_index = left_index + (right_index - left_index) / 2;
-      if (array[middle_index] == target) {
-        while (array[middle_index + 1] == array[middle_index]) {
-          middle_index = middle_index + 1;
-        }
-        return middle_index;
-      }
-      else if (array[middle_index] &gt; target) {
-        right_index = middle_index - 1;
-      }
-      else {
-        left_index = middle_index + 1;
-      }
-    }
-    return -1;
-  }
-}</code></pre>
-</div>
-<div id="closest-in-sorted-array" class="section level1">
-<h1>6. Closest In Sorted Array</h1>
-<p>Given a target integer T and an integer array A sorted in ascending order, find the index i in A such that A[i] is closest to T.</p>
-<p><strong>Assumptions</strong></p>
-<ul>
-<li>There can be duplicate elements in the array, and we can return any of the indices with same value.</li>
-</ul>
-<p><strong>Examples</strong></p>
-<ul>
-<li>A = {1, 2, 3}, T = 2, return 1</li>
-<li>A = {1, 4, 6}, T = 3, return 1</li>
-<li>A = {1, 4, 6}, T = 5, return 1 or 2</li>
-<li>A = {1, 3, 3, 4}, T = 2, return 0 or 1 or 2</li>
-</ul>
-<p><strong>Corner Cases</strong></p>
-<ul>
-<li>What if A is null or A is of zero length? We should return -1 in this case.</li>
-</ul>
-<pre class="java"><code>public class Solution {
-  public int closest(int[] array, int target) {
-    if (array == null || array.length == 0) {
-      return -1;
-    }
-    int left_index = 0;
-    int right_index = array.length - 1;
-    if (target &gt;= array[array.length - 1]) {
-      return array.length - 1;
-    }
-    if (target &lt;= array[0]) {
-      return 0;
-    }
-    while (left_index &lt;= right_index) {
-      int middle_index = left_index + (right_index - left_index) / 2;
-      if (array[middle_index] == target) {
-        return middle_index;
-      }
-      else if (array[middle_index] &gt; target) {
-        right_index = middle_index - 1;
-      }
-      else {
-        left_index = middle_index + 1;
-      }
-    }
-    if (array[left_index] - target &gt;= target - array[right_index]) {
-      return right_index;
-    }
-    return left_index;
-  }
-}</code></pre>
-</div>
-<div id="k-closest-in-sorted-array" class="section level1">
-<h1>7. K Closest In Sorted Array</h1>
-<p>Given a target integer T, a non-negative integer K and an integer array A sorted in ascending order, find the K closest numbers to T in A.</p>
-<p><strong>Assumptions</strong></p>
-<ul>
-<li>A is not null</li>
-<li>K is guranteed to be &gt;= 0 and K is guranteed to be &lt;= A.length</li>
-</ul>
-<p><strong>Return</strong></p>
-<ul>
-<li>A size K integer array containing the K closest numbers(not indices) in A, sorted in ascending order by the difference between the number and T.</li>
-</ul>
-<p><strong>Examples</strong></p>
-<ul>
-<li>A = {1, 2, 3}, T = 2, K = 3, return {2, 1, 3} or {2, 3, 1}</li>
-<li>A = {1, 4, 6, 8}, T = 3, K = 3, return {4, 1, 6}</li>
-</ul>
-<pre class="java"><code>public class Solution {
-  public int[] kClosest(int[] array, int target, int k) {
-    int left_index = 0;
-    int right_index = array.length - 1;
-    int[] result = new int[k];
-    int center = null;
-    int center_left = null;
-    int center_right = null;
-    while (left_index &lt; right_index - 1) {
-      int middle_index = left_index + (right_index - left_index) / 2;
-      if (array[middle_index] == target) {
-        center = middle_index;
-      }
-      else if (array[middle_index] &gt; target) {
-        right_index = middle_index - 1;
-      }
-      else {
-        left_index = middle_index + 1;
-      }
-    }
-    if (array[left_index] - target &gt;= target - array[right_index]) {
-      center = right_index;
-    }
-    else {
-      center = left_index;
-    }
-    //以下在思考
-    result[0] = array[center];
-    int count = 1;
-    while (count &lt;= k) {
-      if (center - 1 != 0) {
-        center_left = center - 1;
-      }
-      if (center + 1 != 0) {
-        center_right = center + 1;
-      }
-      count = count + 1;
-    }
-  }
-}</code></pre>
-</div>
-<div id="search-in-unknown-sized-sorted-array" class="section level1">
-<h1>8. Search In Unknown Sized Sorted Array</h1>
-<p>Given a integer dictionary A of unknown size, where the numbers in the dictionary are sorted in ascending order, determine if a given target integer T is in the dictionary. Return the index of T in A, return -1 if T is not in A.</p>
-<p><strong>Assumptions</strong></p>
-<ul>
-<li>dictionary A is not null</li>
-<li>dictionary.get(i) will return null(Java)/INT_MIN(C++)/None(Python) if index i is out of bounds</li>
-</ul>
-<p><strong>Examples</strong></p>
-<ul>
-<li>A = {1, 2, 5, 9, ……}, T = 5, return 2</li>
-<li>A = {1, 2, 5, 9, 12, ……}, T = 7, return -1</li>
-</ul>
-<pre class="java"><code>/*
-*  interface Dictionary {
-*    public Integer get(int index);
-*  }
-*/
-
-// You do not need to implement the Dictionary interface.
-// You can use it directly, the implementation is provided when testing your solution.
-public class Solution {
-  public int search(Dictionary dict, int target) {
-    // Write your solution here
-    return 0;
-  }
-}</code></pre>
-</div>
-<div id="search-in-sorted-matrix-i" class="section level1">
-<h1>9. Search In Sorted Matrix I</h1>
-<p>Given a 2D matrix that contains integers only, which each row is sorted in an ascending order. The first element of next row is larger than (or equal to) the last element of previous row.</p>
-<p>Given a target number, returning the position that the target locates within the matrix. If the target number does not exist in the matrix, return {-1, -1}.</p>
-<p><strong>Assumptions</strong></p>
-<ul>
-<li>The given matrix is not null, and has size of N * M, where N &gt;= 0 and M &gt;= 0.</li>
-</ul>
-<p><strong>Examples</strong></p>
-<ul>
-<li>matrix = { {1, 2, 3}, {4, 5, 7}, {8, 9, 10} }</li>
-<li>target = 7, return {1, 2}</li>
-<li>target = 6, return {-1, -1} to represent the target number does not exist in the matrix.</li>
-</ul>
-<pre class="java"><code>public class Solution {
-  public int[] search(int[][] matrix, int target) {
-    // Write your solution here
-  }
-}</code></pre>
 </div>
 
 
