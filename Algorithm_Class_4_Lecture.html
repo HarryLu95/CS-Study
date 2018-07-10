@@ -222,7 +222,7 @@ div.tocify {
 
 
 <h1 class="title toc-ignore"><center>
-Algorithm Class - Lecture 4
+Algorithm Class - Lecture 4 - LinkedList
 </center></h1>
 <h4 class="date"><em><center>
 2018/7/9
@@ -240,8 +240,151 @@ ol {font-size: 16px; color: black;}
 ul {font-size: 16px; color: black;}
 img {display: block; margin-bottom: 10px; margin-left: auto; margin-right: auto;}
 </style>
-<div id="section" class="section level1">
-<h1></h1>
+<div id="basic" class="section level1">
+<h1>Basic</h1>
+<p>N1 -&gt; N2 -&gt; N3 -&gt; N4 -&gt; … -&gt; N1000 -&gt; NULL</p>
+<pre class="java"><code>int[] a = {1, 2, 3, ...};  //0xDEADBEEF</code></pre>
+<div id="physical-memory" class="section level2">
+<h2>Physical Memory</h2>
+<table>
+<thead>
+<tr class="header">
+<th>0xFFFF0000</th>
+<th>0xFFFF0000</th>
+<th>0xFFFF0000</th>
+<th>0xFFFF0000</th>
+<th>0xFFFF0000</th>
+<th>.</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>a[0] / ListNode1 / ListNode next;//0xFFFF9999</td>
+<td>a[1]</td>
+<td>a[2]</td>
+<td>…</td>
+<td>.</td>
+<td>.</td>
+</tr>
+</tbody>
+</table>
+<pre class="java"><code>class ListNode Node1 = new ListNode(1, &quot;Node1&quot;);
+
+class ListNode {  //for ListNode1 my own address 0xFFFF0001
+  int value;  //= 1;
+  string name;  //= &quot;Node1&quot;
+  //...
+  ListNode next;  //= 0xFFFF9999
+}</code></pre>
+<p><strong>Key points:</strong></p>
+<ol style="list-style-type: decimal">
+<li>When you want to dereference a ListNode, make sure it is not a NULL pointer
+<ul>
+<li>ListNode p = new ListNode(10);</li>
+<li>p.value //“.” is an action that is called <strong>de-reference</strong></li>
+<li>p.next.value</li>
+</ul></li>
+<li>Never ever lose the control of the head pointer of the LinkedList
+<ul>
+<li>記得每次做完操作return new head</li>
+</ul></li>
+</ol>
+</div>
+</div>
+<div id="1" class="section level1">
+<h1>常見考題1</h1>
+<p>No.1 Interview question on linkedlist: how to reverse a linked list</p>
+<p>Node1 -&gt; Node2 -&gt; Node3 -&gt; Node4 -&gt; … -&gt; NodeN -&gt; NULL</p>
+<p>reversed: NULL &lt;- Node1 &lt;- Node2 &lt;- Node3 &lt;- Node4 &lt;- … &lt;- NodeN</p>
+<p>Method 1. Iterative Way</p>
+<pre class="java"><code>public ListNode reverseLinkedList(ListNode head) {
+  if (head == null || head.next == null) {
+    return head;
+  }
+  ListNode prev = null;
+  ListNode curr = head;
+  while(curr != null) {
+    ListNode temp = curr.next;  //step 1
+    curr.next = prev;  //step 2 reverse
+    prev = curr;  //step 3
+    curr = temp;
+  }
+}</code></pre>
+<p>Method 2. Recursive Way</p>
+<pre class="java"><code>Node reverseList(Node head) {
+  if(head == null || head.next == null) {
+    return head;
+  }
+  Node curr = head;
+  Node temp = curr.next;
+  Node newHead = reverseList(temp);  //smaller size problem, newHead is NodeN
+  temp.next = curr;  //step 1
+  curr.head = null;  //step 2
+  return newHead;  //step 3
+}</code></pre>
+</div>
+<div id="2" class="section level1">
+<h1>常見考題2</h1>
+<p>How to find the middle node of a linked list?</p>
+<pre class="java"><code>ListNode findMiddle(ListNode head) {
+  if (head == null) {
+    return null;
+  }
+  ListNode slow = head;
+  ListNode fast = head;
+  while (fast.next != null &amp;&amp; fast.next.next != null) {
+    slow = slow.next;
+    fast = fast.next.next;
+  }
+}</code></pre>
+</div>
+<div id="3" class="section level1">
+<h1>常見考題3</h1>
+<p>Q2. 用快慢指針判定一個linkedlist是否有環</p>
+</div>
+<div id="4" class="section level1">
+<h1>常見考題4</h1>
+<p>Q3. Insert a node in a sorted linked list (simple)</p>
+<p>Solution:</p>
+<ul>
+<li>Case 1: head == null || target &lt;= head.value
+<ul>
+<li>insert before the head</li>
+</ul></li>
+<li>Case 2: cur.next == null || cur.next.next &gt;= target
+<ul>
+<li>insert to the following places</li>
+</ul></li>
+</ul>
+<pre class="java"><code>public ListNode InsertNode(ListNode head, target) {
+  ListNode newNode = new ListNode(target);
+  if (head == null || target &lt;= head.value) {
+    newNode.next = head;
+    return newNode;
+  }
+  ListNode cur = head;
+  ListNode temp = head.next;
+  while (temp != null &amp;&amp; temp.value &lt; target) {
+    cur = temp;
+    temp = temp.next;
+  }
+  cur.next = newNode;
+  newNode.next = temp;
+  return head;
+  /////////////修改!!!
+}</code></pre>
+</div>
+<div id="5" class="section level1">
+<h1>常見考題5</h1>
+<p>Q4. How to merge two sorted linkedlist into one long sorted linked list</p>
+</div>
+<div id="6" class="section level1">
+<h1>常見考題6</h1>
+<p>Q5. N1 -&gt; N2 -&gt; N3 -&gt; N4 -&gt; N5 -&gt; … -&gt; Nn -&gt; null convert to (N1 -&gt; Nn) -&gt; (N2 -&gt; Nn-1) -&gt; …</p>
+</div>
+<div id="7" class="section level1">
+<h1>常見考題7</h1>
+<p>Q6. Partition List</p>
 </div>
 
 
