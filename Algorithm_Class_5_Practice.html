@@ -242,10 +242,11 @@ img {display: block; margin-bottom: 10px; margin-left: auto; margin-right: auto;
 </style>
 <div id="arraylist" class="section level1">
 <h1>ArrayList</h1>
+<pre class="java"><code>int[] array = new[5];</code></pre>
 <p>ArrayList is regarded as a <strong>resizable</strong> array.</p>
 <ul>
 <li>maintain anarray with potential unused cells</li>
-<li>will expand the array if there is no usused cells available
+<li><strong>will expand the array if there is no usused cells available</strong>
 <ul>
 <li>by replacing the maintained array with a new larger array (1.5 times larger by default)</li>
 </ul></li>
@@ -447,14 +448,26 @@ System.our.println(list);  //{10, 11, 12, 13, 14, 15}</code></pre>
 </tbody>
 </table>
 <p>Note: LinkedList (doubly linked list, maintaining both head and tail)</p>
+<p>Example:</p>
+<p>array = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}<br />
+size = 10</p>
+<ul>
+<li>add(11) =&gt; newArray = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, x, x, x, x} -&gt; n</li>
+<li>add(12) -&gt; 1</li>
+<li>add(13) -&gt; 1</li>
+<li>add(14) -&gt; 1</li>
+<li>add(15) -&gt; 1</li>
+<li>O(1) * 0.5n</li>
+</ul>
+<p>(n + 0.5n * 1 )/ 0.5n = O(3) = O(1)</p>
 <p><strong>When to choose what? ArrayList or LinkedList?</strong></p>
 <ol style="list-style-type: decimal">
 <li>If you have a lot of <strong>random access</strong> operations, use ArrayList.</li>
 <li>If you always <strong>add/remove at the end</strong>, use ArrayList.
 <ul>
-<li>When the time complexity is similar for using ArrayList and LinkedList, use ArrayList. (ArrayList uses memory more efficiently - For each element LinkedList need to create different ListNode in memory, there is extra cost of storing the “next”, “prev” reference, and the allocation is not contiguous.)</li>
+<li>When the <strong>time complexity is similar</strong> for using ArrayList and LinkedList, use ArrayList. (ArrayList uses memory more efficiently - For each element LinkedList need to create different ListNode in memory, there is extra cost of storing the “next”, “prev” reference, and the allocation is not contiguous.)</li>
 </ul></li>
-<li><em>Stack</em> and <em>Vector</em> class are not recommended, whenever you need a Vector, use ArrayList, whenever you need a Stack, use LinkedList.
+<li><strong>Stack</strong> and <strong>Vector</strong> class are not recommended, whenever you need a Vector, use ArrayList, whenever you need a Stack, use LinkedList.
 <ul>
 <li>e.g. reason: <a href="https://stackoverflow.com/questions/25922201/linkedlist-vs-stack">link</a></li>
 </ul></li>
@@ -464,9 +477,447 @@ System.our.println(list);  //{10, 11, 12, 13, 14, 15}</code></pre>
 <div id="merge-sort" class="section level1">
 <h1>Merge Sort</h1>
 <p>Given an array of integers, sort the elements in the array in ascending order. The merge sort algorithm should be used to solve this problem.</p>
-<div id="merge-sort-with-returning-new-arraylist-each-level" class="section level2">
-<h2>Merge Sort with returning new ArrayList each level</h2>
-<pre class="java"><code></code></pre>
+<p>Examples:</p>
+<ul>
+<li>{1} is sorted to {1}</li>
+<li>{1, 2, 3} is sorted to {1, 2, 3}</li>
+<li>{3, 2, 1} is sorted to {1, 2, 3}</li>
+<li>{4, 2, -3, 6, 1} is sorted to {-3, 1, 2, 4, 6}</li>
+</ul>
+<p>Corner Cases:</p>
+<ul>
+<li>What if the given array is null? In this case, we do not need to do anything.</li>
+<li>what if the given array is of length zero? In this case, we do not need to do anything.</li>
+</ul>
+<p><strong>Merge Sort with returning new ArrayList each level</strong></p>
+<pre class="java"><code>public class MergeSort {
+  public ArrayList&lt;Integer&gt; mergeSort(ArrayList&lt;Integer&gt; array) {
+    if (array == null || array.isEmpty()) {
+      return array;
+    }
+    return mergeSort(array, 0, array.size() - 1);
+  }
+  
+  public ArrayList&lt;Integer&gt; mergeSort(ArrayList&lt;Integer&gt; array, int left, int right) {
+    ArrayList&lt;Integer&gt; result = new ArrayList&lt;&gt;();
+    if (left == right) {
+      result.add(array.get(left));
+      return result;
+    }
+    int mid = left + (right - left) / 2;
+    ArrayList&lt;Integer&gt; reLeft = mergeSort(array, left, mid);
+    ArratList&lt;Integer&gt; reRight = mergeSort(array, mid + 1, right);
+    merge(reLeft, reRight, result);
+    return result;
+  }
+  
+  private void merge(ArrayList&lt;Integer&gt; left, ArrayList&lt;Integer&gt; right, ArrayList&lt;Integer&gt; result) {
+    int l = 0;
+    int r = 0;
+    while (l &lt; left.size() &amp;&amp; r &lt; right.size()) {
+      if (left.get(l) &lt;= right.get(r)) {
+        result.add(left.get(l));
+        l = l + 1;
+      }
+      else {
+        result.add(right.get(r));
+        r = r + 1;
+      }
+    }
+    while (l &lt; left.size()) {
+      result.add(left.get(l));
+      l = l + 1;
+    }
+    while (r &lt; right.size()) {
+      result.add(right.get(r));
+      r = r + 1;
+    }
+  }
+}</code></pre>
+<p>Time Complexity: O(<span class="math inline">\(n\log{n}\)</span>)<br />
+Space Complexity: O(<span class="math inline">\(n\)</span>)</p>
+<pre><code>       n
+    /     \
+  n/2     n/2
+  / \     / \
+n/4 n/4 n/4 n/4
+...</code></pre>
+<pre><code>   {1, 4, 2, 3}
+    /        \
+ {1, 4}    {2, 3}
+  /  \      /  \
+{1}  {4}  {2}  {3} - return O(n)
+  \  /      \  /
+ {1, 4}    {2, 3} - return O(n)
+    \        /
+   {1, 2, 3, 4} - return O(n)</code></pre>
+<p><strong>That’s only in theory</strong>. In Java, temp variables won’t be reclaimed immediately. This is an implementation challenge. (That why C++ solution is fine.)</p>
+<p>Compare to sample solution, we’re reusing the same array to bound memory consumption:</p>
+<pre class="java"><code>public class MergeSort {
+  public int[] mergeSort(int[] array) {
+    //check null array first
+    if (array == null) {
+      return array;
+    }
+    //allocate helper array to help merge step, so that we guarantee no more than O(n) space is used. The space complexity is O(n) in this case.
+    int[] helper = new int[array.length];
+    mergeSort(array, helper, 0, array.length - 1);
+    return array;
+  }
+  
+  private void mergeSort(int[] array, int[] helper, int left, int right) {
+    if (left &gt;= right) {
+      return;
+    }
+    int mid = left + (right - left) / 2;
+    mergeSort(array, helper, left, mid);
+    mergeSort(array, helper, mid + 1, right);
+    merge(array, helper, left, mid, right);
+  }
+  
+  //array  [1, 3, 2, 4, | 5, 6, 7, 8]
+  //        l  m     r
+  //helper [1, 3, 2, 4, | x, x, x, x]
+  
+  private void merge(int[] array, int[] helper, int left, int mid, int right) {
+    //copy the content to helper array and we will merge from the helper array
+    for (int i = left; i &lt;= right; i = i + 1) {
+       helper[i] = array[i];
+    }
+    int leftIndex = left;
+    int rightIndex = mid + 1;
+    while (leftIndex &lt;= mid &amp;&amp; rightIndex &lt;= right) {
+      if (helper[leftIndex] &lt;= helper[rightIndex]) {
+        array[left] = helper[leftIndex];
+        left = left + 1;
+        leftIndex = leftIndex + 1;
+      }
+      else {
+        array[left] = helper[rightIndex];
+        left = left + 1;
+        rightIndex = rightIndex + 1;
+      }
+    }
+    //if we still have some elements at left side, we need to copy them
+    while (leftIndex &lt;= mid) {
+      array[left] = helper[leftIndex];
+      left = left + 1;
+      leftIndex = leftIndex + 1;
+    }
+    //if there are some elements at right side, we do not need to copy them because they are already in their position
+  }
+  
+  public static void main(String[] arys) {
+    MergeSort solution = new MergeSort();
+    
+    //test cases to cover possible situations
+    int[] array = null;
+    array = solution.mergeSort(array);
+    System.out.println(Arrays.toString(array));
+    
+    array = new int[0];
+    array = solution.mergeSort(array);
+    System.out.println(Arrays.toString(array));
+    
+    array = new int[] {1, 2, 3, 4};
+    array = solution.mergeSort(array);
+    System.out.println(Arrays.toString(array));
+    
+    array = new int[] {4, 3, 2, 1};
+    array = solution.mergeSort(array);
+    System.out.println(Arrays.toString(array));
+    
+    array = new int[] {2, 4, 1, 5, 3};
+    array = solution.mergeSort(array);
+    System.out.println(Arrays.toString(array));
+  }
+}</code></pre>
+<p><strong>Practice Tips: 能不用“global” variable就不用“global” variable</strong></p>
+<ul>
+<li>“global” variable example 1</li>
+</ul>
+<pre class="java"><code>class Solution {
+  int[] helper;  //-&gt; {}
+  public void mergeSort(int[] array) {
+    mergeSort(array, 0, array.length - 1);
+  }
+}</code></pre>
+<ul>
+<li>“global” variable example 2</li>
+</ul>
+<pre class="java"><code>public void mergeSort(int[] array) {
+  int[] helper = new int[array.length];
+  mergeSort(array, helper, 0, array.length - 1);
+}</code></pre>
+</div>
+<div id="reorder-linked-list" class="section level1">
+<h1>Reorder Linked List</h1>
+<p>Reorder the given singly-linked list N1 -&gt; N2 -&gt; N3 -&gt; N4 -&gt; … -&gt; null to be N1 -&gt; Nn -&gt; N2 -&gt; N(n-1) -&gt; N3 -&gt; N(n-2) -&gt; … -&gt; null</p>
+<p>Examples</p>
+<ul>
+<li>L = null, is reordered to null</li>
+<li>L = 1 -&gt; null, is reordered to 1 -&gt; null</li>
+<li>L = 1 -&gt; 2 -&gt; 3 -&gt; 4 -&gt; null, is reordered to 1 -&gt; 4 -&gt; 2 -&gt; 3 -&gt; null</li>
+<li>L = 1 -&gt; 2 -&gt; 3 -&gt; null, is reordered to 1 -&gt; 3 -&gt; 2 -&gt; null</li>
+</ul>
+<pre class="java"><code>public class ReorderList {
+  public ListNode reorder(ListNode head) {
+    if (head == null || head.next == null) {
+      return head;
+    }
+    //1. find the middle node
+    ListNode mid = middleNode(head);
+    ListNode one = head;
+    ListNode two = mid.next;
+    //de-link the second half from the list
+    mid.next = null;
+    //2. reverse the second half
+    ListNode secondReversed = reverse(two);
+    //3. merge the two halves
+    return merge(one, secondReversed);
+  }
+  
+  private ListNode middleNode(ListNode head) {
+    ListNode slow = head;
+    ListNode fast = head;
+    while (fast.next != null &amp;&amp; fast.next.next != null) {
+      slow = slow.next;
+      fast = fast.next.next;
+    }
+    return slow;
+  }
+  
+  private ListNode reverse(ListNode head) {
+    if (head == null || head.next == null) {
+      return head;
+    }
+    ListNode prev = null;
+    while (head != null) {
+      ListNode next = head.next;
+      head.next = prev;
+      prev = head;
+      head = next;
+    }
+    return prev;
+  }
+  
+  private ListNode merge(ListNode one, ListNode two) {
+    ListNode dummy = new ListNode(0);
+    ListNode cur = dummy;
+    while (one != null &amp;&amp; two != null) {
+      cur.next = one;
+      one = one.next;
+      cur.next.next = two;
+      two = two.next;
+      cur = cur.next.next;
+    }
+    if (one != null) {
+      cur.next = one;
+    }
+    else {
+      cur.next = two;
+    }
+    return dummy.next;
+  }
+}</code></pre>
+<pre><code>a1 -&gt; a2 -&gt; a3 -&gt; null
+h1
+
+b1 -&gt; b2 -&gt; null
+h2
+
+result: a1 -&gt; b1 -&gt; a2 -&gt; b2 -&gt; a3 -&gt; null</code></pre>
+<div id="logical-operator-short-circuit" class="section level2">
+<h2>Logical Operator Short Circuit</h2>
+<p>execution sequence: left to right, one by one!!!</p>
+<pre class="java"><code>if (array == null) {
+  return -1;
+}
+if (array.length == 0) {
+  return -1;
+}
+
+if (array == null || array.length == 0) {
+  //corner case handling
+}
+
+if (head == null || head.next == null) {
+  //
+}
+
+while (fast != null &amp;&amp; fast.next != null) {
+  //
+}</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="right">.</th>
+<th align="right">Meaning</th>
+<th align="right">Short circuit?</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">&amp;&amp;</td>
+<td align="right">and</td>
+<td align="right">yes</td>
+</tr>
+<tr class="even">
+<td align="right">&amp;</td>
+<td align="right">and</td>
+<td align="right">no</td>
+</tr>
+<tr class="odd">
+<td align="right">||</td>
+<td align="right">or</td>
+<td align="right">yes</td>
+</tr>
+<tr class="even">
+<td align="right">|</td>
+<td align="right">or</td>
+<td align="right">no</td>
+</tr>
+</tbody>
+</table>
+<p>Short circuit if the first expression is enough to decide.</p>
+</div>
+<div id="dummy-head" class="section level2">
+<h2>Dummy Head</h2>
+<p>It is not a must, but can make your life <strong>much easier</strong>, there are several suitable conditions using dummy will be very handy.</p>
+<ul>
+<li><em>1. the head could be changed when solving the problem</em></li>
+</ul>
+<p><strong>Example - insert a value into a sorted list (Practice)</strong></p>
+<pre><code>1 -&gt; 3 -&gt; 5
+
+insert 4: 1 -&gt; 3 -&gt; 4 -&gt; 5  
+insert 0: 0 -&gt; 1 -&gt; 3 -&gt; 5  
+insert 6: 1 -&gt; 3 -&gt; 5 -&gt; 6
+
+dummy -&gt; 0 -&gt; 1 -&gt; 3 -&gt; 5
+prev         cur</code></pre>
+<ol style="list-style-type: decimal">
+<li>With dummy node’s help</li>
+</ol>
+<pre class="java"><code>public ListNode insert(ListNode head, int val) {
+  ListNode dummy = new ListNode(0);
+  dummy.next = head;
+  ListNode newNode = new ListNode(val);
+  ListNode curr = dummy.next;
+  ListNode prev = dummy;
+  while (curr != null &amp;&amp; curr.val &lt; val) {
+    prev = curr;
+    curr = curr.next;
+  }
+  prev.next = newNode;
+  newNode.next = curr;
+  return dummy.next;
+}</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>Without dummy node’s help</li>
+</ol>
+<pre class="java"><code>public ListNode insert(ListNode head, int val) {
+  ListNode newNode = new ListNode(val);
+  //check head
+  if (head == null || head.val &gt;= val) {
+    newNode.next = head;
+    return newNode;
+  }
+  //the inserted node is not the new head
+  Listnode prev = head
+  //find first node &gt;= val, cur, cur.next
+  while (prev.next != null &amp;&amp; prev.next.val &lt; val) {
+    prev = prev.next;
+  }
+  //prev.next == null || cur.next.val &gt;= val
+  newNode.next = prev.next;
+  prev.next = newNode;
+  return head;
+}</code></pre>
+<ul>
+<li><em>2. not sure yet which node will be head when constructing the list</em></li>
+</ul>
+<pre><code>3 -&gt; 5
+       h1
+4 -&gt; 6
+     h2
+
+dummy -&gt; 3 -&gt; 4 -&gt; 5 -&gt; 6
+                 cur
+merge result: 3 -&gt; 4 -&gt; 5 -&gt; 6</code></pre>
+<p><strong>Example - merge two sorted list (Practice)</strong></p>
+<ol style="list-style-type: decimal">
+<li>With dummy node’s help</li>
+</ol>
+<pre class="java"><code>public ListNode merge(ListNode h1, ListNode h2) {
+  ListNode dummy = new ListNode(0);
+  ListNode curr = dummy;
+  while (h1 != null &amp;&amp; h2 != null) {
+    if (h1.value &lt;= h2.value) {
+      curr.next = h1;
+      h1 = h1.next;
+    }
+    else {
+      curr.next = h2;
+      h2 = h2.next;
+    }
+    curr = curr.next;
+  }
+  if (h1 != null) {
+    curr.next = h1;
+  }
+  if (h2 != null) {
+    curr.next = h2;
+  }
+  return dummy.next;
+}</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>Without dummy node’s help</li>
+</ol>
+<pre><code>3 -&gt; 5
+    h1
+4 -&gt; 6
+h2
+
+3 -&gt;
+head
+cur</code></pre>
+<pre class="java"><code>public ListNode merge(ListNode h1, ListNode h2) {
+  if (h1 == null) {
+    return h2;
+  }
+  if (h2 == null) {
+    return h1;
+  }
+  ListNode head = null;
+  if (h1.val &lt;= h2.val) {
+    head = h1;
+    h1 = h1.next;
+  }
+  else {
+    head = h2;
+    h2 = h2.next;
+  }
+  ListNode cur = head;
+  while (h1 != null &amp;&amp; h2 != null) {
+    if (h1.val &lt;= h2.val) {
+      curr.next = h1;
+      h1 = h1.next;
+    }
+    else {
+      curr.next = h2;
+      h2 = h2.next;
+    }
+    curr = curr.next;
+  }
+  if (h1 != null) {
+    curr.next = h1;
+  }
+  if (h2 != null) {
+    curr.next = h2;
+  }
+  return head;
+}</code></pre>
 </div>
 </div>
 

@@ -39,16 +39,31 @@ output:
 - [Class 3](Algorithm_Class_3_Lecture.html), 7/7, Queue & Stack
 - [Practice 5](Algorithm_Class_5_Practice.html), 7/8, Practice Problems
 
-- [Class 4](Algorithm_Class_4_Lecture.html), 7/9
-- [Practice 6](Algorithm_Class_6_Practice.html), 7/11
+- [Class 4](Algorithm_Class_4_Lecture.html), 7/9, LinkedList
+- [Practice 6](Algorithm_Class_6_Practice.html), 7/11, Queue, Stack, and Deque
 
-- [Class 5](Algorithm_Class_5_Lecture.html), 7/13
-- [Practice 7](Algorithm_Class_7_Practice.html), 7/14
-- [Practice 8](Algorithm_Class_8_Practice.html), 7/15
+- [Class 5](Algorithm_Class_5_Lecture.html), 7/13, Binary Tree & Binary Search Tree
+- [Practice 7](Algorithm_Class_7_Practice.html), 7/14, Binary Tree 1
+- [Practice 8](Algorithm_Class_8_Practice.html), 7/15, Binary Trees 2
+
+- [Class 6](Algorithm_Class_6_Lecture.html), 7/16, Heap & Graph Search Algorithms 1
+- [Practice 9](Algorithm_Class_9_Practice.html), 7/18, Heap in Java (PriorityQueue)
+
+- [Class 7](Algorithm_Class_7_Lecture.html), 7/20, Graph Search Algorithms 2 (DFS)
+- [Practice 10](Algorithm_Class_10_Practice.html), 7/21, Implementing Heaps
+- [Practice 11](Algorithm_Class_11_Practice.html), 7/22, Practice Problems
+
+- [Class 8](Algorithm_Class_8_Lecture.html), 7/23, HashTable & String 1
+- [Practice 12](Algorithm_Class_12_Practice.html), 7/25
+- [Practice 13](Algorithm_Class_13_Practice.html), 7/27
+
+- [Class 9](Algorithm_Class_9_Lecture.html), 7/28
+- [Class 10](Algorithm_Class_10_Lecture.html), 7/29
 
 - [Homework 1](Algorithm_Class_1_hw.html)
 - [Homework 2](Algorithm_Class_2_hw.html)
 - [Homework 3](Algorithm_Class_3_hw.html)
+- [Homework 4](Algorithm_Class_4_hw.html)
 
 </div>
 

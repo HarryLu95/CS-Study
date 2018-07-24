@@ -222,10 +222,10 @@ div.tocify {
 
 
 <h1 class="title toc-ignore"><center>
-Algorithm Class - Practice 3 - Practice Problems
+Algorithm Class - Practice 11 - Practice Problems
 </center></h1>
 <h4 class="date"><em><center>
-2018/7/2
+2018/7/22
 </center></em></h4>
 
 </div>
@@ -240,256 +240,54 @@ ol {font-size: 16px; color: black;}
 ul {font-size: 16px; color: black;}
 img {display: block; margin-bottom: 10px; margin-left: auto; margin-right: auto;}
 </style>
-<p><strong>Coding Style:</strong></p>
+<div id="review" class="section level1">
+<h1>Review</h1>
+<p><strong>List / Queue / Stack / Deque / ArrayList / LinkedList / ArrayDeque / PriorityQueue</strong></p>
+<p>The inheritance relationship is very important</p>
+<pre><code>         __[List]_          ____[Queue]___
+        /    |    \        /   /  \       \
+       /     |     \      /[Deque] \       \
+      /      |      \    /  /   \   \       \
+     /       |       \  /  /     \   \       \
+ArrayList  Stack  LinkedList  ArrayDeque  PriorityQueue</code></pre>
+<p>no <a href="interface"></a>: implementation</p>
+<p>Methods belonging to each interface</p>
+<p><strong>List:</strong></p>
 <ul>
-<li><a href="http://www.oracle.com/technetwork/java/javase/documentation/codeconvtoc-136057.html">Java Oracle</a></li>
-<li><a href="https://google.github.io/styleguide/javaguide.html">Google</a></li>
+<li>add(E e);</li>
+<li>add(int index, E e);</li>
+<li>E get(int index);</li>
+<li>remove(int index);</li>
+<li>remove(E e);</li>
+<li>set(int index, E e);</li>
+<li>int size();</li>
 </ul>
-<div id="selection-sort" class="section level1">
-<h1>Selection Sort</h1>
-<div id="code" class="section level2">
-<h2>Code</h2>
-<pre class="java"><code>public class SelectionSort {
-  public void doSelectionSort(int[] array) {
-    if (array == null) {
-      return;
-    }
-    for (int i = 0; i &lt; array.length - 1; i = i + 1) {
-      int min = i;  //localMin
-      for (int j = i + 1; j &lt; array.length; j = j + 1) {
-        if (array[j] &lt; array[min]) {
-          min = j;
-        }
-      }
-      swap(array, i, min);
-    }
-  }
-  
-  public void swap(int[] array, int left, int right) {
-    int temp = array[left];
-    array[left] = array[right];
-    array[rigt] = temp;
-  }
-}</code></pre>
-</div>
-<div id="sample-test" class="section level2">
-<h2>Sample Test</h2>
-<pre class="java"><code>public class Practice {
-  public static void main(String[] args) {
-    SelectionSort solution = new SelectionSort();
-    
-    //test cases to cover all the possible situations.
-    int[] array = null;
-    solution.selectionSort(array);
-    System.out.println(Arrays.toString(array));
-    
-    array = new int[0];
-    solution.selectionSort(array);
-    System.out.println(Arrays.toString(array));
-    
-    array = new int[] {1, 2, 3, 4};
-    solution.selectionSort(array);
-    System.out.println(Arrays.toString(array));
-    
-    array = new int[] {4, 3, 2, 1};
-    solution.selectionSort(array);
-    System.out.println(Arrays.toString(array));
-    
-    array = new int[] {2, 4, 1, 5, 3};
-    solution.selectionSort(array);
-    System.out.println(Arrays.toString(array));
-  }
-}</code></pre>
-</div>
-</div>
-<div id="quick-sort" class="section level1">
-<h1>Quick Sort</h1>
-<pre><code>2 3 5 7 8 4
-    i
-  j</code></pre>
-<p>擋板的定義:<br />
-i: (…, i) &lt; 4<br />
-j: (j, …) &gt;= 4</p>
-<div id="code-1" class="section level2">
-<h2>Code</h2>
-<pre class="java"><code>public class QuickSort {
-  public void quickSort(int[] array) {
-    if (array == null) {
-      return;
-    }
-    quickSort(array, 0, array.length - 1);
-  }
-  
-  public void quickSort(int[] array, int left, int right) {
-    if (left &gt;= right) {
-      return;
-    }
-    //define a pivot and use the pivot to partition the array
-    int pivotPos = partition(array, left, right);
-    quickSort(array, left, pivotPos - 1);
-    quickSort(arrat, pivotPos + 1, right);
-  }
-  
-  private int partition(int[] array, int left, int right) {
-    int pivotIndex = pivotIndex(left, right);
-    int pivot = array[pivotIndex];
-    //swap the pivot element to the rightmost position first
-    swap(array, pivotIndex, right);
-    int leftBound = left;
-    int rightBound = right - 1;
-    while (leftBound &lt;= rightBound) {
-      if (array[leftBound] &lt; pivot) {
-        leftBound = leftBound + 1;
-      }
-      else if (array[rightBound] &gt;= pivot) {
-        rightBound = rightBound - 1;
-      }
-      else {
-        swap(array, leftBound, rightBound);
-        leftBound = leftBound + 1;
-        rightBound = rightBound - 1;
-      }
-    }
-    //swap back the pivot element
-    swap(array, leftBound, right);
-    return leftBound;
-  }
-  
-  private int pivotIndex(int left, int right) {
-    //sample implementation, pick random element as pivot each time
-    return left + (int) (Math.random() * (right - left + 1));
-  }
-  
-  private void swap(int[] array, int left, int right) {
-    int temp = array[left];
-    array[left] = array[right];
-    array[right] = temp;
-  }
-}</code></pre>
-</div>
-<div id="sample-test-1" class="section level2">
-<h2>Sample Test</h2>
-<pre class="java"><code>public class Practice {
-  public static void main(String[] args) {
-    QuickSort solution = new QuickSort();
-    
-    int[] array = null;
-    solution.quickSort(array);
-    System.out.println(Arrays.toString(array));
-    
-    array = new int[0];
-    solution.quickSort(array);
-    System.out.println(Arrays.toString(array));
-    
-    array = new int[] {1, 2, 3, 4};
-    solution.quickSort(array);
-    System.out.println(Arrays.toString(array));
-    
-    array = new int[] {4, 3, 2, 1};
-    solution.quickSort(array);
-    System.out.println(Arrays.toString(array));
-    
-    array = new int[] {2, 5, 3, 1, 4};
-    solution.quickSort(array);
-    System.out.println(Arrays.toString(array));
-  }
-}</code></pre>
-</div>
-</div>
-<div id="merge-sort" class="section level1">
-<h1>Merge Sort</h1>
-<p>Given an array of integers, sort the elements in the array in ascending order. The merge sort algorithm should be used to solve this problem.</p>
-<p>Examples</p>
+<p><strong>Queue:</strong></p>
 <ul>
-<li>{1} is sorted to {1}</li>
-<li>{1, 2, 3} is sorted to {1, 2, 3}</li>
-<li>{3, 2, 1} is sorted to {1, 2, 3}</li>
-<li>{4, 2, -3, 6, 1} is sorted to {-3, 1, 2, 4, 6}</li>
+<li>offer(E e);</li>
+<li>E peek();</li>
+<li>E poll();</li>
 </ul>
-<p>Corner Cases</p>
+<p><strong>Deque:</strong></p>
 <ul>
-<li>What if the given array is null? In this case, we do not need to do anything.</li>
-<li>What if the given array is of length zero? In this case, we do not need to do anything.</li>
+<li>offerFirst(E e);</li>
+<li>offerLast(E e);</li>
+<li>E peekFirst();</li>
+<li>E peekLast();</li>
+<li>E pollFirst();</li>
+<li>E pollLast();</li>
+<li>push</li>
+<li>pop</li>
 </ul>
-<pre class="java"><code>public class MergeSort {
-  public int[] mergeSort(int[] array) {
-    //check null array first
-    if (array == null) {
-      return array;
-    }
-    //allocate helper array to help merge step, so that we guarantee no more than O(n) space is used. The space complexity is O(n) in this case.
-    int[] helper = new int[array.length];
-    mergeSort(array, helper, 0, array.length - 1);
-    return array;
-  }
-  
-  private void mergeSort(int[] array, int[] helper, int left, int right) {
-    if (left &gt;= right) {
-      return;
-    }
-    int mid = left + (right - left) / 2;
-    mergeSort(array, helper, left, mid);
-    mergeSort(array, helper, mid + 1, right);
-    merge(array, helper, left, mid, right);
-  }
-  
-  private void merge(int[] array, int[] helper, int left, int mid, int right) {
-    //copy the content to helper array and we will merge from the helper array.
-    for (int i = left; i &lt;= right; i = i + 1) {
-      helper[i] = array[i];
-    }
-    int leftIndex = left;
-    int rightIndex = mid + 1;
-    while (leftIndex &lt;= mid &amp;&amp; rightIndex &lt;= right) {
-      if (helper[leftIndex] &lt;= helper[rightIndex]) {
-        array[left] = helper[leftIndex];
-        left = left + 1;
-        leftIndex = leftIndex + 1;
-      }
-      else {
-        array[left] = helper[rightIndex];
-        left = left + 1;
-        rightIndex = rightIndex + 1;
-      }
-    }
-    //if we still have some elements at left side, we need to copy them
-    while (leftIndex &lt;= mid) {
-      array[left] = helper[leftIndex];
-      left = left + 1;
-      leftIndex = leftIndex + 1;
-    }
-    //if there are some elements at right side, we do not need to copy them because they are already in their position.
-  }
-  
-  public static void main(String[] args) {
-    MergeSort solution = new MergeSort();
-    
-    //test cases to cover possible situation.
-    int[] array = null;
-    array = solution.mergeSort(array);
-    System.out.println(Arrays.toString(array));
-    
-    array = new int[0];
-    array = solution.mergeSort(array);
-    System.out.println(Arrays.toString(array));
-    
-    array = new int[] {1, 2, 3, 4};
-    array = solution.mergeSort(array);
-    System.out.println(Arrays.toString(array));
-    
-    array = new int[] {4, 3, 2, 1};
-    array = solution.mergeSort(array);
-    System.out.println(Arrays.toString(array));
-    
-    array = new int[] {2, 4, 1, 5, 3};
-    array = solution.mergeSort(array);
-    System.out.println(Arrays.toString(array));
-    
-    array = new int[] {4, 1, 5, 2, 8, 7};
-    array = solution.mergeSort(array);
-    System.out.println(Arrays.toString(array));
-  }
-}</code></pre>
+<p><strong>Stack:</strong></p>
+<ul>
+<li>push</li>
+<li>pop</li>
+<li>peek</li>
+</ul>
+</div>
+<div id="problems-from-piaza" class="section level1">
+<h1>Problems from Piaza</h1>
 </div>
 
 

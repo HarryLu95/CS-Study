@@ -222,10 +222,10 @@ div.tocify {
 
 
 <h1 class="title toc-ignore"><center>
-Algorithm Class - Practice 3 - Practice Problems
+Algorithm Class - Lecture 7 - Graph Search Algorithms 2 (DFS)
 </center></h1>
 <h4 class="date"><em><center>
-2018/7/2
+2018/7/20
 </center></em></h4>
 
 </div>
@@ -240,256 +240,188 @@ ol {font-size: 16px; color: black;}
 ul {font-size: 16px; color: black;}
 img {display: block; margin-bottom: 10px; margin-left: auto; margin-right: auto;}
 </style>
-<p><strong>Coding Style:</strong></p>
+<div class="section level1">
+<h1>複習</h1>
+<p>上一節課講了兩個BFS</p>
 <ul>
-<li><a href="http://www.oracle.com/technetwork/java/javase/documentation/codeconvtoc-136057.html">Java Oracle</a></li>
-<li><a href="https://google.github.io/styleguide/javaguide.html">Google</a></li>
+<li>Breadth First Search - 分層打印, 同層關係</li>
+<li>Best First Search - shortest path, min/max k elements</li>
+<li>DFS</li>
 </ul>
-<div id="selection-sort" class="section level1">
-<h1>Selection Sort</h1>
-<div id="code" class="section level2">
-<h2>Code</h2>
-<pre class="java"><code>public class SelectionSort {
-  public void doSelectionSort(int[] array) {
-    if (array == null) {
-      return;
-    }
-    for (int i = 0; i &lt; array.length - 1; i = i + 1) {
-      int min = i;  //localMin
-      for (int j = i + 1; j &lt; array.length; j = j + 1) {
-        if (array[j] &lt; array[min]) {
-          min = j;
-        }
-      }
-      swap(array, i, min);
-    }
-  }
-  
-  public void swap(int[] array, int left, int right) {
-    int temp = array[left];
-    array[left] = array[right];
-    array[rigt] = temp;
-  }
-}</code></pre>
-</div>
-<div id="sample-test" class="section level2">
-<h2>Sample Test</h2>
-<pre class="java"><code>public class Practice {
-  public static void main(String[] args) {
-    SelectionSort solution = new SelectionSort();
-    
-    //test cases to cover all the possible situations.
-    int[] array = null;
-    solution.selectionSort(array);
-    System.out.println(Arrays.toString(array));
-    
-    array = new int[0];
-    solution.selectionSort(array);
-    System.out.println(Arrays.toString(array));
-    
-    array = new int[] {1, 2, 3, 4};
-    solution.selectionSort(array);
-    System.out.println(Arrays.toString(array));
-    
-    array = new int[] {4, 3, 2, 1};
-    solution.selectionSort(array);
-    System.out.println(Arrays.toString(array));
-    
-    array = new int[] {2, 4, 1, 5, 3};
-    solution.selectionSort(array);
-    System.out.println(Arrays.toString(array));
-  }
-}</code></pre>
-</div>
-</div>
-<div id="quick-sort" class="section level1">
-<h1>Quick Sort</h1>
-<pre><code>2 3 5 7 8 4
-    i
-  j</code></pre>
-<p>擋板的定義:<br />
-i: (…, i) &lt; 4<br />
-j: (j, …) &gt;= 4</p>
-<div id="code-1" class="section level2">
-<h2>Code</h2>
-<pre class="java"><code>public class QuickSort {
-  public void quickSort(int[] array) {
-    if (array == null) {
-      return;
-    }
-    quickSort(array, 0, array.length - 1);
-  }
-  
-  public void quickSort(int[] array, int left, int right) {
-    if (left &gt;= right) {
-      return;
-    }
-    //define a pivot and use the pivot to partition the array
-    int pivotPos = partition(array, left, right);
-    quickSort(array, left, pivotPos - 1);
-    quickSort(arrat, pivotPos + 1, right);
-  }
-  
-  private int partition(int[] array, int left, int right) {
-    int pivotIndex = pivotIndex(left, right);
-    int pivot = array[pivotIndex];
-    //swap the pivot element to the rightmost position first
-    swap(array, pivotIndex, right);
-    int leftBound = left;
-    int rightBound = right - 1;
-    while (leftBound &lt;= rightBound) {
-      if (array[leftBound] &lt; pivot) {
-        leftBound = leftBound + 1;
-      }
-      else if (array[rightBound] &gt;= pivot) {
-        rightBound = rightBound - 1;
-      }
-      else {
-        swap(array, leftBound, rightBound);
-        leftBound = leftBound + 1;
-        rightBound = rightBound - 1;
-      }
-    }
-    //swap back the pivot element
-    swap(array, leftBound, right);
-    return leftBound;
-  }
-  
-  private int pivotIndex(int left, int right) {
-    //sample implementation, pick random element as pivot each time
-    return left + (int) (Math.random() * (right - left + 1));
-  }
-  
-  private void swap(int[] array, int left, int right) {
-    int temp = array[left];
-    array[left] = array[right];
-    array[right] = temp;
-  }
-}</code></pre>
-</div>
-<div id="sample-test-1" class="section level2">
-<h2>Sample Test</h2>
-<pre class="java"><code>public class Practice {
-  public static void main(String[] args) {
-    QuickSort solution = new QuickSort();
-    
-    int[] array = null;
-    solution.quickSort(array);
-    System.out.println(Arrays.toString(array));
-    
-    array = new int[0];
-    solution.quickSort(array);
-    System.out.println(Arrays.toString(array));
-    
-    array = new int[] {1, 2, 3, 4};
-    solution.quickSort(array);
-    System.out.println(Arrays.toString(array));
-    
-    array = new int[] {4, 3, 2, 1};
-    solution.quickSort(array);
-    System.out.println(Arrays.toString(array));
-    
-    array = new int[] {2, 5, 3, 1, 4};
-    solution.quickSort(array);
-    System.out.println(Arrays.toString(array));
-  }
-}</code></pre>
-</div>
-</div>
-<div id="merge-sort" class="section level1">
-<h1>Merge Sort</h1>
-<p>Given an array of integers, sort the elements in the array in ascending order. The merge sort algorithm should be used to solve this problem.</p>
-<p>Examples</p>
+<p><strong>Recursion vs DFS (Search Algorithm)</strong></p>
 <ul>
-<li>{1} is sorted to {1}</li>
-<li>{1, 2, 3} is sorted to {1, 2, 3}</li>
-<li>{3, 2, 1} is sorted to {1, 2, 3}</li>
-<li>{4, 2, -3, 6, 1} is sorted to {-3, 1, 2, 4, 6}</li>
+<li>DFS, in more general scope, it is one kind of search algorithm.</li>
+<li>DFS can be implemented in an either <strong>recursive way</strong>, or in <strong>iterative way</strong>.</li>
 </ul>
-<p>Corner Cases</p>
+<p><strong>Back-tracking vs DFS</strong></p>
 <ul>
-<li>What if the given array is null? In this case, we do not need to do anything.</li>
-<li>What if the given array is of length zero? In this case, we do not need to do anything.</li>
+<li>Back-tracking describes the behavior of DFS</li>
 </ul>
-<pre class="java"><code>public class MergeSort {
-  public int[] mergeSort(int[] array) {
-    //check null array first
-    if (array == null) {
-      return array;
-    }
-    //allocate helper array to help merge step, so that we guarantee no more than O(n) space is used. The space complexity is O(n) in this case.
-    int[] helper = new int[array.length];
-    mergeSort(array, helper, 0, array.length - 1);
-    return array;
+<p>First, let’s recall the pre-order traverse the binary tree code</p>
+<pre><code>          10 == root
+         /   \
+       5      15
+     /   \   /  \
+    2     7 12  20  &lt;- all leaf node's level==3
+   / \
+null null</code></pre>
+<pre class="java"><code>void printTreePreOrder(TreeNode root) {
+  if (root == null) {  //base case
+    return;
+  }
+  System.out.println(root.value);
+  printTreePreOrder(root.left);  //case 1: try left first, break point
+  printTreePreOrder(root.right);  //case 2: right
+}</code></pre>
+<p>pre-order: 10 5 2 7 15 12 20</p>
+<p>圖</p>
+<p>Pre-order traverse a binary tree (In fact, it is a DFS)</p>
+</div>
+<div id="depth-first-search-dfs" class="section level1">
+<h1>Depth-First Search (DFS)</h1>
+<ul>
+<li>Recall “using pre-order to traverse a tree”.</li>
+<li>實現方法: easy to use <strong>recursion</strong></li>
+<li><h2>常見考題:</h2>
+<ul>
+<li></li>
+<li></li>
+<li></li>
+</ul></li>
+</ul>
+<p><strong>DFS基本方法</strong></p>
+<ol style="list-style-type: decimal">
+<li>what does it store on each level? (每層代表什麼意義? 一般來講解題之前就知道DFS要recurse多少層)</li>
+<li>How many different states should we try to put on this level? (每層有多少個狀態/case需要try?)</li>
+</ol>
+</div>
+<div id="dfs1" class="section level1">
+<h1>DFS經典例題1</h1>
+<p>Print all subsets of a set S = {‘a’, ‘b’, ‘c’}</p>
+<pre><code> a    b    c
+0,1  0,1  0,1</code></pre>
+<p>DFS思路:</p>
+<ul>
+<li>recursion: 3 levels, each level consider one letter</li>
+<li>state: 2 states, take this letter or NOT take letter</li>
+</ul>
+<p>圖</p>
+<pre class="java"><code>void findSubset(char[] input, int index, StringBuilder solutionPrefix) {
+  if (index == input.length) {  //Base case: print solution. 控制層數
+    System.out.println(solutionPrefix);  //StringBuilder存儲結果
+    return;
   }
   
-  private void mergeSort(int[] array, int[] helper, int left, int right) {
-    if (left &gt;= right) {
-      return;
-    }
-    int mid = left + (right - left) / 2;
-    mergeSort(array, helper, left, mid);
-    mergeSort(array, helper, mid + 1, right);
-    merge(array, helper, left, mid, right);
+  //Case 1: add input[index] to the solution prefix.
+  solutionPrefix.append(input[index]);  //加進當前的數
+  findSubset(input, index + 1, solutionPrefix);  //到下一層
+  solutionPrefix.deleteCharAt(solutionPrefix.length() - 1);  //恢復加之前的狀態
+  
+  //Case 2: do not add input[index] to the solution prefix.
+  findSubset(input, index + 1, solutionPrefix);  //不加當前的數, 直接到下一層
+  
+  //第一層舉例: Case 1加a, Case 2不加a
+}</code></pre>
+<p>Time = O(<span class="math inline">\(2^n\)</span>)<br />
+Space = O(<span class="math inline">\(n\)</span>)</p>
+<p>圖</p>
+</div>
+<div id="dfs2" class="section level1">
+<h1>DFS經典例題2</h1>
+<p>()()(), find all <strong>valid</strong> permutation using the parenthesis provided.</p>
+<p>DFS思路:</p>
+<ul>
+<li>recursion: six levels, each level represents each position</li>
+<li>state: two states, each brunch represents xxxxxxxxx</li>
+</ul>
+<p>For any ‘)’ parenthesis, we must have one ‘(’ left parenthesis to match it. In this xxxxxxx</p>
+<pre class="java"><code>//'n' stores total number of &quot;pair of ()&quot; need to add. So total levels == 2 * n.
+//'l' stores the number of left parenthesis &quot;(&quot; added so far.
+//'r' stores the number of right parenthesis &quot;)&quot; added so far.
+//'soluPrefix': solution so far.
+
+void DFS(int n == 3, int l == 0, int r == 0, StringBuilder soluPrefix) {
+  if (l + r == 2 * n) {
+    System.out.println(soluPrefix);
+    return;
   }
   
-  private void merge(int[] array, int[] helper, int left, int mid, int right) {
-    //copy the content to helper array and we will merge from the helper array.
-    for (int i = left; i &lt;= right; i = i + 1) {
-      helper[i] = array[i];
-    }
-    int leftIndex = left;
-    int rightIndex = mid + 1;
-    while (leftIndex &lt;= mid &amp;&amp; rightIndex &lt;= right) {
-      if (helper[leftIndex] &lt;= helper[rightIndex]) {
-        array[left] = helper[leftIndex];
-        left = left + 1;
-        leftIndex = leftIndex + 1;
-      }
-      else {
-        array[left] = helper[rightIndex];
-        left = left + 1;
-        rightIndex = rightIndex + 1;
-      }
-    }
-    //if we still have some elements at left side, we need to copy them
-    while (leftIndex &lt;= mid) {
-      array[left] = helper[leftIndex];
-      left = left + 1;
-      leftIndex = leftIndex + 1;
-    }
-    //if there are some elements at right side, we do not need to copy them because they are already in their position.
+  //Case 1: add '(' on this level
+  if (l &lt; n) {
+    soluPrefix.append('(');
+    DFS(n, l + 1, r, soluPrefix);
+    soluPrefix.deleteCharAt(soluPrefix.length() - 1);
   }
   
-  public static void main(String[] args) {
-    MergeSort solution = new MergeSort();
-    
-    //test cases to cover possible situation.
-    int[] array = null;
-    array = solution.mergeSort(array);
-    System.out.println(Arrays.toString(array));
-    
-    array = new int[0];
-    array = solution.mergeSort(array);
-    System.out.println(Arrays.toString(array));
-    
-    array = new int[] {1, 2, 3, 4};
-    array = solution.mergeSort(array);
-    System.out.println(Arrays.toString(array));
-    
-    array = new int[] {4, 3, 2, 1};
-    array = solution.mergeSort(array);
-    System.out.println(Arrays.toString(array));
-    
-    array = new int[] {2, 4, 1, 5, 3};
-    array = solution.mergeSort(array);
-    System.out.println(Arrays.toString(array));
-    
-    array = new int[] {4, 1, 5, 2, 8, 7};
-    array = solution.mergeSort(array);
-    System.out.println(Arrays.toString(array));
+  //Case 2: add ')' on this level
+  if (l &gt; n) {
+    soluPrefix.append(')');
+    DFS(n, l, r + 1, soluPrefix);
+    soluPrefix.deleteCharAt(soluPrefix.length() - 1);
   }
 }</code></pre>
+<p>Time = O(<span class="math inline">\(2^{2n}\)</span>)<br />
+Space = O(height) = O(<span class="math inline">\(2n\)</span>)</p>
+</div>
+<div id="dfs3" class="section level1">
+<h1>DFS經典例題3</h1>
+<p>Print all combinations of coins that can sum up to a total value k.</p>
+<p>e.g. total value k = 99 cents<br />
+coin value = 25, 10, 5, 1 cent</p>
+<p>1st: 25c * 3, 10c * 2, 5c * 0, 1c * 4</p>
+<p><strong>Method 1 (NOT so good)</strong></p>
+<ul>
+<li>recursion: 99 levels, each level represents we pick one coin</li>
+<li>state: 4 branches</li>
+</ul>
+<p>Discussion</p>
+<ol style="list-style-type: decimal">
+<li>If we take this way (it is correct). However, it can cause xxxxxx</li>
+<li></li>
+</ol>
+<p><strong>Method 2 (Our Method)</strong></p>
+<ul>
+<li>recursion: 4 levels, each level represents we consider one kind of coin.</li>
+<li>state: it depends on the input value. 99 vs 999 cents</li>
+</ul>
+<p>Discusion</p>
+<p>Space = O(4)<br />
+Time = O(99^4)</p>
+<pre class="java"><code>int[] coin = {25, 10, 5, 1};
+int[] sol = {3, 2, 0, 4};
+void findCombination(int moneyLeft = 99, int level = 0, int[4] sol) {
+  if (level == 3) {
+    sol[level] = moneyLeft;
+    //print solution here and return
+  }
+  
+  //money value on this level == coin[level];
+  for (int i = 0; coin[level] * i &lt;= moneyLeft; i = i + 1) {
+    sol[level] = i;  //overwrite the value in the fixed-size array
+    findCombination(moneyLeft - coin[level] * i, level + 1, sol);
+    sol[level] = 0;  //this line is not necessary
+  }
+}</code></pre>
+</div>
+<div id="dfs4" class="section level1">
+<h1>DFS經典例題4</h1>
+<p>Given a string <strong>with no duplicate letters</strong>, how to print out all permutations of the string.</p>
+<p>string = “a b c”</p>
+<p>DFS思路:</p>
+<ul>
+<li>recursion: 3, the length of the input string. Each level consider each position.</li>
+<li>state:</li>
+</ul>
+<pre><code>                            input = &quot;abc&quot;
+                         /        |        \
+L0(position0)    a(rem=bc)    b(rem=ac)    c(rem=ab)
+                    /  \         /  \         /  \
+L1(position1)    b(c)  c(b)   a(c)  c(a)   a(b)  b(a)
+                  |     |      |     |      |     |
+L2(position2)     c     b      c     a      b     a</code></pre>
+<p>Space = O(<span class="math inline">\(n\)</span>)<br />
+Time = O(<span class="math inline">\(n!\)</span>)</p>
+<pre class="java"><code>public void</code></pre>
 </div>
 
 

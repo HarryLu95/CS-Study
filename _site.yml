@@ -6,7 +6,7 @@ navbar:
   - text: Home
     icon: fa-home
     href: index.html
-  - text: Algorithm Beginner Class
+  - text: A.B.C. Lecture
     icon: fa-book
     menu:
     - text: Lecture 1
@@ -51,6 +51,9 @@ navbar:
     - text: Lecture 14
       icon: fa-clone
       href: Algorithm_Beginner_Class_14_Lec.html
+  - text: A.B.C. Homework
+    icon: fa-book
+    menu:
     - text: Homework 1
       icon: fa-clone
       href: Algorithm_Beginner_Class_1_hw.html
@@ -93,7 +96,7 @@ navbar:
     - text: Homework 14
       icon: fa-clone
       href: Algorithm_Beginner_Class_14_hw.html
-  - text: Algorithm Class
+  - text: A.C. Lecture
     icon: fa-book
     menu:
     - text: Class 2
@@ -108,6 +111,24 @@ navbar:
     - text: Class 5
       icon: fa-clone
       href: Algorithm_Class_5_Lecture.html
+    - text: Class 6
+      icon: fa-clone
+      href: Algorithm_Class_6_Lecture.html
+    - text: Class 7
+      icon: fa-clone
+      href: Algorithm_Class_7_Lecture.html
+    - text: Class 8
+      icon: fa-clone
+      href: Algorithm_Class_8_Lecture.html
+    - text: Class 9
+      icon: fa-clone
+      href: Algorithm_Class_9_Lecture.html
+    - text: Class 10
+      icon: fa-clone
+      href: Algorithm_Class_10_Lecture.html
+  - text: A.C. Practice
+    icon: fa-book
+    menu:
     - text: Practice 1
       icon: fa-clone
       href: Algorithm_Class_1_Practice.html
@@ -132,6 +153,24 @@ navbar:
     - text: Practice 8
       icon: fa-clone
       href: Algorithm_Class_8_Practice.html
+    - text: Practice 9
+      icon: fa-clone
+      href: Algorithm_Class_9_Practice.html
+    - text: Practice 10
+      icon: fa-clone
+      href: Algorithm_Class_10_Practice.html
+    - text: Practice 11
+      icon: fa-clone
+      href: Algorithm_Class_11_Practice.html
+    - text: Practice 12
+      icon: fa-clone
+      href: Algorithm_Class_12_Practice.html
+    - text: Practice 13
+      icon: fa-clone
+      href: Algorithm_Class_13_Practice.html
+  - text: A.C. Homework
+    icon: fa-book
+    menu:
     - text: Homework 1
       icon: fa-clone
       href: Algorithm_Class_1_hw.html
@@ -141,7 +180,9 @@ navbar:
     - text: Homework 3
       icon: fa-clone
       href: Algorithm_Class_3_hw.html
-
+    - text: Homework 4
+      icon: fa-clone
+      href: Algorithm_Class_4_hw.html
 output:
   html_document:
     theme: spacelab
